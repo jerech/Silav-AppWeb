@@ -1,0 +1,129 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.2.2
+-- http://www.phpmyadmin.net
+--
+-- Servidor: localhost
+-- Tiempo de generación: 05-09-2014 a las 06:58:49
+-- Versión del servidor: 5.1.71
+-- Versión de PHP: 5.2.17
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Base de datos: `u666709690_silav`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Choferes`
+--
+
+CREATE TABLE IF NOT EXISTS `Choferes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(12) COLLATE latin1_spanish_ci NOT NULL,
+  `apellido` varchar(12) COLLATE latin1_spanish_ci NOT NULL,
+  `usuario` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
+  `contrasenia` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `usuario` (`usuario`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=3 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Clientes`
+--
+
+CREATE TABLE IF NOT EXISTS `Clientes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(25) COLLATE latin1_spanish_ci NOT NULL,
+  `apellido` varchar(25) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `usuario` varchar(20) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `contrasenia` varchar(20) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `telefono` varchar(20) COLLATE latin1_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Jornadas`
+--
+
+CREATE TABLE IF NOT EXISTS `Jornadas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha` date NOT NULL,
+  `id_chofer` int(11) NOT NULL,
+  `id_remis` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Operadores`
+--
+
+CREATE TABLE IF NOT EXISTS `Operadores` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `apellido` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `usuario` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `contrasenia` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `telefono` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id_remiseria` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `usuario` (`usuario`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Pasajes`
+--
+
+CREATE TABLE IF NOT EXISTS `Pasajes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ubicacion_lat` double NOT NULL,
+  `ubicacion_lon` double NOT NULL,
+  `fecha` date NOT NULL,
+  `estado` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `id_remis` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Remiserias`
+--
+
+CREATE TABLE IF NOT EXISTS `Remiserias` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) COLLATE latin1_spanish_ci NOT NULL,
+  `direccion` varchar(50) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `telefono` varchar(20) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `email` varchar(30) COLLATE latin1_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nombre` (`nombre`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Remises`
+--
+
+CREATE TABLE IF NOT EXISTS `Remises` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `patente` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
+  `numero` int(11) NOT NULL,
+  `estado` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
+  `ubicacion_lat` double DEFAULT NULL,
+  `ubicacion_lon` double DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `patente` (`patente`,`numero`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=1 ;
