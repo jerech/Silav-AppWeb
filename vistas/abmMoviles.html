@@ -8,22 +8,40 @@
 		<table align="center" width="1000" cellpadding="0" cellspacing="0">
 			<tr>
 			<div>
+				<!--Formulario con tabla contenedora de datos de Movil-->
 				<form>
 					
-					<table>
+					<table cellpadding="6px" align="center">
 						<tr>
-							<td><p>Id: <input type="text" name="id"/> </p></td>
+							<td><p>Nro de Movil: <input type="text" name="id"/> </p></td>
+							<td><p>Patente: <input type="text" name="patente"/> </p></td>
+							<td><p>Venc. Seguro: <input type="datetime" name="ven-seguro"/> </p></td>
 						</tr>
 						<tr>
+							<td><p>Marca: <input type="text" name="marca"/> </p></td>
+							<td><p>Modelo: <input type="text" name="modelo"/> </p></td>
+							<td><p>A/A: <input type="checkbox" name="aire"/>GNC: <input type="checkbox" name="gnc"/> </p></td>
 						</tr>
 						<tr>
+							<td colspan=3 align="right"><INPUT type="submit" value="Guardar"> <INPUT type="reset"></td>
 						</tr>
 					</table>
 				</form>
 			</div>
 			</tr>
 			<tr>
-				<table>
+				<!--Tabla para visualizar todos los moviles que existen-->
+				<table align="center" border="1px" width="880px"> 
+					<tr>
+						<th><h4>Nro Movil</h4></th>
+						<th><h4>Patente</h4></th>
+						<th><h4>Marca</h4></th>
+						<th><h4>Modelo</h4></th>
+						<th><h4>Venc. Seguro</h4></th>
+						<th><h4>A/A</h4></th>
+						<th><h4>GNC</h4></th>
+					</tr>
+				
 				</table>
 			</tr>
 		</table>
