@@ -1,5 +1,5 @@
 <?php
-	include("www.silav.hol.es/BD/conexionBD.php");
+	include("http://www.silav.hol.es/BD/conexionBD.php");
 	
 	$numero=$_POST["numero"];
 	$patente=$_POST["patente"];

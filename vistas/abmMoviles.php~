@@ -3,7 +3,7 @@
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<script type="text/javascript" src="controladores/jquery.js"></script>
+		<script type="text/javascript" src="www.silav.hol.es/controladores/jquery.js"></script>
 		<script type="text/javascript" src="controladores/abmMoviles.js"></script>
 		<title>ABM Moviles</title>
 		
