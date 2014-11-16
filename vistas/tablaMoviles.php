@@ -1,5 +1,5 @@
 <?php
-	include("/BD/conexionBD.php");
+	include("http://www.silav.hol.es/BD/conexionBD.php");
 	echo "<table cellpadding='3' cellspacing='3' style='width:800px; border:solid 1px #CCC;' align='center'>";
     echo "<thead>";
     echo "<td>Num. Movil</td><td>Patente</td><td>Marca</td><td>Modelo</td><td>Venc Seguro</td><td>AA</td><td>GNC</td>";

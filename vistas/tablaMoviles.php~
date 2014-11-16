@@ -21,7 +21,7 @@
 				<td><?=$fila[5]?></td>
 				<td><?=$fila[6]?></td>
 				<td><?=$fila[7]?></td>
-				<td><a href='javascript:fnc_eliminar(<?=$fila[0]?>);'>Eliminar</td>
+				<!--<td><a href='javascript:fnc_eliminar(<?=$fila[0]?>);'>Eliminar</td>-->
 				</tr>
 <?php
 				$color = 1;
@@ -35,7 +35,7 @@
 				<td><?=$fila[5]?></td>
 				<td><?=$fila[6]?></td>
 				<td><?=$fila[7]?></td>
-				<td><a href='javascript:fnc_eliminar(<?=$fila[0]?>);'>Eliminar</td>
+				<!--<td><a href='javascript:fnc_eliminar(<?=$fila[0]?>);'>Eliminar</td>-->
 				</tr>
 <?php
 				$color = 0;

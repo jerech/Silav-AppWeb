@@ -41,6 +41,8 @@ $(document).ready(function () {
 		});
 	});
 });	
+
+
 	
 	
 	function fnc_eliminar(id){
@@ -62,10 +64,11 @@ $(document).ready(function () {
 			  }
 		   }
 	   });
+	}
 	
 	
 	
 	
 	
 	
-	)
+	
