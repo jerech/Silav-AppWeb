@@ -28,7 +28,7 @@
 							<td><p><label>A.A.:</label> <input type="checkbox" name="aire" id="aire"/>GNC: <input type="checkbox" name="gnc" id="gnc"/> </p></td>
 						</tr>
 						<tr>
-							<td colspan=3 align="right"><input type="button" id="guardar" value="Guardar" name="guardar"> <input type="reset" value="Limpiar"></td>
+							<td colspan=3 align="right"><input type="button" id="guardar" value="Guardar" name="guardar"> <input type="button" value="Limpiar" id="limpiar"></td>
 						</tr>
 						<tr>
 							<td colspan="3">
