@@ -33,9 +33,9 @@
 					<td><input type="button" value="Guardar" id="guardar"><input type="button" value="Limpiar"></td>
 				</tr>
 				</table>
-			</form>			
-		</article>
-		<article id="estado">
+			</form>
+			<article id="estado">
+			</article>
 		</article>
 		<article id="tabla">
 		</article>

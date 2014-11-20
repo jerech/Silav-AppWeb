@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="iso-8859-1">
+		<meta name="description" content="Ejemplo de HTML5">
+		<meta name="keywords" content="HTML5, CSS3, JavaScript">
+		<link rel="stylesheet" href="abmChoferes.css">
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="abmChoferes.js"></script>
+		<title>ABM Choferes</title>	
+	</head>
+	<body>
+		<header>
+			<h2>Choferes</h2>
+		</header>
+		<article>
+			<form id="formulario" name="formulario" accept-charset="utf-8">
+				<table id="tablaform">
+						<tr>
+							<td><label>Usuario:</label><input type="text" name="usuario" id="usuario"/></td>
+							<td><label>Password:</label><input type="text" name="pass" id="pass"/></td>
+							<td><label>Venc. Licencia:</label><input type="date" placeholder="aaaa-mm-dd" name="venclicencia" id="venclicencia"/></td>
+						</tr>
+						<tr>
+							<td><label>Nombre:</label> <input type="text" name="nombre" id="nombre"/></td>
+							<td><label>Telefono:</label> <input type="tel" name="telefono" id="telefono"/></td>
+							<td rowspan="2"><label id="lblMoviles">Moviles:</label><select name="listamoviles" id="listamoviles" multiple="true"/>
+							<option>1</option><option>20</option><option>16</option><option>1</option><option>20</option><option>16</option></td>
+						</tr>
+						<tr>
+							<td><label>Apellido:</label><input type="text" id="apellido" name="apellido"></td>
+							<td><label>Habilitado:</label><input type="checkbox" id="habilitado"/></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td><input type="button" id="guardar" value="Guardar" name="guardar"> <input type="button" value="Limpiar" id="limpiar"></td>
+						</tr>
+					</table>
+			</form>
+		</article>
+		<article id="estado">
+		</article>
+		<article id="tabla">
+		</article>
+		<footer>Proyecto SiLAV</footer>
+		
+	</body>
+</html>
