@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="iso-8859-1">
+		<meta name="description" content="Ejemplo de HTML5">
+		<meta name="keywords" content="HTML5, CSS3, JavaScript">
+		<link rel="stylesheet" href="abmMoviles.css">
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="abmMoviles.js"></script>
+		<title>ABM Moviles</title>
+	</head>
+	<body>
+		<header>
+			<h2>Moviles</h2>
+		</header>
+		<article>
+			<form name="formulario" id="formulario" accept-charset="utf-8">
+				<table id="tablaform" align="center">
+				<tr>
+					<td><label>Nro. Movil:</label><input type="number" name="numero" id="numero"></td>
+					<td><label>Patente:</label><input type="text" name="patente" id="patente"></td>
+					<td><label>Venc. Seguro:</label><input type="date" placeholder="aaaa-mm-dd" name="vencseguro" id="vencseguro"></td>
+				</tr>
+				<tr>				
+					<td><label>Marca:</label><input type="text" name="marca" id="marca"></td>
+					<td><label>Modelo:</label><input type="text" name="modelo" id="modelo"></td>
+					<td><label>A.A.:</label><input type="checkbox" name="aire" id="aire">
+						<label>GNC:</label><input type="checkbox" name="gnc" id="gnc"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>				
+					<td><input type="button" value="Guardar" id="guardar"><input type="button" value="Limpiar"></td>
+				</tr>
+				</table>
+			</form>
+			<article id="estado">
+			</article>
+		</article>
+		<article id="tabla">
+		</article>
+		<footer>
+			Proyecto SiLAV
+		</footer>
+	</body>
+</html>

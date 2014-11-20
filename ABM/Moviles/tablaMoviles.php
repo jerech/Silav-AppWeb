@@ -1,6 +1,6 @@
 <?php
 	include("conexionBD.php");
-	echo "<table cellpadding='3' cellspacing='3' style='width:1000px; border:solid 1px #CCC;' align='center'>";
+	echo "<table id='tablaMoviles' align='center'>";
     echo "<thead>";
     echo "<th>Num. Movil</th><th>Patente</th><th>Marca</th><th>Modelo</th><th>Venc. Seguro</th><th>A.A.</th><th>GNC</th>";
     echo "</thead>";
@@ -14,15 +14,15 @@
 			if($color == 0){
 ?>
 				<tr style='background-color:#ADD8E6;'>
-				<th><?=$fila[0]?></td>
+				<td><?=$fila[0]?></td>
 				<td><?=$fila[1]?></td>
 				<td><?=$fila[2]?></td>
 				<td><?=$fila[3]?></td>
 				<td><?=$fila[4]?></td>
 				<td><?=$fila[5]?></td>
 				<td><?=$fila[6]?></td>
-				<td><a href='javascript:fnc_eliminar(<?=$fila[0]?>);'>Eliminar</td>
 				<td><a href='javascript:fnc_editar(<?=$fila[0]?>);'>Editar</td>
+				<td><a href='javascript:fnc_eliminar(<?=$fila[0]?>);'>Eliminar</td>
 				</tr>
 <?php
 				$color = 1;
@@ -36,8 +36,8 @@
 				<td><?=$fila[4]?></td>
 				<td><?=$fila[5]?></td>
 				<td><?=$fila[6]?></td>
-				<td><a href='javascript:fnc_eliminar(<?=$fila[0]?>);'>Eliminar</td>
 				<td><a href='javascript:fnc_editar(<?=$fila[0]?>);'>Editar</td>
+				<td><a href='javascript:fnc_eliminar(<?=$fila[0]?>);'>Eliminar</td>
 				</tr>
 <?php
 				$color = 0;
