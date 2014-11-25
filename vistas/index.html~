@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8"/>
+	<title>SiLAV</title>
+	<script src="http://openlayers.org/api/OpenLayers.js"></script>
+	<script type="text/javascript" src="js/mapa.js"></script>
+	<link rel="stylesheet" href="estilo.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="js/modernizr.custom.js"></script>
+</head>
+<body onload="init()">
+		<div class="main clearfix">
+				<div class="column">
+					<div id="dl-menu" class="dl-menuwrapper">
+						<button class="dl-trigger">Open Menu</button>
+						<ul class="dl-menu">
+							<li>
+								<a href="#">Inicio</a>
+							</li>
+							<li>
+								<a href="#">Choferes</a>
+								<ul class="dl-submenu">
+									<li><a href="#">Nuevo</a></li>
+									<li><a href="#">Modificar</a></li>
+									<li><a href="#">Borrar</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">Móviles</a>
+								<ul class="dl-submenu">
+									<li><a href="#">Nuevo</a></li>
+									<li><a href="#">Modificar</a></li>
+									<li><a href="#">Borrar</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">Operadores</a>
+								<ul class="dl-submenu">
+									<li><a href="#">Nuevo</a></li>
+									<li><a href="#">Modificar</a></li>
+									<li><a href="#">Borrar</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">Cerrar sesión</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				</div>
+				<div id="cabeza">
+		<p id="titulo">SiLAV</p>
+		<p id="usuario">Nombre de Usuario</p>
+	</div>
+	
+	<section>
+		<article id="contenedorMapa">
+			
+		</article>
+	</section>
+	<aside>
+		<article id="contenedorTabla">
+			<table id="one-column-emphasis">
+    			<colgroup>
+    				<col class="oce-first" />
+    			</colgroup>
+    			<thead>
+    				<tr>
+    					<th scope="col">Fecha</th>
+    					<th scope="col">Hora</th>
+        				<th scope="col">Dirección</th>
+        				<th scope="col">Móvil</th>
+        			</tr>
+    			</thead>
+    			<tbody>
+    			<tr>
+    			   <td>fecha 1</td>
+        			<td>hora 1</td>
+        			<td>dirección 1</td>
+        			<td>movil 1</td>
+        		</tr>
+        		<tr>
+        			<td>fecha 2</td>
+        			<td>hora 2</td>
+        			<td>dirección 2</td>
+        			<td>movil 2</td>
+        		</tr>
+        		<tr>
+        			<td>fecha 3</td>
+        			<td>hora 3</td>
+        			<td>dirección 3</td>
+        			<td>movil 3</td>
+        		</tr>
+        		<tr>
+        			<td>fecha 4</td>
+        			<td>hora 4</td>
+        			<td>dirección 4</td>
+        			<td>movil 4</td>
+        		</tr>
+    			</tbody>
+			</table>	
+		</article>
+	</aside>
+	<script src="js/jquery.dlmenu.js"></script>
+	<script>
+			$(function() {
+				$( '#dl-menu' ).dlmenu({
+					animationClasses : { classin : 'dl-animate-in-2', classout : 'dl-animate-out-2' }
+				});
+			});
+		</script>
+</body>
+</html>
