@@ -21,6 +21,11 @@ footer{
 	border-radius: 3px;
 }
 
+#tablaMoviles{
+	padding: 3;
+	width:1000px; 
+	border:solid 1px #CCC;
+}
 
 #estado{
 	text-align: center;
