@@ -1,5 +1,5 @@
 <?php
-	include("../conexionBD.php");
+	include("../../conexionBD.php");
 	echo "<table class='tabla-mostrar-moviles' id=tabla-edit-moviles>";
     echo "<tr>";
     echo "<td>Num. Movil</td><td>Patente</td><td>Marca</td><td>Modelo</td>";

@@ -1,5 +1,5 @@
 <?php
-	include("../conexionBD.php");
+	include("../../conexionBD.php");
 	
 	$conexion = establecerConexion();
 	$id=$_POST["id"];

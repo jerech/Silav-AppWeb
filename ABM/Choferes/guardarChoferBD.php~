@@ -42,10 +42,10 @@ if(!empty($usuario) && !empty($nombre) && !empty($apellido) && !empty($pass)){ /
 			$conectar = establecerConexion();
 			$sqlupdate="update Choferes set nombre='$nombre', apellido='$apellido', contrasenia='$pass', numero_telefono='$telefono', habilitado='$habilitado', sexo='$sexo', venc_licencia='$venclicencia' where usuario='$usuario'";
 			$resultadoUpdate=mysql_query($sqlupdate,$conectar);
-			//$consulta_chofer = mysql_fetch_row(mysql_query("select id from Choferes where usuario='$usuario'", $conectar));
-   		//$id_chofer=$consulta_chofer[0];
-			//$sql2="delete from AsignacionesMovil where id_chofer='$id_chofer'";
-			//$resultado2=mysql_query($sql2,$conectar);
+			$consulta_chofer = mysql_fetch_row(mysql_query("select id from Choferes where usuario='$usuario'", $conectar));
+   		$id_chofer=$consulta_chofer[0];
+			$sql2="delete from AsignacionesMovil where id_chofer='$id_chofer'";
+			$resultado2=mysql_query($sql2,$conectar);
 			
 			guardarAsignacionMoviles();
 			
@@ -86,7 +86,7 @@ function guardarAsignacionMoviles() {
    		foreach($array_moviles as $num_movil){
    			$consulta_movil = mysql_fetch_row(mysql_query("select id from Moviles where numero='$num_movil'", $conexion));
    			$id_movil=$consulta_movil[0];
-   			$insertar2 = mysql_query("insert into AsignacionesMovil(id_chofer,id_movil) values('$id_chofer','$id_movil')", $conectar);
+   			$insertar2 = mysql_query("insert into AsignacionesMovil(id_chofer,id_movil) values('$id_chofer','$id_movil')", $conexion);
    		}
 }
 ?>

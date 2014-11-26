@@ -1,5 +1,5 @@
 <?php
-	include("conexionBD.php");
+	include("../conexionBD.php");
 	
 	$numero=$_POST["numero"];
 	$patente=$_POST["patente"];

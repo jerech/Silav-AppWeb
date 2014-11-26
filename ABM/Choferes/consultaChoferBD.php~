@@ -25,7 +25,7 @@
 						$moviles=$arrayMoviles[0];
 						$flagPrimerEntrada = false;
 						}else {
-							$moviles=$moviles."@@".$arrayMoviles[0];						
+							$moviles=$moviles."-".$arrayMoviles[0];						
 							}
 		}
     	

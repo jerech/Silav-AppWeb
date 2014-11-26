@@ -1,5 +1,5 @@
 <?php
-	include("../conexionBD.php");
+	include("../../conexionBD.php");
 	echo "<table class='tabla-abm'>";
     echo "<tr>";
     echo "<td>Num. Movil</td><td>Patente</td><td>Marca</td><td>Modelo</td><td>Venc. Seguro</td><td>A.A.</td><td>GNC</td>";

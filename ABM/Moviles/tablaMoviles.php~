@@ -6,7 +6,7 @@
     echo "</tr>";
 
 	$conectar = establecerConexion();
-    $sql = "SELECT numero,patente,marca,modelo,vencseguro,aa,gnc FROM Moviles";
+    $sql = "SELECT numero,patente,marca,modelo,vencseguro,aa,gnc FROM Moviles order by numero";
     $select = mysql_query($sql,$conectar);
 	if($select){
 		while($fila = mysql_fetch_array($select)){
