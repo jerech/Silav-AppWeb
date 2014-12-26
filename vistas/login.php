@@ -156,7 +156,7 @@
                                 notificacion("error","Error al intentar ingresar al sistema. "+data);
                                 $("#contrasenia").val("");
                             }else{
-                                alert("Se ingreso al sistema."+data);
+                                window.location.replace("../index.php");
                             }
 
                         },

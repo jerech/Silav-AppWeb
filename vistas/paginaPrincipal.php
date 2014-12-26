@@ -1,3 +1,8 @@
+<?php   
+    if(!defined('acceso')){
+        exit();
+    }
+?>
 <!doctype html>
 <html lang="en"><head>
     <meta charset="utf-8">
@@ -53,7 +58,7 @@
           <ul id="main-menu" class="nav navbar-nav navbar-right">
             <li class="dropdown hidden-xs">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> Jack Smith
+                    <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span><?php echo $_SESSION['sesion_usuario'] ?>
                     <i class="fa fa-caret-down"></i>
                 </a>
 
@@ -63,7 +68,7 @@
                 <li class="dropdown-header">Admin</li>
                 <li><a href="./">Usuarios</a></li>
                 <li class="divider"></li>
-                <li><a tabindex="-1" href="sign-in.html">Salir</a></li>
+                <li><a tabindex="-1" href="../controladores/cierreSesion.php">Salir</a></li>
               </ul>
             </li>
           </ul>
@@ -75,25 +80,41 @@
 
     <div class="sidebar-nav">
         <ul>
-            <li><a href="help.html" class="nav-header"><i class="fa fa-fw fa-home"></i> Inicio</a></li>
+            <?php if(in_array('Inicio', $_SESSION['sesion_permisos'])){?>
+                <li><a href="help.html" class="nav-header"><i class="fa fa-fw fa-home"></i> Inicio</a></li>
+            <?php } ?>
+            <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".usuarios-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-users"></i> Usuarios<i class="fa fa-collapse"></i></a></li>
+            <li><ul class="usuarios-menu nav nav-list collapse">
+            <?php if(in_array('Administradores', $_SESSION['sesion_permisos'])){ ?>
+                <li data-popover="false" rel="popover" data-placement="left"><a href="#" data-target=".administradores-menu" class="nav collapsed" data-toggle="collapse"><i class="fa"></i><span class="fa fa-caret-down"></span> Administradores<i class="fa fa-collapse"></i></a></li>
+                <li><ul class="administradores-menu nav nav-list collapse">
+                    <li><a href="#" ><span class="fa fa-caret-right"></span>    Nuevo</a></li>
+                    <li><a href="#" ><span class="fa fa-caret-right"></span>    Ver Lista</a></li>
+                </ul></li>
 
-            <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".premium-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-users"></i> Usuarios<i class="fa fa-collapse"></i></a></li>
-            <li><ul class="premium-menu nav nav-list collapse in">
-            <li><a href="index.html"><span class="fa fa-caret-right"></span> Administradores</a></li>
-            <li ><a href="users.html"><span class="fa fa-caret-right"></span> Operadores</a></li>
+            <?php }?>
+            <?php if(in_array('Operadores', $_SESSION['sesion_permisos'])){ ?> 
+                <li data-popover="false" rel="popover" data-placement="left"><a href="#" data-target=".operadores-menu" class="nav collapsed" data-toggle="collapse"><i class="fa"></i><span class="fa fa-caret-down"></span> Operadores<i class="fa fa-collapse"></i></a></li>
+                <li><ul class="operadores-menu nav nav-list collapse">
+                    <li><a href="#" >   <span class="fa fa-caret-right"></span>Nuevo</a></li>
+                    <li><a href="#" >   <span class="fa fa-caret-right"></span>Ver Lista</a></li>
+                </ul></li>
+            <?php }?>
             </ul></li>
-
-            <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".premium-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-male"></i> Choferes<i class="fa fa-collapse"></i></a></li>
-            <li><ul class="premium-menu nav nav-list collapse">
-            <li ><a href="premium-profile.html"><span class="fa fa-caret-right"></span> Nuevo</a></li>
-            <li ><a href="premium-blog.html"><span class="fa fa-caret-right"></span> Ver Lista</a></li>
-            </ul></li>
-
-            <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-automobile"></i> M&oacute;viles <i class="fa fa-collapse"></i></a></li>
-            <li><ul class="accounts-menu nav nav-list collapse">
+            <?php if(in_array('Choferes', $_SESSION['sesion_permisos'])){ ?>
+                <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".choferes-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-male"></i> Choferes<i class="fa fa-collapse"></i></a></li>
+                <li><ul class="choferes-menu nav nav-list collapse">
+                <li ><a href="premium-profile.html"><span class="fa fa-caret-right"></span> Nuevo</a></li>
+                <li ><a href="premium-blog.html"><span class="fa fa-caret-right"></span> Ver Lista</a></li>
+                </ul></li>
+            <?php } ?>
+            <?php if(in_array('Moviles', $_SESSION['sesion_permisos'])){ ?>
+            <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".moviles-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-automobile"></i> M&oacute;viles <i class="fa fa-collapse"></i></a></li>
+            <li><ul class="moviles-menu nav nav-list collapse">
             <li ><a href="sign-in.html"><span class="fa fa-caret-right"></span> Nuevo</a></li>
             <li ><a href="sign-up.html"><span class="fa fa-caret-right"></span> Ver Lista</a></li>
             </ul></li>
+            <?php } ?>
             <li><a href="help.html" class="nav-header"><i class="fa fa-fw fa-question-circle"></i> Ayuda</a></li>
         </ul>
     </div>

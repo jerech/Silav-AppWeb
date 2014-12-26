@@ -55,12 +55,12 @@
 						$permisos[] = $array['nombre'];
 					}
 				
-					$_SESSION['c_sesion_reg'] = true;
-                	$_SESSION['c_sesion_usuario'] = $usuario;
-                	$_SESSION['c_sesion_nombre'] = $nombre;
-                	$_SESSION['c_sesion_idUsuario'] = $idUsuario;
-                	$_SESSION['c_sesion_tipoUsuario'] = $tipo;
-               		$_SESSION['c_sesion_permisos'] = $permisos;
+					$_SESSION['sesion_reg'] = true;
+                	$_SESSION['sesion_usuario'] = $usuario;
+                	$_SESSION['sesion_nombre'] = $nombre;
+                	$_SESSION['sesion_idUsuario'] = $idUsuario;
+                	$_SESSION['sesion_tipoUsuario'] = $tipo;
+               		$_SESSION['sesion_permisos'] = $permisos;
 				}
 
 				
@@ -73,7 +73,7 @@
 
 	}
 
-	if ($_SESSION['c_sesion_usuario']!="") {
+	if ($_SESSION['sesion_usuario']!="") {
 		exit("OK");
 	}else{
 		exit($error);
