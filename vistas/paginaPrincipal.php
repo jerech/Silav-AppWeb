@@ -81,23 +81,23 @@
     <div class="sidebar-nav">
         <ul>
             <?php if(in_array('Inicio', $_SESSION['sesion_permisos'])){?>
-                <li><a href="help.html" class="nav-header"><i class="fa fa-fw fa-home"></i> Inicio</a></li>
+                <li><a href="panelSitio.php?seccion=Inicio" class="nav-header"><i class="fa fa-fw fa-home"></i> Inicio</a></li>
             <?php } ?>
             <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".usuarios-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-users"></i> Usuarios<i class="fa fa-collapse"></i></a></li>
             <li><ul class="usuarios-menu nav nav-list collapse">
             <?php if(in_array('Administradores', $_SESSION['sesion_permisos'])){ ?>
                 <li data-popover="false" rel="popover" data-placement="left"><a href="#" data-target=".administradores-menu" class="nav collapsed" data-toggle="collapse"><i class="fa"></i><span class="fa fa-caret-down"></span> Administradores<i class="fa fa-collapse"></i></a></li>
                 <li><ul class="administradores-menu nav nav-list collapse">
-                    <li><a href="#" ><span class="fa fa-caret-right"></span>    Nuevo</a></li>
-                    <li><a href="#" ><span class="fa fa-caret-right"></span>    Ver Lista</a></li>
+                    <li><a href="#" ><span class="fa fa-caret-right"></span>Nuevo</a></li>
+                    <li><a href="#" ><span class="fa fa-caret-right"></span>Ver Lista</a></li>
                 </ul></li>
 
             <?php }?>
             <?php if(in_array('Operadores', $_SESSION['sesion_permisos'])){ ?> 
                 <li data-popover="false" rel="popover" data-placement="left"><a href="#" data-target=".operadores-menu" class="nav collapsed" data-toggle="collapse"><i class="fa"></i><span class="fa fa-caret-down"></span> Operadores<i class="fa fa-collapse"></i></a></li>
                 <li><ul class="operadores-menu nav nav-list collapse">
-                    <li><a href="#" >   <span class="fa fa-caret-right"></span>Nuevo</a></li>
-                    <li><a href="#" >   <span class="fa fa-caret-right"></span>Ver Lista</a></li>
+                    <li><a href="#" ><span class="fa fa-caret-right"></span>Nuevo</a></li>
+                    <li><a href="#" ><span class="fa fa-caret-right"></span>Ver Lista</a></li>
                 </ul></li>
             <?php }?>
             </ul></li>

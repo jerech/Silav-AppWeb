@@ -3,7 +3,7 @@
 	session_start();
 
 	if(empty($_SESSION['sesion_usuario']))	
-            header("Location: ../vista/inicio.php");
+            header("Location: ../index.php");
 
     define("acceso", "autorizado");
 
@@ -70,7 +70,7 @@
 
 		if(array_key_exists($seccion, $seccionesURL)){
 			
-			if(in_array($seccion, $_SESSION['c_sesion_permisos'])){
+			if(in_array($seccion, $_SESSION['sesion_permisos'])){
 				include_once $seccionesURL[$seccion];
 			
 			}else{				
@@ -98,7 +98,7 @@
 
 		if(array_key_exists($subSeccion, $subSeccionesURL)){
 			
-			if(in_array($subSeccion, $_SESSION['c_sesion_permisos'])){
+			if(in_array($subSeccion, $_SESSION['sesion_permisos'])){
 				include_once $subSeccionesURL[$subSeccion];
 			
 			}else{				
@@ -119,7 +119,7 @@
 		
 		if(array_key_exists($seccion, $seccionesURL)){
 			
-			if(in_array($seccion, $_SESSION['c_sesion_permisos'])){
+			if(in_array($seccion, $_SESSION['sesion_permisos'])){
 				include_once $seccionesURL[$seccion];
 			
 			}else{				
