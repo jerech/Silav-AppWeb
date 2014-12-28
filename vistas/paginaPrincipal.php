@@ -88,7 +88,7 @@
             <?php if(in_array('Administradores', $_SESSION['sesion_permisos'])){ ?>
                 <li data-popover="false" rel="popover" data-placement="left"><a href="#" data-target=".administradores-menu" class="nav collapsed" data-toggle="collapse"><i class="fa"></i><span class="fa fa-caret-down"></span> Administradores<i class="fa fa-collapse"></i></a></li>
                 <li><ul class="administradores-menu nav nav-list collapse">
-                    <li><a href="#" ><span class="fa fa-caret-right"></span>Nuevo</a></li>
+                    <li><a href="panelSitio.php?subSeccion=NuevoAdministrador" ><span class="fa fa-caret-right"></span>Nuevo</a></li>
                     <li><a href="#" ><span class="fa fa-caret-right"></span>Ver Lista</a></li>
                 </ul></li>
 

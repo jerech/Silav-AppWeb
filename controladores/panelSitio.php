@@ -43,7 +43,7 @@
 		'Estadisticas' => '#',
 		'ControlDePasajes' => '#',
 		
-		'NuevoAdministrador' => '#',
+		'NuevoAdministrador' => '../vistas/administradores/nuevo.php',
 		'VerAdministradores' => '#',
 		'ModificarAdministrador' => '#',
         'ModificarPassword' => '#',
