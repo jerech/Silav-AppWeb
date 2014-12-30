@@ -1,3 +1,10 @@
+
+<?php   
+    if(!defined('acceso')){
+        exit();
+    }
+?>
+
 <!doctype html>
 <html lang="en">
 <head>

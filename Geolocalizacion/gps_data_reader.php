@@ -5,16 +5,9 @@ header( "Last-Modified: " . gmdate( "D, d M Y H:i:s" ) . " GMT" );
 header( "Cache-Control: no-cache, must-revalidate" ); 
 header( "Pragma: no-cache" );
 
-$servidorDB = "mysql.hostinger.es";
-$usuarioDB = "u545571603_root";
-$claveDB = "js12345";
-$nombreDB = "u545571603_silav";
+include '../conexionBD.php';
 
-$conexion=mysql_connect($servidorDB, $usuarioDB, $claveDB) 
-  or  die("Problemas en la conexion");
-
-mysql_select_db($nombreDB, $conexion) 
-  or  die("Problemas en la selección de la base de datos");
+$conexion = establecerConexion();
 
 $registros=mysql_query("select usuario, ubicacion_lat, ubicacion_lon
                        from ChoferesConectados", $conexion) or

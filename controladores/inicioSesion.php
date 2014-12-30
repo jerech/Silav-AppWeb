@@ -9,6 +9,7 @@
 	$error = "ERROR";
 
 	if((!empty($_POST['usuario'])) && (!empty($_POST['contrasenia']))){
+		
 		include '../conexionBD.php';
 
 		$usuarioLogin = $_POST['usuario'];

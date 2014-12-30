@@ -138,6 +138,7 @@
                     try{
                         var contraseniaEncriptada = hex_md5(contrasenia); 
                         contrasenia = contraseniaEncriptada;   
+                        
                     }catch(e){
                         alert(e+".Error al encriptar contraseña.");
                     }
