@@ -18,7 +18,7 @@ function establecerConexion(){
 
 		$bd = mysql_select_db($nombreDB, $mysql);
 		if (!$bd) {
-    		die ('No se puede usar jqueryphp : ' . mysql_error());
+    		die ('No se puedo conectar a la Base de Datos : ' . mysql_error());
 		}else{
 			return $mysql;
 		}
