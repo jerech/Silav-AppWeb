@@ -1,10 +1,8 @@
+<?php
+    session_start(); 
 
-<?php   
-    if(!defined('acceso')){
-        exit();
-    }
+    if(in_array('Geolocalizacion', $_SESSION['sesion_permisos'])){
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -70,3 +68,7 @@
      </div>
 </body>
 </html>
+
+<?php
+}
+?>

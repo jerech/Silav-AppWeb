@@ -51,7 +51,9 @@
 			                	</tr>
 			                </table>			            
 			                <p>Forma sensilla de monitorear la distribución de Móviles situados en la ciudad. También podrá visualizar como se asignan los pasajes automáticamente.</p>
-			                <p><a class="btn btn-primary">Quiero Ir »</a></p>
+			                <?php if(in_array('Geolocalizacion',$_SESSION['sesion_permisos'])){ ?>
+			                <p><a class="btn btn-primary" target="_blank" href="../Geolocalizacion/paginaMapa.php">Quiero Ir »</a></p>
+			                <?php } ?>
 			            </div>
 			        </div>
     			</div>

@@ -9,6 +9,7 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="../recursos/plugins/lib/bootstrap/css/bootstrap-switch.css">
 		<script type="text/javascript" src="../recursos/plugins/lib/bootstrap/js/bootstrap-switch.js"></script>
+		<script type="text/javascript" src="administradores/formularioNuevo.js"></script>
 	</head>
 	<body>
 	<div class="content">
@@ -79,6 +80,16 @@
 								</div>
 								
 							</div>
+
+							<div class="col-md-8">
+								<div class="row">
+									<h2>Permisos</h2>
+								</div>																	
+								<div id="secciones">
+
+								</div>									
+							</div>
+
 													
 						</form>
 
@@ -131,6 +142,8 @@
 	<script>
 		jQuery(document).ready(function() {
             $("[name='activo']").bootstrapSwitch();
+
+            NuevoAdministrador.init();
         });
 	</script>
 	</body>
