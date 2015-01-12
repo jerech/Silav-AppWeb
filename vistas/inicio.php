@@ -7,6 +7,8 @@
 <!doctype html>
 <html lang="en">
 	<head>
+		<script src="inicio/accionesInicio.js"></script>
+		<script src="../recursos/plugins/lib/noty.js" type="text/javascript"></script>
 
 	</head>
 	<body>
@@ -52,7 +54,7 @@
 			                </table>			            
 			                <p>Forma sensilla de monitorear la distribución de Móviles situados en la ciudad. También podrá visualizar como se asignan los pasajes automáticamente.</p>
 			                <?php if(in_array('Geolocalizacion',$_SESSION['sesion_permisos'])){ ?>
-			                <p><a class="btn btn-primary" target="_blank" href="../Geolocalizacion/paginaMapa.php">Quiero Ir »</a></p>
+			                <p><button class="btn btn-primary" name="btnGeolocalizacion" id="btnGeolocalizacion">Quiero Ir »</button></p>
 			                <?php } ?>
 			            </div>
 			        </div>
@@ -61,7 +63,7 @@
 			        <div class="panel panel-default">
 			            <a href="#widget2container2" class="panel-heading" data-toggle="collapse">Pasajes </a>
 			            <div id="widget2container2" class="panel-body collapse in">
-			                <h2>Built with Less</h2>
+			                <h2>Beet></h2>
 			                <p>The CSS is built with Less. There is a compiled version included if you prefer plain CSS.</p>
 			                <p>Fava bean jícama seakale beetroot courgette shallot amaranth pea garbanzo carrot radicchio peanut leek pea sprouts arugula brussels sprout green bean. Spring onion broccoli chicory shallot winter purslane pumpkin gumbo cabbage squash beet greens lettuce celery. Gram zucchini swiss chard mustard burdock radish brussels sprout groundnut. Asparagus horseradish beet greens broccoli brussels.</p>
 			                <p><a class="btn btn-primary">Quiero Ir »</a></p>
@@ -99,5 +101,8 @@
 		</footer>
 	</div>
 
+	<script>
+		var usuarioNombre = '<?php echo $_SESSION["sesion_usuario"]; ?>';
+	</script>
 	</body>
 </html>

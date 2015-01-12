@@ -64,7 +64,7 @@
 
     <div class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
-          <a class="" href="index.html"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> SiLAV</span></a></div>
+          <a class="" href="index.html"><span class="navbar-brand"><span class="fa fa-paper-taxi"></span> SiLAV</span></a></div>
 
         <div class="navbar-collapse collapse" style="height: 1px;">
 

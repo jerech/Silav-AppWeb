@@ -18,7 +18,7 @@
 
     <script src="../recursos/plugins/lib/jquery-1.11.1.min.js" type="text/javascript"></script>
 
-        <script src="../recursos/plugins/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
+    <script src="../recursos/plugins/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function() {
             $(".knob").knob();
@@ -74,7 +74,7 @@
           </ul>
 
         </div>
-      </div>
+      
     </div>
     
 
@@ -83,30 +83,55 @@
             <?php if(in_array('Inicio', $_SESSION['sesion_permisos'])){?>
                 <li><a href="panelSitio.php?seccion=Inicio" class="nav-header"><i class="fa fa-fw fa-home"></i> Inicio</a></li>
             <?php } ?>
+
+            <!--Fin seccion inicio-->
+
             <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".usuarios-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-users"></i> Usuarios<i class="fa fa-collapse"></i></a></li>
-            <li><ul class="usuarios-menu nav nav-list collapse">
+            <li><ul <?php 
+                        if($seccion=='Administradores' || $seccion=='Operadores'){ 
+                            echo "class='usuarios-menu nav nav-list collapse in'";
+                        }else{
+                            echo "class='usuarios-menu nav nav-list collapse'";
+                        } ?>
+                >
             <?php if(in_array('Administradores', $_SESSION['sesion_permisos'])){ ?>
                 <li data-popover="false" rel="popover" data-placement="left"><a href="#" data-target=".administradores-menu" class="nav collapsed" data-toggle="collapse"><i class="fa"></i><span class="fa fa-caret-down"></span> Administradores<i class="fa fa-collapse"></i></a></li>
-                <li><ul class="administradores-menu nav nav-list collapse">
-                    <li><a href="panelSitio.php?subSeccion=NuevoAdministrador" ><span class="fa fa-caret-right"></span>Nuevo</a></li>
+                <li><ul <?php 
+                        if($seccion=='Administradores'){ 
+                            echo "class='administradores-menu nav nav-list collapse in'";
+                        }else{
+                            echo "class='administradores-menu nav nav-list collapse'";
+                        } ?>
+                >
+                    <li <?php if($subSeccion=='NuevoAdministrador'){echo "class='active'";}?>><a href="panelSitio.php?subSeccion=NuevoAdministrador" ><span class="fa fa-caret-right"></span>Nuevo</a></li>
                     <li><a href="#" ><span class="fa fa-caret-right"></span>Ver Lista</a></li>
                 </ul></li>
 
             <?php }?>
             <?php if(in_array('Operadores', $_SESSION['sesion_permisos'])){ ?> 
                 <li data-popover="false" rel="popover" data-placement="left"><a href="#" data-target=".operadores-menu" class="nav collapsed" data-toggle="collapse"><i class="fa"></i><span class="fa fa-caret-down"></span> Operadores<i class="fa fa-collapse"></i></a></li>
-                <li><ul class="operadores-menu nav nav-list collapse">
+                <li><ul <?php 
+                        if($seccion=='Opreadores'){ 
+                            echo "class='operadores-menu nav nav-list collapse in'";
+                        }else{
+                            echo "class='operadores-menu nav nav-list collapse'";
+                        } ?>
+                >
                     <li><a href="#" ><span class="fa fa-caret-right"></span>Nuevo</a></li>
                     <li><a href="#" ><span class="fa fa-caret-right"></span>Ver Lista</a></li>
                 </ul></li>
             <?php }?>
             </ul></li>
+            <!-- Fin seccion usuarios -->
+
             <?php if(in_array('Choferes', $_SESSION['sesion_permisos'])){ ?>
                 <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".choferes-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-male"></i> Choferes<i class="fa fa-collapse"></i></a></li>
                 <li><ul class="choferes-menu nav nav-list collapse">
                 <li ><a href="premium-profile.html"><span class="fa fa-caret-right"></span> Nuevo</a></li>
                 <li ><a href="premium-blog.html"><span class="fa fa-caret-right"></span> Ver Lista</a></li>
                 </ul></li>
+
+                <!-- Fin seccion Cohefes-->
             <?php } ?>
             <?php if(in_array('Moviles', $_SESSION['sesion_permisos'])){ ?>
             <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".moviles-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-automobile"></i> M&oacute;viles <i class="fa fa-collapse"></i></a></li>
@@ -114,6 +139,7 @@
             <li ><a href="sign-in.html"><span class="fa fa-caret-right"></span> Nuevo</a></li>
             <li ><a href="sign-up.html"><span class="fa fa-caret-right"></span> Ver Lista</a></li>
             </ul></li>
+            <!-- Fin seccion Moviles-->
             <?php } ?>
             <li><a href="help.html" class="nav-header"><i class="fa fa-fw fa-question-circle"></i> Ayuda</a></li>
         </ul>

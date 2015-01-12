@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Sistema SiLAV</title>
+    <title>Sistema SiLAV - Geolocalización</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -25,7 +25,12 @@
 
     <script src="../recursos/plugins/lib/jquery-1.11.1.min.js" type="text/javascript"></script>
 
-        <script src="../recursos/plugins/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
+    <script src="../recursos/plugins/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function() {
+            $(".knob").knob();
+        });
+    </script>
 
     <link rel="stylesheet" type="text/css" href="../recursos/plugins/stylesheets/theme.css">
     <link rel="stylesheet" type="text/css" href="../recursos/plugins/stylesheets/premium.css">
@@ -60,12 +65,27 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class=""><span class="navbar-brand"><span class="fa fa-taxi"></span> SiLAV</span></a></div>
-     </div>
+          <a class="" href="index.html"><span class="navbar-brand"><span class="fa fa-taxi"></span> SiLAV</span></a></div>
+
+        <div class="navbar-collapse collapse" style="height: 1px;">
+          <ul id="main-menu" class="nav navbar-nav navbar-right">
+            <li class="dropdown hidden-xs">
+                <a href="../controladores/cierreSesion.php">
+                    <b>Salir</b>      
+                </a>
+
+            
+            </li>
+          </ul>
+
+        </div>
+      
+    </div>
      
      <div id="contenedorMapa">
      
      </div>
+     
 </body>
 </html>
 
