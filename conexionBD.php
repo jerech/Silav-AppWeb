@@ -3,10 +3,10 @@
 //que establece como conexion con MySQL
 function establecerConexion(){
 
-	$usuarioDB="u545571603_root";
-	$contraseniaDB="js12345";
-	$servidorDB="mysql.hostinger.es";
-	$nombreDB="u545571603_silav";
+	$usuarioDB="silav";
+	$contraseniaDB="12345";
+	$servidorDB="localhost";
+	$nombreDB="silav";
 	
 	$mysql=mysql_connect($servidorDB, $usuarioDB, $contraseniaDB);
 	if (!$mysql) {
