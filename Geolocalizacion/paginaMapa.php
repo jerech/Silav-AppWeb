@@ -70,7 +70,7 @@
         <div class="navbar-collapse collapse" style="height: 1px;">
           <ul id="main-menu" class="nav navbar-nav navbar-right">
             <li class="dropdown hidden-xs">
-                <a href="../controladores/cierreSesion.php">
+                <a href="#">
                     <b>Salir</b>      
                 </a>
 

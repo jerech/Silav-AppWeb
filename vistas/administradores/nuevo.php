@@ -143,6 +143,8 @@
 		jQuery(document).ready(function() {
             $("[name='activo']").bootstrapSwitch();
 
+            
+
             NuevoAdministrador.init();
         });
 	</script>
