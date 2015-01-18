@@ -1,10 +1,12 @@
 var NuevoAdministrador = function(){
 	return{
 
-
-		init: function(){
+        
+		
+        init: function(){
 
 			urlSecciones = "secciones/obtenerTodas.php";
+            urlNuevo = "administradores/nuevo.php";
 
 			$.ajax({
 					type: 'post',
@@ -15,6 +17,7 @@ var NuevoAdministrador = function(){
                         $("#secciones").text("");
                     },   
                     success: function(data) {
+
                     	var htmlPermisos = "";
                     	$(data.secciones).each(function(index){
                     		if(parseInt(data.secciones[index].idPadre) === 0){
@@ -63,7 +66,38 @@ var NuevoAdministrador = function(){
                     alert(idSeccion);
                     $("div[name=subpermisos]").hide();
                 });
+
+            $("#btnGuardar").click(function(){
+                    var form = $(".form").serialize();
+
+                    $.ajax({
+                        type: 'post',
+                        url: urlNuevo, 
+                        data: form,           
+                        dataType: 'html',
+                        beforeSend: function(){
+                           
+                        },   
+                        success: function(data) {
+                            var datos = data.split("_");
+                            if(datos[0] != "OK"){
+                                notificacion("error",data);      
+                            }else{
+                                notificacion("success", "Administrador guardado correctamente");
+                            }                         
+                        },
+                        error: function(a,b,c){
+                            console.log(a);
+                            console.log(b);
+                            console.log(c);         
+                        }
+
+
+                    });
+
+                });
             }
+
 
 		}
 	};

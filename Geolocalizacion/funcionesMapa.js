@@ -83,7 +83,7 @@ var datosChoferes = t;
 	}
 
 	function crearMarcador(chofer) {
-		chofer.marcador = new OpenLayers.Marker(chofer.lonLatTransformada, new OpenLayers.Icon('http://silav.esy.es/Principal/img/marker.png',size,offset));
+		chofer.marcador = new OpenLayers.Marker(chofer.lonLatTransformada, new OpenLayers.Icon('http://silav.esy.es/Geolocalizacion/img/marker.png',size,offset));
       chofer.popup = new OpenLayers.Popup(chofer.nombre,
                         chofer.lonLatTransformada,
                         new OpenLayers.Size(145,52),

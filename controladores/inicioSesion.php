@@ -10,7 +10,7 @@
 
 	if((!empty($_POST['usuario'])) && (!empty($_POST['contrasenia']))){
 		
-		include '../conexionBD.php';
+		require_once("../conexionBD.php");
 
 		$usuarioLogin = $_POST['usuario'];
 		$contraseniaLogin = $_POST['contrasenia'];

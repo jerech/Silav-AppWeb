@@ -12,6 +12,7 @@
 		<script type="text/javascript" src="administradores/formularioNuevo.js"></script>
 	</head>
 	<body>
+
 	<div class="content">
 		<div class="header">
 		    <h1 class="page-title">Crea un Nuevo Administrador</h1>
@@ -28,9 +29,18 @@
 		    </ul>
 		</div>
 		<div class="main-content">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="btn-toolbar list-toolbar">
+							<button id="btnGuardar" class="btn btn-primary"><i class="fa fa-save"></i> Guardar</button>
+								<a href="panelSitio.php?seccion=Inicio" class="btn btn-danger">Cancelar</a>
+					</div>
+    			</div>
+    		</div>
 			<ul class="nav nav-tabs">
   				<li class="active"><a href="#perfil" data-toggle="tab">Perfil</a></li>
-  				<li><a href="#profile" data-toggle="tab">Password</a></li>
+  				<li><a href="#contrasenia" data-toggle="tab">Password</a></li>
+  				<li><a href="#permisos" data-toggle="tab">Permisos</a></li>
 			</ul>
 
 			<div class="row">
@@ -41,12 +51,8 @@
 
 					<!--Tab con formulario de perfil-->
 					<div class="tab-pane active in" id="perfil">
-						<div class="row">
-    						<div class="col-md-8">
-        						<h2> Información General</h2>
-    						</div>
-						</div>
-						<form id="formulario-perfil">
+						
+						<form id="formulario-perfil" name="form" class="form">
 							<div class="col-md-4">
 								<div class="form-group">
 								<label>Nombre</label><input type="text" value="" id="nombre" name="nombre" class="form-control">
@@ -59,10 +65,10 @@
 								<div class="form-group">
 								<label>Usuario</label><input type="text" value="" id="usuario" name="usuario" class="form-control">
 								</div>
-
 								<div class="form-group">
-								<label>Password</label><input type="text" value="" id="password" name="password" class="form-control">
+								<label>Activo</label><br><input type="checkbox" checked id="activo" name="activo" class="form-control">
 								</div>
+			
 
 							</div>
 							<div class="col-md-4">
@@ -75,34 +81,44 @@
 								<div class="form-group">
 								<label>Email</label><input type="text" value="" id="email" name="email" class="form-control">
 								</div>
-								<div class="form-group">
-								<label>Activo</label><br><input type="checkbox" checked id="activo" name="activo" class="form-control">
-								</div>
 								
-							</div>
-
-							<div class="col-md-8">
-								<div class="row">
-									<h2>Permisos</h2>
-								</div>																	
-								<div id="secciones">
-
-								</div>									
+								
 							</div>
 
 													
 						</form>
 
-						<div class="col-md-8">
-							<div class="btn-toolbar list-toolbar">
-      							<button class="btn btn-primary"><i class="fa fa-save"></i> Guardar</button>
-      								<a href="panelSitio.php?seccion=Inicio" class="btn btn-danger">Cancelar</a>
-    						</div>
-    					</div>
+						
+					</div>
+
+					
+
+					<!--Tab con formulario cambio de password-->
+					<div class="tab-pane fade" id="contrasenia">
+						<form id="formulario-contrasenia" name="form" class="form">
+							<div class="col-md-4">
+								<div class="form-group">
+								<label>Password</label><input type="password" value="" id="contrasenia" name="contrasenia" class="form-control">
+								</div>							
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+								<label>Re-Password</label><input type="password" value="" id="re-contrasenia" name="re-contrasenia" class="form-control">
+								</div>
+							</div>
+						</form>
 					</div>
 
 					<!--Tab con formulario cambio de password-->
-					<div class="tab-pane fade" id="profile">
+					<div class="tab-pane fade" id="permisos">
+						<form id="formulario-permisos" name="form" class="form">
+							<div class="col-md-8">
+																		
+								<div id="secciones">
+
+								</div>									
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
