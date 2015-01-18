@@ -85,7 +85,7 @@
                 </div>
                 <div class="form-group">
                 <label>Contraseña</label>
-                    <input id="contrasenia" name="contrasenia" type="password" class="form-controlspan12 form-control">
+                    <input id="contrasenia" name="contrasenia" type="password" class="form-control span12">
                 </div>
                 <button id="btnIniciar" type="submit" class="btn btn-primary pull-right">Iniciar</button>
                 <label class="remember-me"><input type="checkbox"> Recordar</label>
@@ -142,7 +142,7 @@
                     }catch(e){
                         alert(e+".Error al encriptar contraseña.");
                     }
-                    
+                  
                     $.ajax({
                         type: 'POST',
                         url: '../controladores/inicioSesion.php',
@@ -154,6 +154,7 @@
                         success: function(data){
     
                             if (data !== "OK") {
+
                                 notificacion("error","Error al intentar ingresar al sistema. "+data);
                                 $("#contrasenia").val("");
                             }else{

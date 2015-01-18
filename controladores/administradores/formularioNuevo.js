@@ -8,6 +8,21 @@ var NuevoAdministrador = function(){
 			urlSecciones = "secciones/obtenerTodas.php";
             urlNuevo = "administradores/nuevo.php";
 
+            setSeccionesPadreListener = function(){
+                $(".control-label input:checkbox").click(function(e){
+                    if($(this).is(':checked')){                     
+                        $(this).closest(".control-group").find(".control").show();
+                    }else{                      
+                        $(this).closest(".control-group").find(".control").hide();
+                        $(this).closest(".control-group").find(".control input:checkbox").each(function(i,v){
+                            if($(this).is(':checked')){
+                                $(this).click();                                
+                            }
+                        });                 
+                    }                   
+                }); 
+            };  
+
 			$.ajax({
 					type: 'post',
                     url: urlSecciones, 
@@ -18,39 +33,43 @@ var NuevoAdministrador = function(){
                     },   
                     success: function(data) {
 
-                    	var htmlPermisos = "";
-                    	$(data.secciones).each(function(index){
-                    		if(parseInt(data.secciones[index].idPadre) === 0){
-                                htmlPermisos += '<br>';
-                    			htmlPermisos += '<div class="row">';        			
-                    			htmlPermisos += '<div class="col-md-4">';
-                    			htmlPermisos += '<label><b>';
-                    			htmlPermisos += data.secciones[index].nombre;
-                    			htmlPermisos += '</b></label>';
-                    			htmlPermisos += '</div>';
-                    			htmlPermisos += '<div class="col-md-4">'
-                    			htmlPermisos += '<input type="checkbox" class="checkbox-permiso" checked id="'+data.secciones[index].id+'" name="permisos">';
-                    			htmlPermisos += '</div>';
-                    		    htmlPermisos += '<div class="row" name="subpermisos">';
-                                htmlPermisos += '<div class="col-md-4">';
-                    		}else{   			
-                                htmlPermisos += '<input type="checkbox" name="subpermiso[]">';
-                    			htmlPermisos += '<label>';
-                    			htmlPermisos += '&nbsp;'+data.secciones[index].nombre;
-                    			htmlPermisos += '</label>';       			
+                    	var grupo = "";
+                        $(data.secciones).each(function(index){
+                            if(parseInt(data.secciones[index].idPadre) === 0){
+                                if(grupo !== ""){
+                                        grupo += '</div>';
+                                        grupo += '</div>';
+                                        grupo += '</div>';
+                                        grupo += '</div>';
+                                }
+                                grupo += '<div class="row">';
+                                grupo += '<div class="col-md-4">';
+                                grupo += '<div class="control-group">';
+                                grupo += '<label class="control-label"><b>';
+                                grupo += data.secciones[index].nombre;
+                                grupo += ' </b><input name="chkPermiso[]" type="checkbox" value="' + data.secciones[index].id + '"/>';
+                                grupo += '</label>';
+                                grupo += '<div class="control">';  
+                            }else{
+                                grupo += '<label class="control-label">';
+                                grupo += '<input name="chkPermiso[]" type="checkbox" value="' + data.secciones[index].id + '"/> ';
+                                grupo += '&nbsp;'+data.secciones[index].nombre;
+                                grupo += '</label>';    
+                            }                                               
+                        });
 
-                    		}
-                            htmlPermisos += '</div>';
-                    		htmlPermisos += '</div>';
-                    		htmlPermisos += '</div>';
-                    		htmlPermisos += '<br>';
-                    		
+                        grupo += '</div>';
+                        grupo += '</div>';
+                        grupo += '</div>';
+                        grupo += '</div>';
 
-                    	});
-                        $("#secciones").html(htmlPermisos);	 
-                        $("[name=permisos]").bootstrapSwitch();      
+                        $("#secciones").append(grupo);                  
+                    
 
-                        inicializarSwitchPermisos();     	            			
+                        $("#secciones .control").each(function(i,v){                           
+                            $(this).hide();                         
+                        });     
+                        setSeccionesPadreListener();        	            			
                     },
                     error: function(a,b,c){
                         console.log(a);
@@ -60,14 +79,16 @@ var NuevoAdministrador = function(){
 
 				});
 
-            inicializarSwitchPermisos = function(){ 
-                $('input[name="permisos"]').on('switchChange.bootstrapSwitch', function () {
-                    var idSeccion = $(this).attr("id");
-                    alert(idSeccion);
-                    $("div[name=subpermisos]").hide();
-                });
+            
 
             $("#btnGuardar").click(function(){
+
+                    var contrasenia = $("#contrasenia").val();
+
+                    alert(contrasenia);
+                    var contraseniaEncriptada = hex_md5(contrasenia);
+                    $("#contrasenia-encriptada").val(contraseniaEncriptada);
+
                     var form = $(".form").serialize();
 
                     $.ajax({
@@ -96,7 +117,7 @@ var NuevoAdministrador = function(){
                     });
 
                 });
-            }
+            
 
 
 		}

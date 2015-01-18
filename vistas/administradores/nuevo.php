@@ -39,7 +39,7 @@
     		</div>
 			<ul class="nav nav-tabs">
   				<li class="active"><a href="#perfil" data-toggle="tab">Perfil</a></li>
-  				<li><a href="#contrasenia" data-toggle="tab">Password</a></li>
+  				<li><a href="#password" data-toggle="tab">Password</a></li>
   				<li><a href="#permisos" data-toggle="tab">Permisos</a></li>
 			</ul>
 
@@ -55,15 +55,15 @@
 						<form id="formulario-perfil" name="form" class="form">
 							<div class="col-md-4">
 								<div class="form-group">
-								<label>Nombre</label><input type="text" value="" id="nombre" name="nombre" class="form-control">
+								<label>Nombre</label><input type="text" id="nombre" name="nombre" class="form-control">
 								</div>
 
 								<div class="form-group">
-								<label>Apellido</label><input type="text" value="" id="apellido" name="apellido" class="form-control">
+								<label>Apellido</label><input type="text" id="apellido" name="apellido" class="form-control">
 								</div>
 
 								<div class="form-group">
-								<label>Usuario</label><input type="text" value="" id="usuario" name="usuario" class="form-control">
+								<label>Usuario</label><input type="text" id="usuario" name="usuario" class="form-control">
 								</div>
 								<div class="form-group">
 								<label>Activo</label><br><input type="checkbox" checked id="activo" name="activo" class="form-control">
@@ -73,13 +73,13 @@
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-								<label>Tel&eacute;fono</label><input type="text" value="" id="telefono" name="telefono" class="form-control">
+								<label>Tel&eacute;fono</label><input type="text" id="telefono" name="telefono" class="form-control">
 								</div>
 								<div class="form-group">
-								<label>Direcci&oacute;n</label><input type="text" value="" id="direccion" name="direccion" class="form-control">
+								<label>Direcci&oacute;n</label><input type="text" id="direccion" name="direccion" class="form-control">
 								</div>
 								<div class="form-group">
-								<label>Email</label><input type="text" value="" id="email" name="email" class="form-control">
+								<label>Email</label><input type="text" id="email" name="email" class="form-control">
 								</div>
 								
 								
@@ -94,16 +94,17 @@
 					
 
 					<!--Tab con formulario cambio de password-->
-					<div class="tab-pane fade" id="contrasenia">
+					<div class="tab-pane fade" id="password">
 						<form id="formulario-contrasenia" name="form" class="form">
 							<div class="col-md-4">
 								<div class="form-group">
-								<label>Password</label><input type="password" value="" id="contrasenia" name="contrasenia" class="form-control">
-								</div>							
+								<label>Password</label><input type="password" id="contrasenia" name="contrasenia" class="form-control">
+								</div>
+								<input type="hidden" id="contrasenia-encriptada" name="contrasenia-encriptada" class="form-control">		
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-								<label>Re-Password</label><input type="password" value="" id="re-contrasenia" name="re-contrasenia" class="form-control">
+								<label>Re-Password</label><input type="password" id="re-contrasenia" name="re-contrasenia" class="form-control">
 								</div>
 							</div>
 						</form>
@@ -158,9 +159,7 @@
 	<script>
 		jQuery(document).ready(function() {
             $("[name='activo']").bootstrapSwitch();
-
-            
-
+                     
             NuevoAdministrador.init();
         });
 	</script>

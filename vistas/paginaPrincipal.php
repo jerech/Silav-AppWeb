@@ -18,6 +18,7 @@
 
     <script src="../recursos/plugins/lib/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="../recursos/plugins/lib/noty.js" type="text/javascript"></script>
+    <script src="../recursos/plugins/lib/md5.js" type="text/javascript"></script>
 
     <script src="../recursos/plugins/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
     <script type="text/javascript">
