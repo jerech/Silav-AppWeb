@@ -52,7 +52,7 @@
 			                		<td><p><img class="img-polaroid" src="../recursos/imagenes/mapa.jpg"></img></p></td>
 			                	</tr>
 			                </table>			            
-			                <p>Forma sencilla de monitorear la distribución de Móviles situados en la ciudad. También podrá visualizar como se asignan los pasajes automáticamente.</p>
+			                <p>Forma sensilla de monitorear la distribución de Móviles situados en la ciudad. También podrá visualizar como se asignan los pasajes automáticamente.</p>
 			                <?php if(in_array('Geolocalizacion',$_SESSION['sesion_permisos'])){ ?>
 			                <p><button class="btn btn-primary" name="btnGeolocalizacion" id="btnGeolocalizacion">Quiero Ir »</button></p>
 			                <?php } ?>

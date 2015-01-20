@@ -1,92 +1,11 @@
 var NuevoMovil = function(){
 	return{
 
-        
-		
         init: function(){
-			urlSecciones = "secciones/obtenerTodas.php";
-            urlNuevo = "moviles/nuevo.php";
+        	
+            urlNuevo = "moviles/nuevo.php";   
 
-            /*setSeccionesPadreListener = function(){
-                $(".control-label input:checkbox").click(function(e){
-                    if($(this).is(':checked')){                     
-                        $(this).closest(".control-group").find(".control").show();
-                    }else{                      
-                        $(this).closest(".control-group").find(".control").hide();
-                        $(this).closest(".control-group").find(".control input:checkbox").each(function(i,v){
-                            if($(this).is(':checked')){
-                                $(this).click();                                
-                            }
-                        });                 
-                    }                   
-                }); 
-            };*/  
-
-			$.ajax({
-					type: 'post',
-                    url: urlSecciones, 
-                    data: {},           
-                    dataType: 'json',
-                    beforeSend: function(){
-                        $("#secciones").text("");
-                    },   
-                    success: function(data) {
-
-                    	var grupo = "";
-                        $(data.secciones).each(function(index){
-                            if(parseInt(data.secciones[index].idPadre) === 0){
-                                if(grupo !== ""){
-                                        grupo += '</div>';
-                                        grupo += '</div>';
-                                        grupo += '</div>';
-                                        grupo += '</div>';
-                                }
-                                grupo += '<div class="row">';
-                                grupo += '<div class="col-md-4">';
-                                grupo += '<div class="control-group">';
-                                grupo += '<label class="control-label"><b>';
-                                grupo += data.secciones[index].nombre;
-                                grupo += ' </b><input name="chkPermiso[]" type="checkbox" value="' + data.secciones[index].id + '"/>';
-                                grupo += '</label>';
-                                grupo += '<div class="control">';  
-                            }else{
-                                grupo += '<label class="control-label">';
-                                grupo += '<input name="chkPermiso[]" type="checkbox" value="' + data.secciones[index].id + '"/> ';
-                                grupo += '&nbsp;'+data.secciones[index].nombre;
-                                grupo += '</label>';    
-                            }                                               
-                        });
-
-                        grupo += '</div>';
-                        grupo += '</div>';
-                        grupo += '</div>';
-                        grupo += '</div>';
-
-                        $("#secciones").append(grupo);                  
-                    
-
-                        $("#secciones .control").each(function(i,v){                           
-                            $(this).hide();                         
-                        });     
-                        //setSeccionesPadreListener();        	            			
-                    },
-                    error: function(a,b,c){
-                        console.log(a);
-                        console.log(b);
-                        console.log(c);  		
-                    }
-
-				});
-
-            
-
-            /*$("#btnGuardar").click(function(){
-
-                    var contrasenia = $("#contrasenia").val();
-
-                    alert(contrasenia);
-                    var contraseniaEncriptada = hex_md5(contrasenia);
-                    $("#contrasenia-encriptada").val(contraseniaEncriptada);
+            $("#btnGuardar").click(function(){
 
                     var form = $(".form").serialize();
 
@@ -99,11 +18,12 @@ var NuevoMovil = function(){
                            
                         },   
                         success: function(data) {
-                            var datos = data.split("_");
-                            if(datos[0] != "OK"){
+                            var datos = data;
+                            if(datos != "OK"){
                                 notificacion("error",data);      
                             }else{
-                                notificacion("success", "Administrador guardado correctamente");
+                                notificacion("success", "Móvil guardado correctamente");
+                                $(".form-control").val('');
                             }                         
                         },
                         error: function(a,b,c){
@@ -111,14 +31,9 @@ var NuevoMovil = function(){
                             console.log(b);
                             console.log(c);         
                         }
-
-
                     });
 
-                });*/
-            
-
-
+                });
 		}
 	};
 }();

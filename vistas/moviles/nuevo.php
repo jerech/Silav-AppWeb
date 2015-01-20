@@ -61,9 +61,6 @@
 								<div class="form-group">
 								<label>Vencimiento de Seguro</label><input type="text" id="vencSeguro" name="vencSeguro" class="form-control">
 								</div>
-								<div class="form-group">
-								<label>Activo</label><br><input type="checkbox" checked id="activo" name="activo" class="form-control">
-								</div>
 			
 
 							</div>
@@ -139,7 +136,8 @@
 
 	<script>
 		jQuery(document).ready(function() {
-            $("[name='activo']").bootstrapSwitch();
+            $("[name='aireAcondicionado']").bootstrapSwitch();
+            $("[name='gnc']").bootstrapSwitch();
                      
             NuevoMovil.init();
         });

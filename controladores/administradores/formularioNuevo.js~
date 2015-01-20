@@ -85,6 +85,7 @@ var NuevoAdministrador = function(){
 
                     var contrasenia = $("#contrasenia").val();
 
+                    alert(contrasenia);
                     var contraseniaEncriptada = hex_md5(contrasenia);
                     $("#contrasenia-encriptada").val(contraseniaEncriptada);
 
