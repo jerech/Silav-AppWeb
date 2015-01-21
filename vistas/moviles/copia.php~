@@ -1,7 +1,0 @@
-<?php   
-    if(!defined('acceso')){
-        exit();
-    }
-    echo "hola";
-?>
-
