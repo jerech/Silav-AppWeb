@@ -93,7 +93,7 @@
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-								<label>GNC</label><br><input type="checkbox" checked id="gnc" name="gnc" class="form-control">
+								<label>GNC</label><br><input type="checkbox" id="gnc" name="gnc" class="form-control">
 								</div>
 							</div>
 						</form>

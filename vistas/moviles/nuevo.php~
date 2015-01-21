@@ -138,8 +138,6 @@
 		jQuery(document).ready(function() {
             $("[name='aireAcondicionado']").bootstrapSwitch();
             $("[name='gnc']").bootstrapSwitch();
-            $("#aireAcondicionado :checkbox").attr("checked","checked");
-            $("#gnc :checkbox").removeAttr("checked");
                      
             NuevoMovil.init();
         });

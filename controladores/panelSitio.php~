@@ -57,7 +57,7 @@
         'VerChoferes' => '#',
         'ModificarChofer' => '#',
 
-        'NuevoMovil' => '../vistas/moviles/copia.php',
+        'NuevoMovil' => '../vistas/moviles/nuevo.php',
         'VerMoviles' => '#',
         'ModificarMoviles' => '#');
 	

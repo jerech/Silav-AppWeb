@@ -139,7 +139,7 @@
             <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".moviles-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-automobile"></i> M&oacute;viles <i class="fa fa-collapse"></i></a></li>
             <li><ul class="moviles-menu nav nav-list collapse">
             <li <?php if($subSeccion=='NuevoMovil'){echo "class='active'";}?>><a href="panelSitio.php?subSeccion=NuevoMovil" ><span class="fa fa-caret-right"></span>Nuevo</a></li>
-            <li ><a href="sign-up.html"><span class="fa fa-caret-right"></span> Ver Lista</a></li>
+            <li <?php if($subSeccion=='VerMoviles'){echo "class='active'";}?>><a href="panelSitio.php?subSeccion=VerMoviles"><span class="fa fa-caret-right"></span> Ver Lista</a></li>
             </ul></li>
             <!-- Fin seccion Moviles-->
             <?php } ?>

@@ -58,7 +58,7 @@
         'ModificarChofer' => '#',
 
         'NuevoMovil' => '../vistas/moviles/nuevo.php',
-        'VerMoviles' => '#',
+        'VerMoviles' => '../vistas/moviles/verTodos.php',
         'ModificarMoviles' => '#');
 	
 	if(!empty ($_GET['seccion'])){
