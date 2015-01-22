@@ -1,6 +1,6 @@
 <?php
 
-	include_once("../../conexionBD.php");
+	require_once("../../conexionBD.php");
 
 	$conexion = establecerConexion();
 
@@ -17,21 +17,23 @@
             ORDER BY
                 orden";
 
-    $resultado = mysql_query($query, $conexion);
+    if(!$conexion){
+        echo "Error al conectar con la Base de Datos";
+        exit();
+    }
+
+    $resultado = mysql_query($query, $conexion) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
 
     $datos = array();
     while ($array = mysql_fetch_array($resultado, MYSQL_ASSOC)) {
     	$datos[] = $array;
     }
 
-    mysql_close($conexion);
-
     if($resultado){
     	echo json_encode(array('secciones' => $datos));
     	exit();
-    }else{
-    	exit("ERROR: ".$respuesta);
     }
 
+    mysql_close($conexion);
 
 ?>
