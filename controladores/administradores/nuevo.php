@@ -54,20 +54,20 @@
   				'$email',
   				'$activo')";
 
-	$coneccion = establecerConexion();
-	if(!$coneccion){
+	$conexion = establecerConexion();
+	if(!$conexion){
 		echo "Error al conectar con la Base de Datos";
 		exit();
 	}
 
-	$resultado = mysql_query($query) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
+	$resultado = mysql_query($query, $conexion) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
 
 	if($resultado){
 		guardarPermisos(mysql_insert_id(), $permisos);
 		echo "OK_".mysql_insert_id(); //Con la funcion mysql_insert_id() se obtiene el id del elemento insertado
 	}
 
-	mysql_close($coneccion);
+	mysql_close($conexion);
 
 
 	function guardarPermisos($idUsuario, $permisos){
