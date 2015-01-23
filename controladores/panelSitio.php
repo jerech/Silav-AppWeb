@@ -44,7 +44,7 @@
 		'ControlDePasajes' => '#',
 		
 		'NuevoAdministrador' => '../vistas/administradores/nuevo.php',
-		'VerAdministradores' => '../vistas/administradores/mostrarTodos.php',
+		'VerAdministradores' => '../vistas/administradores/verTodos.php',
 		'ModificarAdministrador' => '#',
         'ModificarPassword' => '#',
 

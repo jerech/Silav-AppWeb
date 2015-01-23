@@ -1,9 +1,7 @@
-var NuevoAdministrador = function(){
-	return{
-
-        
+var NuevoAdministrador = {
+ 
 		
-        init: function(){
+    init: function(){
 
 			urlSecciones = "secciones/obtenerTodas.php";
             urlNuevo = "administradores/nuevo.php";
@@ -104,6 +102,9 @@ var NuevoAdministrador = function(){
                                 notificacion("error",data);      
                             }else{
                                 notificacion("success", "Administrador guardado correctamente");
+                                $(".form-control").val('');
+                                $(".control-group input:checkbox").prop("checked",false);
+                                $(".control").hide()
                             }                         
                         },
                         error: function(a,b,c){
@@ -119,6 +120,6 @@ var NuevoAdministrador = function(){
             
 
 
-		}
-	};
-}();
+	}
+
+}

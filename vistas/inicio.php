@@ -8,7 +8,6 @@
 <html lang="en">
 	<head>
 		<script src="inicio/accionesInicio.js"></script>
-		<script src="../recursos/plugins/lib/noty.js" type="text/javascript"></script>
 
 	</head>
 	<body>
@@ -103,6 +102,8 @@
 
 	<script>
 		var usuarioNombre = '<?php echo $_SESSION["sesion_usuario"]; ?>';
+
+		Modulo.init();
 	</script>
 	</body>
 </html>

@@ -157,11 +157,12 @@
 	</div>
 
 	<script>
-		jQuery(document).ready(function() {
-            $("[name='activo']").bootstrapSwitch();
-                     
-            NuevoAdministrador.init();
-        });
+
+		
+        $("[name='activo']").bootstrapSwitch();
+                 
+        NuevoAdministrador.init();
+        
 	</script>
 	</body>
 </html>
