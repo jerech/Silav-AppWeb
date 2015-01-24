@@ -7,14 +7,7 @@
 
   	require_once("../../conexionBD.php");
   	
-	$query = "select patente,
-					numero,
-					marca,
-					modelo,
-					vencseguro,
-					aa,
-					gnc
-				from Moviles";  	
+	$query = "select * from Moviles";  	
   	
 	$coneccion = establecerConexion();
 	if(!$coneccion){
@@ -22,30 +15,16 @@
 		exit();
 	}
 
-	$resultado = mysql_query($query) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
+	$resultado = mysql_query($query, $coneccion) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
 
-	while ($registro=mysql_fetch_array($resultado))
-	{
-  		$patente = $registro['patente'];
-  		$numero = $registro['numero'];
-  		$marca = $registro['marca'];
-  		$modelo = $registro['modelo'];
-  		$vencseguro = $registro['vencseguro'];
-  		$aa = $registro['aa'];
-  		$gnc = $registro['gnc'];
-  				
-  		$respuesta[] = $patente . "_" . $numero . "_" . $marca . "_" . $modelo . "_" . $vencseguro . "_" . $aa . "_" .  $gnc;
-
-	}
-	
-	if (empty($respuesta))
-	{
- 		$respuesta[] = "error";
-	}
-	
-	require_once('json.php');
-	$json = new Services_JSON();
-	print $json->encode($respuesta);
+	$datos = array();
+    while ($array = mysql_fetch_array($resultado, MYSQL_ASSOC)) {
+    	$datos[] = $array;
+    }
+    if($resultado){
+    	echo json_encode(array('moviles' => $datos));
+    	exit();
+    }
 
 	mysql_close($coneccion);
 ?>

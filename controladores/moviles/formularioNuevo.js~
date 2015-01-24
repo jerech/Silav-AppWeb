@@ -1,6 +1,6 @@
-var NuevoMovil = {
+var NuevoMovil = function(){
 
-	init: function(){
+	//init: function(){
    
    	urlNuevo = "moviles/nuevo.php";   
 
@@ -33,5 +33,5 @@ var NuevoMovil = {
           });
 
        });
-	}
-}
+	//}
+};

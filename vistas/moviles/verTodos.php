@@ -7,7 +7,8 @@
 <!doctype html>
 <html lang="en">
 	<head>
-
+		<script type="text/javascript" src="moviles/mostrarTabla.js"></script>
+		<script type="text/javascript" src="../recursos/plugins/lib/jquery.dataTables.js"></script>
 	</head>
 	<body>
 	
@@ -48,12 +49,7 @@
 		    </ul>
 		</div>
         <div class="main-content">
-<div class="btn-toolbar list-toolbar">
-    <button id="agregar" class="btn btn-primary"><i class="fa fa-plus"></i> Agregar Fila</button>
-    <button id="eliminar" class="btn btn-default">Eliminar Fila</button>
-  <div class="btn-group">
-  </div>
-</div>            
+            
 
 <table id="tabla" class="table">
   <thead>
@@ -67,72 +63,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="fila-base">
-      <td>1</td>
-      <td>34</td>
-      <td>JHG 476</td>
-      <td>Focus</td>
-      <td>Ford</td>
-      <td>
-          <a href="user.html"><i class="fa fa-pencil"></i></a>
-          <a href="#myModal" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
-      </td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>12</td>
-      <td>RXP 409</td>
-      <td>Astra</td>
-      <td>Chevrolet</td>
-      <td>
-          <a href="user.html"><i class="fa fa-pencil"></i></a>
-          <a href="#myModal" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
-      </td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>6</td>
-      <td>QXC 231</td>
-      <td>Vectra</td>
-      <td>Chevrolet</td>
-      <td>
-          <a href="user.html"><i class="fa fa-pencil"></i></a>
-          <a href="#myModal" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
-      </td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>55</td>
-      <td>JUP 400</td>
-      <td>Siena</td>
-      <td>Fiat</td>
-      <td>
-          <a href="user.html"><i class="fa fa-pencil"></i></a>
-          <a href="#myModal" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
-      </td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>21</td>
-      <td>JRV 675</td>
-      <td>Palio</td>
-      <td>Fiat</td>
-      <td>
-          <a href="user.html"><i class="fa fa-pencil"></i></a>
-          <a href="#myModal" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
-      </td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>22</td>
-      <td>GCV 387</td>
-      <td>Megane</td>
-      <td>Renault</td>
-      <td>
-          <a href="user.html"><i class="fa fa-pencil"></i></a>
-          <a href="#myModal" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a>
-      </td>
-    </tr>
+
   </tbody>
 </table>
 
@@ -177,41 +108,12 @@
 
 	<script>
 		jQuery(document).ready(function() {
-        
-		$(function(){
-	
-	$("#agregar").on('click', function(){
-		
-		var cantColumnas = 5;
-		var nuevaFila="<tr>";
-		for(var i=0; i<cantColumnas; i++){ 
-		// añadimos las columnas 
-		nuevaFila+="<td>columna "+(i+1)+"</td>"; 
-		}
-		nuevaFila+= "<td>";
-		nuevaFila+= "<a href='user.html'><i class='fa fa-pencil'></i></a>";
-      nuevaFila+= " <a href='#myModal' role='button' data-toggle='modal'><i class='fa fa-trash-o'></i></a>";
-      nuevaFila+= "</td>";
-		nuevaFila+="</tr>";
-		
-		$("#tabla").append(nuevaFila);
-	});
- });
-	       
-                     
-      /*$(function(){
-	
-	$("#agregar").on('click', function(){
-		$("#tabla tbody tr:eq(0)").clone().removeClass('fila-base').appendTo("#tabla tbody");
-	});
- 
-	
-	$("#eliminar").on("click",function(){
-		$("#tabla tbody tr:eq(0)").remove();
-
-	});
-});*/
-        });
+            
+            mostrarDatos.init();
+            
+            
+            
+      });      
 	</script>
 	</body>
 </html>

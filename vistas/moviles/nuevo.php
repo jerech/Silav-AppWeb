@@ -138,7 +138,9 @@
 		jQuery(document).ready(function() {
             $("[name='aireAcondicionado']").bootstrapSwitch();
             $("[name='gnc']").bootstrapSwitch();
-                     
+            
+				var _id = '<?php if(!empty($_GET["id"])){ echo $_GET["id"];} else { echo 0;} ?>';            
+            
             NuevoMovil.init();
         });
 	</script>
