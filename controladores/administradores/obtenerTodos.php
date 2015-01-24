@@ -6,7 +6,7 @@
     }
 
 	require_once("../../conexionBD.php");
-	$query = "select id, nombre, apellido, usuario from Usuarios where tipo='admin'";
+	$query = "select * from Usuarios where tipo='admin'";
 
 	$conexion = establecerConexion();
 	if(!$conexion){

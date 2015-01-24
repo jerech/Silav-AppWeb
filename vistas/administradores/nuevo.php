@@ -8,11 +8,12 @@
 <html lang="en">
 	<head>
 		<link rel="stylesheet" type="text/css" href="../recursos/plugins/lib/bootstrap/css/bootstrap-switch.css">
+		<script src="../recursos/plugins/lib/bootstrapValidator.min.js" type="text/javascript"></script>
 		<script type="text/javascript" src="../recursos/plugins/lib/bootstrap/js/bootstrap-switch.js"></script>
 		<script type="text/javascript" src="administradores/formularioNuevo.js"></script>
+		
 	</head>
 	<body>
-
 	<div class="content">
 		<div class="header">
 		    <h1 class="page-title">Crea un Nuevo Administrador</h1>
@@ -32,8 +33,10 @@
 			<div class="row">
 				<div class="col-md-8">
 					<div class="btn-toolbar list-toolbar">
+						
 							<button id="btnGuardar" class="btn btn-primary"><i class="fa fa-save"></i> Guardar</button>
 								<a href="panelSitio.php?seccion=Inicio" class="btn btn-danger">Cancelar</a>
+						
 					</div>
     			</div>
     		</div>
@@ -55,15 +58,15 @@
 						<form id="formulario-perfil" name="form" class="form">
 							<div class="col-md-4">
 								<div class="form-group">
-								<label>Nombre</label><input type="text" id="nombre" name="nombre" class="form-control">
+								<label>Nombre</label><span>*</span><input type="text" id="nombre" name="nombre" class="form-control">
 								</div>
 
 								<div class="form-group">
-								<label>Apellido</label><input type="text" id="apellido" name="apellido" class="form-control">
+								<label>Apellido</label><span>*</span><input type="text" id="apellido" name="apellido" class="form-control">
 								</div>
 
 								<div class="form-group">
-								<label>Usuario</label><input type="text" id="usuario" name="usuario" class="form-control">
+								<label>Usuario</label><span>*</span><input type="text" id="usuario" name="usuario" class="form-control">
 								</div>
 								<div class="form-group">
 								<label>Activo</label><br><input type="checkbox" checked id="activo" name="activo" class="form-control">
@@ -79,7 +82,7 @@
 								<label>Direcci&oacute;n</label><input type="text" id="direccion" name="direccion" class="form-control">
 								</div>
 								<div class="form-group">
-								<label>Email</label><input type="text" id="email" name="email" class="form-control">
+								<label>Email</label><input type="email" id="email" name="email" class="form-control">
 								</div>
 								
 								
@@ -158,10 +161,12 @@
 
 	<script>
 
-		
+		_id = '<?php if(!empty($_GET["id"])){ echo $_GET["id"];} else{echo 0;}  ?>';
+
         $("[name='activo']").bootstrapSwitch();
-                 
         NuevoAdministrador.init();
+      
+       
         
 	</script>
 	</body>

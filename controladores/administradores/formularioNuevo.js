@@ -77,9 +77,18 @@ var NuevoAdministrador = {
 
 				});
 
+            $("#btnGuardar").click(function(){
+                if(_id==0){
+                    guardarNuevo();
+                }else{
+                    alert("HOLA");
+                }
+
+            });
+
             
 
-            $("#btnGuardar").click(function(){
+            guardarNuevo = function(){
 
                     var contrasenia = $("#contrasenia").val();
 
@@ -116,7 +125,7 @@ var NuevoAdministrador = {
 
                     });
 
-                });
+                };
             
 
 

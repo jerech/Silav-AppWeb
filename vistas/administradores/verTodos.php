@@ -7,10 +7,12 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<link rel="stylesheet" type="text/css" href="../recursos/plugins/lib/bootstrap/css/bootstrap-switch.css">
-		<script type="text/javascript" src="administradores/tablaMostrar.js"></script>
+		
+		<script type="text/javascript" src="administradores/mostrarTabla.js"></script>
+    <script type="text/javascript" src="../recursos/plugins/lib/jquery.dataTables.js"></script>
 	</head>
 	<body>
+
 
 	<div class="content">
 		<div class="header">
@@ -36,13 +38,14 @@
   <div class="btn-group">
   </div>
 </div>
-<table class="table">
+<table id="tabla" class="table">
   <thead>
     <tr>
       <th>#</th>
       <th>Nombre</th>
       <th>Apellido</th>
       <th>Usuario</th>
+      <th>Telefono</th>
       <th style="width: 3.5em;"></th>
     </tr>
   </thead>
@@ -51,15 +54,7 @@
   </tbody>
 </table>
 
-<ul class="pagination">
-  <li><a href="#">&laquo;</a></li>
-  <li><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-  <li><a href="#">&raquo;</a></li>
-</ul>
+
 
 <div class="modal small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

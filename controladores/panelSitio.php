@@ -45,7 +45,7 @@
 		
 		'NuevoAdministrador' => '../vistas/administradores/nuevo.php',
 		'VerAdministradores' => '../vistas/administradores/verTodos.php',
-		'ModificarAdministrador' => '#',
+		'ModificarAdministrador' => '../vistas/administradores/nuevo.php',
         'ModificarPassword' => '#',
 
         'NuevoOperador' => '#',
@@ -59,7 +59,7 @@
 
         'NuevoMovil' => '../vistas/moviles/nuevo.php',
         'VerMoviles' => '../vistas/moviles/verTodos.php',
-        'ModificarMoviles' => '#');
+        'ModificarMovil' => '../vistas/moviles/nuevo.php');
 	
 	if(!empty ($_GET['seccion'])){
 		
