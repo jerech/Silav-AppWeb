@@ -105,7 +105,7 @@
                             echo "class='administradores-menu nav nav-list collapse'";
                         } ?>
                 >
-                    <li <?php if($subSeccion=='NuevoAdministrador'){echo "class='active'";}?>><a href="panelSitio.php?subSeccion=NuevoAdministrador" ><span class="fa fa-caret-right"></span>Nuevo</a></li>
+                    <li <?php if($subSeccion=='NuevoAdministrador' || $subSeccion=='ModificarAdministrador'){echo "class='active'";}?>><a href="panelSitio.php?subSeccion=NuevoAdministrador" ><span class="fa fa-caret-right"></span>Nuevo</a></li>
                     <li <?php if($subSeccion=='VerAdministradores'){echo "class='active'";}?>><a href="panelSitio.php?subSeccion=VerAdministradores" ><span class="fa fa-caret-right"></span>Ver Lista</a></li>
                 </ul></li>
 

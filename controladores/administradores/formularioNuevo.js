@@ -45,12 +45,12 @@ var NuevoAdministrador = {
                                 grupo += '<div class="control-group">';
                                 grupo += '<label class="control-label"><b>';
                                 grupo += data.secciones[index].nombre;
-                                grupo += ' </b><input name="chkPermiso[]" type="checkbox" value="' + data.secciones[index].id + '"/>';
+                                grupo += ' </b><input name="chkPermiso[]" type="checkbox" id="'+data.secciones[index].id+'" value="' + data.secciones[index].id + '"/>';
                                 grupo += '</label>';
                                 grupo += '<div class="control">';  
                             }else{
                                 grupo += '<label class="control-label">';
-                                grupo += '<input name="chkPermiso[]" type="checkbox" value="' + data.secciones[index].id + '"/> ';
+                                grupo += '<input name="chkPermiso[]" id="'+data.secciones[index].id+'" type="checkbox" value="' + data.secciones[index].id + '"/> ';
                                 grupo += '&nbsp;'+data.secciones[index].nombre;
                                 grupo += '</label>';    
                             }                                               
@@ -77,18 +77,9 @@ var NuevoAdministrador = {
 
 				});
 
-            $("#btnGuardar").click(function(){
-                if(_id==0){
-                    guardarNuevo();
-                }else{
-                    alert("HOLA");
-                }
-
-            });
-
             
 
-            guardarNuevo = function(){
+            $("#btnGuardar").click(function(){
 
                     var contrasenia = $("#contrasenia").val();
 
@@ -125,7 +116,11 @@ var NuevoAdministrador = {
 
                     });
 
-                };
+                });
+
+                $("#btnModificar").click(function(){
+                    alert("Entro a modificar");
+                });
             
 
 

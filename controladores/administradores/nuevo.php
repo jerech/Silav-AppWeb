@@ -6,11 +6,16 @@
     }
 
 	//Se verifica que los campos obligatorios no esten vacios
-  	if(empty($_POST['contrasenia-encriptada'])||empty($_POST['nombre'])||empty($_POST['apellido'])){
+  	if(empty($_POST['contrasenia-encriptada'])||empty($_POST['nombre'])||empty($_POST['apellido']) ||empty($_POST['usuario'])){
   		echo "Error. Campos obligatorios vacios.";
   		exit();
 
   	}
+
+    if($_POST['contrasenia'] != $_POST['re-contrasenia']){
+      echo "Error. Las contraseñas no coinciden";
+      exit();
+    }
 
   	require_once("../../conexionBD.php");
 

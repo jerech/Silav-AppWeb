@@ -21,7 +21,7 @@
 
 		'NuevoAdministrador' => 'Administradores',
 		'VerAdministradores' => 'Administradores',
-		'ModificarAdministrador' => 'Administrador',
+		'ModificarAdministrador' => 'Administradores',
         'ModificarPassword' => 'Administradores',
 
         'NuevoOperador' => 'Operadores',
