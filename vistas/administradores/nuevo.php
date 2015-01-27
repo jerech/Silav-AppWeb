@@ -123,6 +123,7 @@
 								<div class="form-group">
 								<label>Re-Password</label><input type="password" id="re-contrasenia" name="re-contrasenia" class="form-control">
 								</div>
+								<input type="hidden" id="re-contrasenia-encriptada" name="re-contrasenia-encriptada" class="form-control">
 							</div>
 							<?php if($subSeccion == 'ModificarAdministrador'){
 								echo '<div class=row><div class="col-md-6"><font color="red">&nbsp;Para modificar, escriba el nuevo password.</font></div></div>';
