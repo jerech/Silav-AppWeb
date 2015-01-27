@@ -4,6 +4,7 @@ var mostrarDatos = {
 
 		var urlObtenerDatos = "moviles/obtenerTodos.php";
 
+
 		$.ajax({
 					type: 'post',
                     url: urlObtenerDatos, 
@@ -29,7 +30,7 @@ var mostrarDatos = {
 
 									nuevaFila += "<td>";
 									nuevaFila += "<a href='panelSitio.php?subSeccion=ModificarMovil&id="+data.moviles[index].id+"'><i class='fa fa-pencil'></i></a>";
-      							nuevaFila += " <a href='javascript:;' class='boton_eliminar' id='"+data.moviles[index].id+"' name='boton_eliminar' role='button' data-toggle='modal'><i class='fa fa-trash-o'></i></a>";
+      							nuevaFila += " <a href='#' class='boton_eliminar' id='"+data.moviles[index].id+"' name='boton_eliminar' role='button' data-toggle='modal'><i class='fa fa-trash-o'></i></a>";
       							nuevaFila += "</td>";
 		
 									nuevaFila +="</tr>";
@@ -52,9 +53,6 @@ var mostrarDatos = {
                     }
 
 				});
-
-		$(".boton_eliminar").click(function () {
-			alert($(this).prop("id"));
-		});
-	}
+			$(".boton_eliminar").on('click', function(){ alert("prueba"); });
+}
 }
