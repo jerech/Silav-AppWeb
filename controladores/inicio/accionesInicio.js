@@ -1,5 +1,5 @@
-Mdulo = {
-    init = function(){
+var Modulo = {
+    init : function(){
     	$("#btnGeolocalizacion").click(function(){
 
     		$.ajax({
@@ -23,10 +23,8 @@ Mdulo = {
                         });
     	});
 
-    },
-
-	function setMapaActivo(){
-		$.ajax({
+        setMapaActivo = function(){
+        $.ajax({
                         type: 'POST',
                         url: 'usuarios/setMapaActivo.php',
                         data:{
@@ -37,7 +35,11 @@ Mdulo = {
 
                         },
                     });
-	}
+    }
+
+    }
+
+	
 
 	
 }
