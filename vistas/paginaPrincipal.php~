@@ -105,8 +105,8 @@
                             echo "class='administradores-menu nav nav-list collapse'";
                         } ?>
                 >
-                    <li <?php if($subSeccion=='NuevoAdministrador'){echo "class='active'";}?>><a href="panelSitio.php?subSeccion=NuevoAdministrador" ><span class="fa fa-caret-right"></span>Nuevo</a></li>
-                    <li><a href="#" ><span class="fa fa-caret-right"></span>Ver Lista</a></li>
+                    <li <?php if($subSeccion=='NuevoAdministrador' || $subSeccion=='ModificarAdministrador'){echo "class='active'";}?>><a href="panelSitio.php?subSeccion=NuevoAdministrador" ><span class="fa fa-caret-right"></span>Nuevo</a></li>
+                    <li <?php if($subSeccion=='VerAdministradores'){echo "class='active'";}?>><a href="panelSitio.php?subSeccion=VerAdministradores" ><span class="fa fa-caret-right"></span>Ver Lista</a></li>
                 </ul></li>
 
             <?php }?>
@@ -137,9 +137,15 @@
             <?php } ?>
             <?php if(in_array('Moviles', $_SESSION['sesion_permisos'])){ ?>
             <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".moviles-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-automobile"></i> M&oacute;viles <i class="fa fa-collapse"></i></a></li>
-            <li><ul class="moviles-menu nav nav-list collapse">
+            <li><ul <?php 
+                        if($seccion=='Operadores'){ 
+                            echo "class='moviles-menu nav nav-list collapse in'";
+                        }else{
+                            echo "class='moviles-menu nav nav-list collapse'";
+                        } ?>
+            >
             <li <?php if($subSeccion=='NuevoMovil'){echo "class='active'";}?>><a href="panelSitio.php?subSeccion=NuevoMovil" ><span class="fa fa-caret-right"></span>Nuevo</a></li>
-            <li ><a href="sign-up.html"><span class="fa fa-caret-right"></span> Ver Lista</a></li>
+            <li <?php if($subSeccion=='VerMoviles'){echo "class='active'";}?>><a href="panelSitio.php?subSeccion=VerMoviles"><span class="fa fa-caret-right"></span> Ver Lista</a></li>
             </ul></li>
             <!-- Fin seccion Moviles-->
             <?php } ?>

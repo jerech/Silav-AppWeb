@@ -10,31 +10,18 @@
 		<script type="text/javascript" src="moviles/mostrarTabla.js"></script>
 		<script type="text/javascript" src="../recursos/plugins/lib/jquery.dataTables.js"></script>
 	</head>
-	<body>
-	
-<script type="text/javascript">
-        $(function() {
-            var match = document.cookie.match(new RegExp('color=([^;]+)'));
-            if(match) var color = match[1];
-            if(color) {
-                $('body').removeClass(function (index, css) {
-                    return (css.match (/\btheme-\S+/g) || []).join(' ')
-                })
-                $('body').addClass('theme-' + color);
-            }
-
-            $('[data-popover="true"]').popover({html: true});
-            
-        });
-    </script>	
+	<body>   
     
 <script type="text/javascript">
-        $(function() {
-            var uls = $('.sidebar-nav > ul > *').clone();
-            uls.addClass('visible-xs');
-            $('#main-menu').append(uls.clone());
-        });
-    </script>    
+function guardarId(id) {	
+ idMovil = id;		
+				
+		}  
+function mostrar() {
+	alert(idMovil);
+}
+ 
+    </script>         
     
 	<div class="content">
         <div class="header">
@@ -44,12 +31,20 @@
 		            <a href="panelSitio.php?seccion=Inicio">Inicio</a>
 		        </li>
 		        <li>
+		            <a href="panelSitio.php?subSeccion=VerMoviles">M&oacute;viles</a>
+		        </li>
+		        <li>
 		            <a>Ver Lista</a>
 		        </li>
 		    </ul>
 		</div>
         <div class="main-content">
-            
+         <div class="btn-toolbar list-toolbar">
+    <a class="btn btn-primary" href="panelSitio.php?subSeccion=NuevoMovil"><i class="fa fa-plus"></i> Nuevo</a>
+    
+  <div class="btn-group">
+  </div>
+</div>   
 
 <table id="tabla" class="table">
   <thead>
@@ -82,14 +77,14 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Delete Confirmation</h3>
+            <h3 id="myModalLabel">Confirmar eliminaci&oacute;n</h3>
         </div>
         <div class="modal-body">
-            <p class="error-text"><i class="fa fa-warning modal-icon"></i>Are you sure you want to delete the user?<br>This cannot be undone.</p>
+            <p class="error-text"><i class="fa fa-warning modal-icon"></i>¿Esta seguro que quiere borrar el m&oacute;vil?<br></p>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
-            <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+            <button class="btn btn-danger" onclick="mostrar();" data-dismiss="modal">Borrar</button>
         </div>
       </div>
     </div>
@@ -108,11 +103,10 @@
 
 	<script>
 		jQuery(document).ready(function() {
+            var idMovil;
             
             mostrarDatos.init();
-            
-            
-            
+
       });      
 	</script>
 	</body>

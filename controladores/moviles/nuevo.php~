@@ -18,12 +18,12 @@
   	$patente = $_POST['patente'];
   	$marca = $_POST['marca'];
   	$modelo = $_POST['modelo'];
-  	$vencseguro = $_POST['vencseguro'];
+  	$vencSeguro = $_POST['vencSeguro'];
   	
-  	if($_POST['aa']=="on"){
-  		$aa=1;
+  	if($_POST['aireAcondicionado']=="on"){
+  		$aireAcondicionado=1;
   	}else{
-  		$aa=0;
+  		$aireAcondicionado=0;
   	}
   	if($_POST['gnc']=="on"){
   		$gnc=1;
@@ -46,8 +46,8 @@
   				'$numero',
   				'$marca',
   				'$modelo',
-  				'$vencseguro',
-  				'$aa',
+  				'$vencSeguro',
+  				'$aireAcondicionado',
   				'$gnc')";
 
 	$coneccion = establecerConexion();

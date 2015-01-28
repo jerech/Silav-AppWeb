@@ -61,14 +61,14 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Delete Confirmation</h3>
+            <h3 id="myModalLabel">Confirmar eliminaci&oacute;n</h3>
         </div>
         <div class="modal-body">
-            <p class="error-text"><i class="fa fa-warning modal-icon"></i>Are you sure you want to delete the user?<br>This cannot be undone.</p>
+            <p class="error-text"><i class="fa fa-warning modal-icon"></i>¿Esta seguro que quiere borrar el administrador?<br></p>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
-            <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+            <button class="btn btn-danger" data-dismiss="modal">Borrar</button>
         </div>
       </div>
     </div>

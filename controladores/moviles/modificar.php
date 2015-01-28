@@ -30,37 +30,34 @@
   	}else{
   		$gnc=0;
   	}
-  	
-  	//Se realiza el insert en la BD
-  	$query = "
-  			insert into Moviles(
-  				patente,
-  				numero,
-  				marca,
-  				modelo,
-  				vencseguro,
-  				aa,
-  				gnc)
-  			values(
-  				'$patente',
-  				'$numero',
-  				'$marca',
-  				'$modelo',
-  				'$vencseguro',
-  				'$aa',
-  				'$gnc')";
 
-	$coneccion = establecerConexion();
-	if(!$coneccion){
+  	//Se realiza el update en la BD
+  	$query = "
+  			UPDATE  
+              Moviles
+        SET
+  				    patente='$patente',
+  				    numero='$numero',
+  				    marca='$marca',
+  				    modelo='$modelo',
+  				    vencseguro='$vencseguro',
+  				    aa='$aa',
+  				    gnc='$gnc'
+        WHERE 
+              id=$id";
+
+	$conexion = establecerConexion();
+	if(!$conexion){
 		echo "Error al conectar con la Base de Datos";
 		exit();
 	}
 
-	$resultado = mysql_query($query) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
+	$resultado = mysql_query($query, $conexion) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
 
 	if($resultado){
-		echo "OK";
+		echo "OK_"; //Con la funcion mysql_insert_id() se obtiene el id del elemento insertado
 	}
 
-	mysql_close($coneccion);
+	mysql_close($conexion);
+
 ?>
