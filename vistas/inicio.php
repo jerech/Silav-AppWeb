@@ -7,7 +7,7 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<script src="inicio/accionesInicio.js"></script>
+		<script type="text/javascript" src="inicio/accionesInicio.js"></script>
 
 	</head>
 	<body>
