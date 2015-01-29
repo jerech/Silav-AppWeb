@@ -40,6 +40,7 @@ var NuevoMovil = {
                     var form = $(".form").serialize();
                 
                     form += "&id="+_id;
+                    alert(form);
                     $.ajax({
                         type: 'post',
                         url: urlModificar, 

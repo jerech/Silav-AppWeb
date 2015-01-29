@@ -19,14 +19,15 @@ var CargarDatos = {
                             $("#numero").val(data.moviles[0].numero);
                             $("#patente").val(data.moviles[0].patente);
                             $("#marca").val(data.moviles[0].marca);
-                            $("#modelo").val(data.moviless[0].modelo);
+                            $("#modelo").val(data.moviles[0].modelo);
                             $("#vencseguro").val(data.moviles[0].vencseguro);
 
                             if(data.moviles[0].aa == "0"){
-                                $("[name='aa']").bootstrapSwitch('setState','');
+                            	
+                                $("[name='aa']").bootstrapSwitch.checked('false');
                             }
 									if(data.moviles[0].gnc == "1"){
-                                $("[name='gnc']").bootstrapSwitch('setState','true');
+                                $("[name='gnc']").bootstrapSwitch.state('true');
                             }
 
                                                      

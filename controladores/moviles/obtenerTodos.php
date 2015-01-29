@@ -7,7 +7,7 @@
 
   	require_once("../../conexionBD.php");
   	
-	$query = "select * from Moviles";  	
+	$query = "select * from Moviles WHERE activo=1";  	
   	
 	$coneccion = establecerConexion();
 	if(!$coneccion){

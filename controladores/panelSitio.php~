@@ -1,11 +1,11 @@
 <?php 
 
-	session_start();
+	//session_start();
 
-	if(empty($_SESSION['sesion_usuario']))	
-            header("Location: ../index.php");
+	//if(empty($_SESSION['sesion_usuario']))	
+   //         header("Location: ../index.php");
 
-    define("acceso", "autorizado");
+    //define("acceso", "autorizado");
 
     $seccionesURL = array(
 		'Inicio' => '../vistas/inicio.php',
@@ -21,7 +21,7 @@
 
 		'NuevoAdministrador' => 'Administradores',
 		'VerAdministradores' => 'Administradores',
-		'ModificarAdministrador' => 'Administrador',
+		'ModificarAdministrador' => 'Administradores',
         'ModificarPassword' => 'Administradores',
 
         'NuevoOperador' => 'Operadores',
@@ -44,8 +44,8 @@
 		'ControlDePasajes' => '#',
 		
 		'NuevoAdministrador' => '../vistas/administradores/nuevo.php',
-		'VerAdministradores' => '#',
-		'ModificarAdministrador' => '#',
+		'VerAdministradores' => '../vistas/administradores/verTodos.php',
+		'ModificarAdministrador' => '../vistas/administradores/nuevo.php',
         'ModificarPassword' => '#',
 
         'NuevoOperador' => '#',
@@ -58,8 +58,8 @@
         'ModificarChofer' => '#',
 
         'NuevoMovil' => '../vistas/moviles/nuevo.php',
-        'VerMoviles' => '#',
-        'ModificarMoviles' => '#');
+        'VerMoviles' => '../vistas/moviles/verTodos.php',
+        'ModificarMovil' => '../vistas/moviles/nuevo.php');
 	
 	if(!empty ($_GET['seccion'])){
 		

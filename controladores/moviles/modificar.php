@@ -14,6 +14,7 @@
   	require_once("../../conexionBD.php");
 
   	//Se obtienen los datos a guardar
+  	$id = $_POST['id'];
   	$numero = $_POST['numero'];
   	$patente = $_POST['patente'];
   	$marca = $_POST['marca'];

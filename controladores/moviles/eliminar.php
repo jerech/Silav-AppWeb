@@ -5,9 +5,17 @@
         exit();
     }
 
-	require_once("../../conexionBD.php");
-	$id = $_POST['id'];
-	$query = "select * from Moviles where id=$id AND activo=1";
+  	require_once("../../conexionBD.php");
+
+  	$id = $_POST['id'];
+//elimina cambiando el estado activo a 0
+  	$query = "
+  			UPDATE 
+  				  Moviles
+			SET
+				  activo=0
+         WHERE 
+              id=$id";
 
 	$conexion = establecerConexion();
 	if(!$conexion){
@@ -17,15 +25,10 @@
 
 	$resultado = mysql_query($query, $conexion) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
 
-	$datos = array();
-    while ($array = mysql_fetch_array($resultado, MYSQL_ASSOC)) {
-    	$datos[] = $array;
-    }
+	if($resultado){
+		echo "OK_"; 
+	}
 
-    if($resultado){
-    	echo json_encode(array('moviles' => $datos));
-    	exit();
-    }
-    mysql_close($conexion);
+	mysql_close($conexion);
 
 ?>

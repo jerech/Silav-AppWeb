@@ -17,8 +17,28 @@ function guardarId(id) {
  idMovil = id;		
 				
 		}  
-function mostrar() {
-	alert(idMovil);
+function eliminarRegistro() {
+	var urlEliminarDatos = "moviles/eliminar.php";
+	var parametro = "id="+idMovil;
+	$.ajax({
+					type: 'post',
+                    url: urlEliminarDatos, 
+                    data: parametro,           
+                    dataType: 'html',
+                    beforeSend: function(){
+                        
+                    },   
+                    success: function(data) {
+								          
+                    	notificacion("success", "Móvil borrado correctamente");
+                    },
+                    error: function(a,b,c){
+                        console.log(a);
+                        console.log(b);
+                        console.log(c);  		
+                    }
+
+				});
 }
  
     </script>         
@@ -84,7 +104,7 @@ function mostrar() {
         </div>
         <div class="modal-footer">
             <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-            <button class="btn btn-danger" onclick="mostrar();" data-dismiss="modal">Borrar</button>
+            <button class="btn btn-danger" onclick="eliminarRegistro();" data-dismiss="modal">Borrar</button>
         </div>
       </div>
     </div>

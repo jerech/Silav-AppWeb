@@ -16,18 +16,20 @@ var CargarDatos = {
                         },   
                         success: function(data) {
 
-                            $("#nombre").val(data.administradores[0].nombre);
-                            $("#apellido").val(data.administradores[0].apellido);
-                            $("#usuario").val(data.administradores[0].usuario);
-                            $("#telefono").val(data.administradores[0].telefono);
-                            $("#email").val(data.administradores[0].email);
-                            $("#direccion").val(data.administradores[0].direccion);
-                            if(data.administradores[0].activo == "0"){
-                                $("[name='activo']").bootstrapSwitch('setState','');
+                            $("#numero").val(data.moviles[0].numero);
+                            $("#patente").val(data.moviles[0].patente);
+                            $("#marca").val(data.moviles[0].marca);
+                            $("#modelo").val(data.moviless[0].modelo);
+                            $("#vencseguro").val(data.moviles[0].vencseguro);
+
+                            if(data.moviles[0].aa == "0"){
+                            	
+                                $("[name='aa']").bootstrapSwitch.checked('false');
+                            }
+									if(data.moviles[0].gnc == "1"){
+                                $("[name='gnc']").bootstrapSwitch.state('true');
                             }
 
-
-                            cargarPermisos(data.permisos);
                                                      
                         },
                         error: function(a,b,c){
@@ -38,11 +40,6 @@ var CargarDatos = {
 
 
                     });
-        cargarPermisos = function(permisos){
-            for(i=0;i<permisos.length;i++){
-                $('#'+permisos[i].Secciones_id).prop("checked","checked");
-            }
-            $(".control").show();
-        }
+
 	}
 }

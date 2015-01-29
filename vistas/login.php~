@@ -149,13 +149,13 @@
                         url: '../controladores/inicioSesion.php',
                         data:{
                             'usuario': usuario,
-                            'contrasenia': contrasenia
+                            'contrasenia': "d41d8cd98f00b204e9800998ecf8427e"//contrasenia
                         },
                         dataType: 'html',
                         success: function(data){
     
                             if (data !== "OK") {
-
+alert("hola");
                                 notificacion("error","Error al intentar ingresar al sistema. "+data);
                                 $("#contrasenia").val("");
                             }else{

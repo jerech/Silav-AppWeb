@@ -38,7 +38,7 @@ var NuevoMovil = {
        $("#btnModificar").click(function(){
 
                     var form = $(".form").serialize();
-                alert(_id);
+                
                     form += "&id="+_id;
                     $.ajax({
                         type: 'post',
