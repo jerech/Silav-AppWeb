@@ -6,7 +6,8 @@
     }
 
 	require_once("../../conexionBD.php");
-	$query = "select * from Usuarios where tipo='admin' and activo=1";
+	$id = $_POST['id'];
+	$query = "select count(*) as cantidad from Moviles where id=$id";
 
 	$conexion = establecerConexion();
 	if(!$conexion){
@@ -20,12 +21,11 @@
     while ($array = mysql_fetch_array($resultado, MYSQL_ASSOC)) {
     	$datos[] = $array;
     }
+
     if($resultado){
-    	echo json_encode(array('administradores' => $datos));
+    	echo json_encode(array('moviles' => $datos));
     	exit();
     }
     mysql_close($conexion);
-
-
 
 ?>

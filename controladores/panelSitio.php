@@ -48,9 +48,9 @@
 		'ModificarAdministrador' => '../vistas/administradores/nuevo.php',
         'ModificarPassword' => '#',
 
-        'NuevoOperador' => '#',
-        'VerOperadores' => '#',
-        'ModificarOperador' => '#',
+        'NuevoOperador' => '../vistas/operadores/nuevo.php',
+        'VerOperadores' => '../vistas/operadores/verTodos.php',
+        'ModificarOperador' => '../vistas/operadores/nuevo.php',
         'ModificarPassword' => '#',
 
         'NuevoChofer' => '#',

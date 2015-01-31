@@ -3,7 +3,7 @@ var mostrarDatos = {
 
 	init: function(){
 
-		var urlObtenerDatos = "administradores/obtenerTodos.php";
+		var urlObtenerDatos = "operadores/obtenerTodos.php";
 
 		$.ajax({
 					type: 'post',
@@ -16,20 +16,20 @@ var mostrarDatos = {
                     success: function(data) {
 								var contador = 0;
                         
-                        $(data.administradores).each(function(index){
+                        $(data.operadores).each(function(index){
                         	
                         	contador = contador + 1;
                          
                            var nuevaFila = "<tr>";
 		
 									nuevaFila += "<td>"+contador+"</td>";
-									nuevaFila += "<td>"+data.administradores[index].nombre+"</td>";
-									nuevaFila += "<td>"+data.administradores[index].apellido+"</td>";
-									nuevaFila += "<td>"+data.administradores[index].usuario+"</td>";
-									nuevaFila += "<td>"+data.administradores[index].telefono+"</td>";
+									nuevaFila += "<td>"+data.operadores[index].nombre+"</td>";
+									nuevaFila += "<td>"+data.operadores[index].apellido+"</td>";
+									nuevaFila += "<td>"+data.operadores[index].usuario+"</td>";
+									nuevaFila += "<td>"+data.operadores[index].telefono+"</td>";
 									nuevaFila += "<td>";
-									nuevaFila += "<a href='panelSitio.php?subSeccion=ModificarAdministrador&id="+data.administradores[index].id+"'><i class='fa fa-pencil'></i></a>";
-      							nuevaFila += " <a href='#myModal' onclick='guardarId("+data.administradores[index].id+");' class='boton_eliminar' id='"+data.administradores[index].id+"' name='boton_eliminar' role='button' data-toggle='modal'><i class='fa fa-trash-o'></i></a>";
+									nuevaFila += "<a href='panelSitio.php?subSeccion=ModificarOperador&id="+data.operadores[index].id+"'><i class='fa fa-pencil'></i></a>";
+      							nuevaFila += " <a href='#myModal' onclick='guardarId("+data.operadores[index].id+");' class='boton_eliminar' id='"+data.operadores[index].id+"' name='boton_eliminar' role='button' data-toggle='modal'><i class='fa fa-trash-o'></i></a>";
       							nuevaFila += "</td>";
 		
 									nuevaFila +="</tr>";

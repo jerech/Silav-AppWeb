@@ -28,10 +28,10 @@
   	$direccion = $_POST['direccion'];
   	$email = $_POST['email'];
   	$permisos = $_POST['chkPermiso'];
-  	if($_POST['activo']=="on"){
-  		$activo=1;
+  	if($_POST['habilitado']=="on"){
+  		$habilitado=1;
   	}else{
-  		$activo=0;
+  		$habilitado=0;
   	}
 
   	//Se realiza el insert en la BD
@@ -46,7 +46,7 @@
   				direccion,
   				tipo,
   				email,
-  				activo)
+  				habilitado)
   			values(
   				'$nombre',
   				'$apellido',
@@ -56,7 +56,7 @@
   				'$direccion',
   				'$tipo',
   				'$email',
-  				'$activo')";
+  				'$habilitado')";
 
 	$conexion = establecerConexion();
 	if(!$conexion){

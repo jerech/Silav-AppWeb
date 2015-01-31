@@ -16,13 +16,13 @@
 
 		    <div class="stats">
 		        <p class="stat">
-		            <span class="label label-info">25</span>Choferes
+		            <span class="label label-info" id="choferes">25</span>Choferes
 		        </p>
 		        <p class="stat">
-		            <span class="label label-success">27</span>M&oacute;viles
+		            <span class="label label-success" id="moviles">27</span>M&oacute;viles
 		        </p>
 		        <p class="stat">
-		            <span class="label label-danger">15</span>Conectados
+		            <span class="label label-danger" id="conectados">15</span>Conectados
 		        </p>
 		    </div>
 		    <h1 class="page-title">Inicio</h1>

@@ -6,7 +6,7 @@
     }
 
 	require_once("../../conexionBD.php");
-	$query = "select * from Usuarios where tipo='admin' and activo=1";
+	$query = "select * from Usuarios where tipo='operador' and activo=1";
 
 	$conexion = establecerConexion();
 	if(!$conexion){
@@ -21,7 +21,7 @@
     	$datos[] = $array;
     }
     if($resultado){
-    	echo json_encode(array('administradores' => $datos));
+    	echo json_encode(array('operadores' => $datos));
     	exit();
     }
     mysql_close($conexion);
