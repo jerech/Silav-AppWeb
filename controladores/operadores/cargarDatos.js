@@ -2,7 +2,7 @@ var CargarDatos = {
 
 	init: function(){
 
-		urlObtenerDatos = "administradores/obtenerPorId.php";
+		urlObtenerDatos = "operadores/obtenerPorId.php";
 
 		$.ajax({
                         type: 'post',
@@ -23,9 +23,8 @@ var CargarDatos = {
                             $("#email").val(data.administradores[0].email);
                             $("#direccion").val(data.administradores[0].direccion);
                             if(data.administradores[0].habilitado == "0"){
-                                $("[name='habilitado']").bootstrapSwitch("state",false);
+                                $("[name='habilitado']").bootstrapSwitch('state',false);
                             }
-
 
 
                             cargarPermisos(data.permisos);

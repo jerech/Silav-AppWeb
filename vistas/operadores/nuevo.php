@@ -10,30 +10,30 @@
 		<link rel="stylesheet" type="text/css" href="../recursos/plugins/lib/bootstrap/css/bootstrap-switch.css">
 		<script src="../recursos/plugins/lib/bootstrapValidator.min.js" type="text/javascript"></script>
 		<script type="text/javascript" src="../recursos/plugins/lib/bootstrap/js/bootstrap-switch.js"></script>
-		<script type="text/javascript" src="administradores/formularioNuevo.js"></script>
-		<script type="text/javascript" src="administradores/cargarDatos.js"></script>
+		<script type="text/javascript" src="operadores/formularioNuevo.js"></script>
+		<script type="text/javascript" src="operadores/cargarDatos.js"></script>
 		
 	</head>
 	<body>
 	<div class="content">
 		<div class="header">
-			<?php if($subSeccion == 'NuevoAdministrador'){
-		     echo '<h1 class="page-title">Crea un Nuevo Administrador</h1>';
+			<?php if($subSeccion == 'NuevoOperador'){
+		     echo '<h1 class="page-title">Crea un Nuevo Operador</h1>';
 		    }else{
-		    echo '<h1 class="page-title">Modifica un Administrador</h1>';
+		    echo '<h1 class="page-title">Modifica un Operador</h1>';
 		    }?>
 		    <ul class="breadcrumb">
 		        <li>
 		            <a href="panelSitio.php?seccion=Inicio">Inicio</a>
 		        </li>
 		        <li>
-		            <a href="panelSitio.php?subSeccion=VerAdministradores">Administradores</a>
+		            <a href="panelSitio.php?subSeccion=VerOperadores">Operadores</a>
 		        </li>
 		        <li>
-		        	<?php if($subSeccion == 'NuevoAdministrador'){
-		             	echo '<a>Nuevo Administrador</a>';
+		        	<?php if($subSeccion == 'NuevoOperador'){
+		             	echo '<a>Nuevo Operador</a>';
 		             }else{
-		             	echo '<a>Modificar Administrador</a>';
+		             	echo '<a>Modificar Operador</a>';
 		             }?>
 		        </li>
 		    </ul>
@@ -42,7 +42,7 @@
 			<div class="row">
 				<div class="col-md-8">
 					<div class="btn-toolbar list-toolbar">
-							<?php if($subSeccion == 'NuevoAdministrador'){
+							<?php if($subSeccion == 'NuevoOperador'){
 								echo '<button id="btnGuardar" class="btn btn-primary"><i class="fa fa-save"></i> Guardar</button>';
 							}else{
 								echo '<button id="btnModificar" class="btn btn-primary"><i class="fa fa-save"></i> Modificar</button>';
@@ -125,7 +125,7 @@
 								</div>
 								<input type="hidden" id="re-contrasenia-encriptada" name="re-contrasenia-encriptada" class="form-control">
 							</div>
-							<?php if($subSeccion == 'ModificarAdministrador'){
+							<?php if($subSeccion == 'ModificarOperador'){
 								echo '<div class=row><div class="col-md-6"><font color="red">&nbsp;Para modificar, escriba el nuevo password.</font></div></div>';
 							}?>
 						</form>
@@ -182,8 +182,7 @@
 		_id = '<?php if(!empty($_GET["id"])){ echo $_GET["id"];} else{echo 0;}  ?>';
 
         $("#habilitado").bootstrapSwitch();
-
-        NuevoAdministrador.init();
+        NuevoOperador.init();
 
         if(_id != 0){
         	CargarDatos.init();

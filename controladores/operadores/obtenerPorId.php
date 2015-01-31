@@ -6,7 +6,9 @@
     }
 
 	require_once("../../conexionBD.php");
-	$query = "select * from Usuarios where tipo='admin' and activo=1";
+	$id = $_POST['id'];
+	$query = "select * from Usuarios where id=$id";
+	$queryPermisos = "select * from Permisos where Usuarios_id=$id";
 
 	$conexion = establecerConexion();
 	if(!$conexion){
@@ -15,13 +17,21 @@
 	}
 
 	$resultado = mysql_query($query, $conexion) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
+	$resultadoPermisos = mysql_query($queryPermisos, $conexion) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
 
 	$datos = array();
     while ($array = mysql_fetch_array($resultado, MYSQL_ASSOC)) {
     	$datos[] = $array;
     }
-    if($resultado){
-    	echo json_encode(array('administradores' => $datos));
+
+    $datosPermisos = array();
+    while ($array = mysql_fetch_array($resultadoPermisos, MYSQL_ASSOC)) {
+    	$datosPermisos[] = $array;
+    }
+
+    if($resultado && $resultadoPermisos){
+    	echo json_encode(array('administradores' => $datos,
+    							'permisos' => $datosPermisos));
     	exit();
     }
     mysql_close($conexion);

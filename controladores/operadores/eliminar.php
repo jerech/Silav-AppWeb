@@ -5,8 +5,17 @@
         exit();
     }
 
-	require_once("../../conexionBD.php");
-	$query = "select * from Usuarios where tipo='admin' and activo=1";
+  	require_once("../../conexionBD.php");
+
+  	$id = $_POST['id'];
+//elimina cambiando el estado activo a 0
+  	$query = "
+  			UPDATE 
+  				  Usuarios
+			SET
+				  activo=0
+         WHERE 
+              id=$id";
 
 	$conexion = establecerConexion();
 	if(!$conexion){
@@ -16,16 +25,10 @@
 
 	$resultado = mysql_query($query, $conexion) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
 
-	$datos = array();
-    while ($array = mysql_fetch_array($resultado, MYSQL_ASSOC)) {
-    	$datos[] = $array;
-    }
-    if($resultado){
-    	echo json_encode(array('administradores' => $datos));
-    	exit();
-    }
-    mysql_close($conexion);
+	if($resultado){
+		echo "OK_"; 
+	}
 
-
+	mysql_close($conexion);
 
 ?>

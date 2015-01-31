@@ -119,8 +119,8 @@
                             echo "class='operadores-menu nav nav-list collapse'";
                         } ?>
                 >
-                    <li><a href="#" ><span class="fa fa-caret-right"></span>Nuevo</a></li>
-                    <li><a href="#" ><span class="fa fa-caret-right"></span>Ver Lista</a></li>
+                    <li <?php if($subSeccion=='NuevoOperadores' || $subSeccion=='ModificarOperador'){echo "class='active'";}?>><a href="panelSitio.php?subSeccion=NuevoOperador" ><span class="fa fa-caret-right"></span>Nuevo</a></li>
+                    <li <?php if($subSeccion=='VerOperadores'){echo "class='active'";}?>><a href="panelSitio.php?subSeccion=VerOperadores" ><span class="fa fa-caret-right"></span>Ver Lista</a></li>
                 </ul></li>
             <?php }?>
             </ul></li>

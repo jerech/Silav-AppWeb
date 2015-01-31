@@ -8,19 +8,18 @@
 <html lang="en">
 	<head>
 		
-		<script type="text/javascript" src="administradores/mostrarTabla.js"></script>
+		<script type="text/javascript" src="operadores/mostrarTabla.js"></script>
     <script type="text/javascript" src="../recursos/plugins/lib/jquery.dataTables.js"></script>
 	</head>
 	<body>
-
-  <script type="text/javascript">
+    <script type="text/javascript">
       function guardarId(id) {  
-       idAdministrador = id;    
+       idOperador = id;    
               
           }  
       function eliminarRegistro() {
-        var urlEliminarDatos = "administradores/eliminar.php";
-        var parametro = "id="+idAdministrador;
+        var urlEliminarDatos = "operadores/eliminar.php";
+        var parametro = "id="+idOperador;
         $.ajax({
                 type: 'post',
                           url: urlEliminarDatos, 
@@ -31,8 +30,8 @@
                           },   
                           success: function(data) {
                                 
-                            notificacion("success", "Administrador borrado correctamente");
-                            window.location.replace("panelSitio.php?subSeccion=VerAdministradores");
+                            notificacion("success", "Operador borrado correctamente");
+                            window.location.replace("panelSitio.php?subSeccion=VerOperadores");
                           },
                           error: function(a,b,c){
                               console.log(a);
@@ -43,21 +42,20 @@
               });
       }
  
-    </script>   
-
+    </script> 
 
 	<div class="content">
 		<div class="header">
-		    <h1 class="page-title">Administre los Administradores desde aquí</h1>
+		    <h1 class="page-title">Administre los Operadores desde aquí</h1>
 		    <ul class="breadcrumb">
 		        <li>
 		            <a href="panelSitio.php?seccion=Inicio">Inicio</a>
 		        </li>
 		        <li>
-		            <a href="panelSitio.php?subSeccion=VerAdministradores">Administradores</a>
+		            <a href="panelSitio.php?subSeccion=VerOperadores">Operadores</a>
 		        </li>
 		        <li>
-		            <a>Ver Administradores</a>
+		            <a>Ver Operadores</a>
 		        </li>
 		    </ul>
 		</div>

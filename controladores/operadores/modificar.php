@@ -25,7 +25,7 @@
   	$apellido = $_POST['apellido'];
   	$usuario = $_POST['usuario'];
   	$contrasenia = $_POST['contrasenia-encriptada'];
-  	$tipo = "admin";
+  	$tipo = "operador";
   	$telefono = $_POST['telefono'];
   	$direccion = $_POST['direccion'];
   	$email = $_POST['email'];
@@ -101,6 +101,7 @@
 	}
 
   function modificarContrasenia($id, $contrasenia){
+    
     $query = "UPDATE
                 Usuarios
               SET
