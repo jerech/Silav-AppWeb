@@ -1,11 +1,11 @@
 <?php 
 
-	//session_start();
+	session_start();
 
-	//if(empty($_SESSION['sesion_usuario']))	
-   //         header("Location: ../index.php");
+	if(empty($_SESSION['sesion_usuario']))	
+            header("Location: ../index.php");
 
-    //define("acceso", "autorizado");
+    define("acceso", "autorizado");
 
     $seccionesURL = array(
 		'Inicio' => '../vistas/inicio.php',

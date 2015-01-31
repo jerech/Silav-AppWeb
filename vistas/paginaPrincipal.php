@@ -128,9 +128,15 @@
 
             <?php if(in_array('Choferes', $_SESSION['sesion_permisos'])){ ?>
                 <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".choferes-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-male"></i> Choferes<i class="fa fa-collapse"></i></a></li>
-                <li><ul class="choferes-menu nav nav-list collapse">
-                <li ><a href="premium-profile.html"><span class="fa fa-caret-right"></span> Nuevo</a></li>
-                <li ><a href="premium-blog.html"><span class="fa fa-caret-right"></span> Ver Lista</a></li>
+                <li><ul <?php 
+                        if($seccion=='Choferes'){ 
+                            echo "class='choferes-menu nav nav-list collapse in'";
+                        }else{
+                            echo "class='choferes-menu nav nav-list collapse'";
+                        } ?>
+                >
+                <li <?php if($subSeccion=='NuevoChofer'){echo "class='active'";}?>><a href="panelSitio.php?subSeccion=NuevoChofer"><span class="fa fa-caret-right"></span> Nuevo</a></li>
+                <li <?php if($subSeccion=='VerChoferes'){echo "class='active'";}?>><a href="panelSitio.php?subSeccion=VerChoferes"><span class="fa fa-caret-right"></span> Ver Lista</a></li>
                 </ul></li>
 
                 <!-- Fin seccion Cohefes-->

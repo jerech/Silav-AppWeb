@@ -53,9 +53,9 @@
         'ModificarOperador' => '#',
         'ModificarPassword' => '#',
 
-        'NuevoChofer' => '#',
-        'VerChoferes' => '#',
-        'ModificarChofer' => '#',
+        'NuevoChofer' => '../vistas/choferes/nuevo.php',
+        'VerChoferes' => '../vistas/choferes/verTodos.php',
+        'ModificarChofer' => '../vistas/choferes/nuevo.php',
 
         'NuevoMovil' => '../vistas/moviles/nuevo.php',
         'VerMoviles' => '../vistas/moviles/verTodos.php',
