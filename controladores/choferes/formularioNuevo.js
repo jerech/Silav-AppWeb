@@ -35,7 +35,7 @@ var NuevoChofer = {
                }else{
                	notificacion("success", "Chofer guardado correctamente");
                   $(".form-control").val('');
-                  //$(".sexo").bootstrapSwitch2("state",false);
+
                }                         
              },
              error: function(a,b,c){

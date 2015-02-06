@@ -115,13 +115,13 @@
 
 							<div class="col-md-4">
 								<div class="form-group">
-								<label>Password</label><input type="password" id="contrasenia" name="contrasenia" class="form-control">
+								<label>Password</label><input type="password" id="contrasenia" value="" name="contrasenia" class="form-control">
 								</div>
 								<input type="hidden" id="contrasenia-encriptada" name="contrasenia-encriptada" class="form-control">		
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-								<label>Re-Password</label><input type="password" id="re-contrasenia" name="re-contrasenia" class="form-control">
+								<label>Re-Password</label><input type="password" id="re-contrasenia" value="" name="re-contrasenia" class="form-control">
 								</div>
 								<input type="hidden" id="re-contrasenia-encriptada" name="re-contrasenia-encriptada" class="form-control">
 							</div>
