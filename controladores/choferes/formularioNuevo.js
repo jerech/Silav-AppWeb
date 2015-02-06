@@ -19,7 +19,7 @@ var NuevoChofer = {
          $("#re-contrasenia").val("");
 
       	var form = $(".form").serialize();
-alert(form);
+
          $.ajax({
          	type: 'post',
             url: urlNuevo, 
@@ -29,12 +29,13 @@ alert(form);
                            
             },   
             success: function(data) {
-            	var datos = data;
-               if(datos != "OK"){
+            	var datos = data.split("_");;
+               if(datos[0] != "OK"){
                	notificacion("error",data);      
                }else{
                	notificacion("success", "Chofer guardado correctamente");
                   $(".form-control").val('');
+                  //$(".sexo").bootstrapSwitch2("state",false);
                }                         
              },
              error: function(a,b,c){

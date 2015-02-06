@@ -685,7 +685,7 @@
       radioAllOff: false,
       onColor: "primary",
       offColor: "default",
-      onText: "Hombre",
+      onText: "Hombre", //.bootstrapSwitch("state",false);
       offText: "Mujer",
       labelText: "&nbsp;",
       handleWidth: "auto",

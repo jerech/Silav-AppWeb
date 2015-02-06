@@ -8,7 +8,7 @@
 	//Se verifica que los campos obligatorios no esten vacios
   	if(empty($_POST['contrasenia-encriptada'])||empty($_POST['nombre'])||empty($_POST['apellido']) ||empty($_POST['usuario'])){
   		
-  		echo $_POST['contrasenia-encriptada'."Error. Campos obligatorios vacios.";
+  		echo "Error. Campos obligatorios vacios.";
   		exit();
   	}
 
@@ -72,7 +72,6 @@
 	$resultado = mysql_query($query, $conexion) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
 
 	if($resultado){
-		guardarPermisos(mysql_insert_id(), $permisos);
 		echo "OK_".mysql_insert_id(); //Con la funcion mysql_insert_id() se obtiene el id del elemento insertado
 	}
 

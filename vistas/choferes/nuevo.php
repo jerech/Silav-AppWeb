@@ -10,10 +10,124 @@
 		<link rel="stylesheet" type="text/css" href="../recursos/plugins/lib/bootstrap/css/bootstrap-switch.css">
 		<script type="text/javascript" src="../recursos/plugins/lib/bootstrap/js/bootstrap-switch.js"></script>
 		<script type="text/javascript" src="../recursos/plugins/lib/bootstrap/js/bootstrap-switch2.js"></script>
+		<script type="text/javascript" src="../recursos/plugins/lib/jquery.dataTables.js"></script>
 		<script type="text/javascript" src="choferes/formularioNuevo.js"></script>
-		<script type="text/javascript" src="choferes/cargarDatos.js"></script>
+		<script type="text/javascript" src="choferes/cargarMoviles.js"></script>
 	</head>
 	<body>
+	
+<script type="text/javascript">
+var parametro = new Array();
+
+	function cargarTabla() {
+		var movilesSeleccionados = new Array();
+		var contador = 0;
+		var movilesEnTabla = new Array();
+		
+		
+		$('.checks:checked').each(
+    function() {
+    	  movilesSeleccionados[contador] = $(this).prop("id");
+    	  contador = contador + 1;
+    });
+    
+    if ($('#tabla >tbody >tr').length != 0) {
+    	contador = 0;
+    	$("#tabla tr").find('td:eq(1)').each(function () {
+ 				numeroMovil = $(this).html();
+ 				movilesEnTabla[contador] = numeroMovil;
+ 				contador = contador + 1;
+		});
+    }
+		contador = 0;
+		for (i=0 ; i < movilesSeleccionados.length; i++) {
+			for (j=0 ; j < registrosMoviles.moviles.length; j++) {
+				if (registrosMoviles.moviles[j].id == movilesSeleccionados[i]) {
+						movilEncontrado = false;
+						if (movilesEnTabla.length != 0) {
+							for (k=0 ; k < movilesEnTabla.length ; k++) {
+								if (movilesEnTabla[k] == registrosMoviles.moviles[j].numero) {
+									movilEncontrado = true;
+								}
+							}
+						}
+						
+						if (movilEncontrado == false) {
+							
+							parametro[0] = registrosMoviles.moviles[j].id;
+							parametro[1] = registrosMoviles.moviles[j].numero;
+
+							var nuevaFila = "<tr>";
+                           contador = contador + 1;
+                           
+                           nuevaFila += "<td>"+contador+"</td>";
+
+									nuevaFila += "<td>"+registrosMoviles.moviles[j].numero+"</td>";
+									nuevaFila += "<td>"+registrosMoviles.moviles[j].patente+"</td>";
+									nuevaFila += "<td>"+registrosMoviles.moviles[j].modelo+"</td>";
+									nuevaFila += "<td>"+registrosMoviles.moviles[j].marca+"</td>";
+									
+									nuevaFila += "<td>";
+									nuevaFila += " <a href='#myModal' onclick='guardarIdyNumero(this);' class='boton_eliminar' id='tabla-"+registrosMoviles.moviles[j].id+"' name='boton_eliminar' role='button' data-toggle='modal'><i class='fa fa-trash-o'></i></a>";								
+									nuevaFila += "</td>";
+									
+									nuevaFila +="</tr>";
+		
+									$("#tabla").append(nuevaFila);
+						}
+						
+					}
+					
+				}
+			}
+	}
+</script>
+
+<script type="text/javascript">
+var fila;
+function guardarIdyNumero(t) {
+	fila = t;
+	idDeMovil = parametro[0];
+	
+	numeroDeMovil = parametro[1];
+}
+
+function eliminarRegistro() {
+
+	var urlEliminarDatos = "choferes/eliminarMovil.php";
+	var parametro = "id_movil="+idDeMovil;
+	
+	if (_id != 0) {
+		parametro += "&id_chofer="+_id;
+		$.ajax({
+					type: 'post',
+                    url: urlEliminarDatos, 
+                    data: parametro,           
+                    dataType: 'html',
+                    beforeSend: function(){
+                        
+                    },   
+                    success: function(data) {
+								          
+                    	notificacion("success", "Móvil borrado correctamente");
+                    },
+                    error: function(a,b,c){
+                        console.log(a);
+                        console.log(b);
+                        console.log(c);  		
+                    }
+
+				});
+	}
+
+		 var td = fila.parentNode;
+var tr = td.parentNode;
+var table = tr.parentNode;
+table.removeChild(tr);
+
+
+}
+</script>
 
 	<div class="content">
 		<div class="header">
@@ -124,20 +238,86 @@
 					
 
 					<!--Tab con formulario Automovil-->
-					<!--<div class="tab-pane fade" id="automovil">
+					<div class="tab-pane fade" id="automovil">
 						<form id="formulario-automovil" name="form" class="form">
-							<div class="col-md-4">
-								<div class="form-group">
-								<label>Aire Acondicionado</label><br><input type="checkbox" checked id="aa" name="aa" class="form-control">
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-								<label>GNC</label><br><input type="checkbox" id="gnc" name="gnc" class="form-control">
-								</div>
+							<div style="margin: auto 1em;">
+							
+<div class="btn-toolbar list-toolbar">
+    <a class="btn btn-primary" data-toggle="modal" href="#ModaldeTabla"><i class="fa fa-plus"></i> </a>
+    
+  <div class="btn-group">
+  </div>
+</div> 							
+							
+								<table id="tabla" class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>N&uacute;mero</th>
+      <th>Patente</th>
+      <th>Modelo</th>
+      <th>Marca</th>
+      <th style="width: 3.5em;"></th>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>
+							
+<div class="modal fade" id="ModaldeTabla">
+        <div class="modal-dialog">
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                               <h4 class="modal-title">Lista de M&oacute;viles</h4>
+                        </div>
+                        
+  <div class="modal-body" style="height: 400px; overflow: auto;">
+   <table id="tablaModal" class="table">
+  <thead>
+    <tr>
+      <th style="width: 4em;"></th>
+      <th>N&uacute;mero</th>
+      <th>Patente</th>
+      <th>Modelo</th>
+      <th>Marca</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>
+  </div>
+                         <div class="modal-footer">
+                              <button type="button" onClick="cargarTabla()" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                         </div>
+                </div>
+        </div>
+</div>
+
+<div class="modal small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Confirmar eliminaci&oacute;n</h3>
+        </div>
+        <div class="modal-body">
+            <p class="error-text"><i class="fa fa-warning modal-icon"></i>¿Esta seguro que quiere borrar el m&oacute;vil?<br></p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+            <button class="btn btn-danger" onclick="eliminarRegistro()" data-dismiss="modal">Borrar</button>
+        </div>
+      </div>
+    </div>
+</div>						
+							
 							</div>
 						</form>
-					</div>-->
+					</div>
 
 					<!--Tab con formulario Habilitacion-->
 					<div class="tab-pane fade" id="habilitacion">
@@ -157,6 +337,7 @@
 
 
 		</div>
+		
 		
 
 		<footer>
@@ -188,17 +369,21 @@
 	<script>
 		jQuery(document).ready(function() {
 			_id = '<?php if(!empty($_GET["id"])){ echo $_GET["id"];} else { echo 0;} ?>'; 			
-			
+					
             $("[name='sexo']").bootstrapSwitch2();
             $("[name='habilitado']").bootstrapSwitch();
             
-				           
+            var idDeMovil;
+				var registrosMoviles;
+				var numeroDeMovil;	
+				
+				NuevoChofer.init();
+            CargarMoviles.init();
             
-            NuevoChofer.init();
             
-            if(_id != 0){
+            /*if(_id != 0){
         			CargarDatos.init();
-      		}
+      		}*/
         });
 	</script>
 	</body>
