@@ -95,7 +95,7 @@ var NuevoAdministrador = {
 
                     var form = $(".form").serialize();
 alert(form);
-                   /* $.ajax({
+                   /*$.ajax({
                         type: 'post',
                         url: urlNuevo, 
                         data: form,           
