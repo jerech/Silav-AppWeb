@@ -7,19 +7,19 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<script type="text/javascript" src="moviles/mostrarTabla.js"></script>
+		<script type="text/javascript" src="choferes/mostrarTabla.js"></script>
 		<script type="text/javascript" src="../recursos/plugins/lib/jquery.dataTables.js"></script>
 	</head>
 	<body>   
     
 <script type="text/javascript">
 function guardarId(id) {	
- idMovil = id;		
+ idChofer = id;		
 				
 		}  
 function eliminarRegistro() {
-	var urlEliminarDatos = "moviles/eliminar.php";
-	var parametro = "id="+idMovil;
+	var urlEliminarDatos = "choferes/eliminar.php";
+	var parametro = "id="+idChofer;
 	$.ajax({
 					type: 'post',
                     url: urlEliminarDatos, 
@@ -30,7 +30,8 @@ function eliminarRegistro() {
                     },   
                     success: function(data) {
 								          
-                    	notificacion("success", "Móvil borrado correctamente");
+                    	notificacion("success", "Chofer borrado correctamente");
+                    	window.location.replace("panelSitio.php?subSeccion=VerChoferes");
                     },
                     error: function(a,b,c){
                         console.log(a);
@@ -45,13 +46,13 @@ function eliminarRegistro() {
     
 	<div class="content">
         <div class="header">
-		    <h1 class="page-title">Lista de M&oacute;viles</h1>
+		    <h1 class="page-title">Lista de Choferes</h1>
 		    <ul class="breadcrumb">
 		        <li>
 		            <a href="panelSitio.php?seccion=Inicio">Inicio</a>
 		        </li>
 		        <li>
-		            <a href="panelSitio.php?subSeccion=VerMoviles">M&oacute;viles</a>
+		            <a href="panelSitio.php?subSeccion=VerMoviles">Choferes</a>
 		        </li>
 		        <li>
 		            <a>Ver Lista</a>
@@ -60,7 +61,7 @@ function eliminarRegistro() {
 		</div>
         <div class="main-content">
          <div class="btn-toolbar list-toolbar">
-    <a class="btn btn-primary" href="panelSitio.php?subSeccion=NuevoMovil"><i class="fa fa-plus"></i> Nuevo</a>
+    <a class="btn btn-primary" href="panelSitio.php?subSeccion=NuevoChofer"><i class="fa fa-plus"></i> Nuevo</a>
     
   <div class="btn-group">
   </div>
@@ -70,10 +71,10 @@ function eliminarRegistro() {
   <thead>
     <tr>
       <th>#</th>
-      <th>N&uacute;mero</th>
-      <th>Patente</th>
-      <th>Modelo</th>
-      <th>Marca</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Usuario</th>
+      <th>Tel&eacute;fono</th>
       <th style="width: 3.5em;"></th>
     </tr>
   </thead>
@@ -100,7 +101,7 @@ function eliminarRegistro() {
             <h3 id="myModalLabel">Confirmar eliminaci&oacute;n</h3>
         </div>
         <div class="modal-body">
-            <p class="error-text"><i class="fa fa-warning modal-icon"></i>¿Esta seguro que quiere borrar el m&oacute;vil?<br></p>
+            <p class="error-text"><i class="fa fa-warning modal-icon"></i>¿Esta seguro que quiere borrar el chofer?<br></p>
         </div>
         <div class="modal-footer">
             <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancelar</button>
@@ -123,7 +124,7 @@ function eliminarRegistro() {
 
 	<script>
 		jQuery(document).ready(function() {
-            var idMovil;
+            var idChofer;
             
             mostrarDatos.init();
 

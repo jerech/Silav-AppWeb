@@ -13,6 +13,7 @@
 		<script type="text/javascript" src="../recursos/plugins/lib/jquery.dataTables.js"></script>
 		<script type="text/javascript" src="choferes/formularioNuevo.js"></script>
 		<script type="text/javascript" src="choferes/cargarMoviles.js"></script>
+		<script type="text/javascript" src="choferes/cargarDatos.js"></script>
 	</head>
 	<body>
 	
@@ -381,9 +382,9 @@ table.removeChild(tr);
             CargarMoviles.init();
             
             
-            /*if(_id != 0){
+            if(_id != 0){
         			CargarDatos.init();
-      		}*/
+      		}
         });
 	</script>
 	</body>

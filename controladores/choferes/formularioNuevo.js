@@ -23,7 +23,7 @@ var NuevoChofer = {
          $.ajax({
          	type: 'post',
             url: urlNuevo, 
-            data: form,           
+            data: form,         
             dataType: 'html',
             beforeSend: function(){
                            

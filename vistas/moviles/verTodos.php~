@@ -33,7 +33,6 @@ function eliminarRegistro() {
                     	notificacion("success", "Móvil borrado correctamente");
                     },
                     error: function(a,b,c){
-                    	alert("error");
                         console.log(a);
                         console.log(b);
                         console.log(c);  		

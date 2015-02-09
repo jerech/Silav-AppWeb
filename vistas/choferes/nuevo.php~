@@ -84,9 +84,9 @@ var parametro = new Array();
 </script>
 
 <script type="text/javascript">
-var t;
-function guardarIdyNumero(fila) {
-	t = fila;
+var fila;
+function guardarIdyNumero(t) {
+	fila = t;
 	idDeMovil = parametro[0];
 	
 	numeroDeMovil = parametro[1];
@@ -120,7 +120,7 @@ function eliminarRegistro() {
 				});
 	}
 
-		 var td = t.parentNode;
+		 var td = fila.parentNode;
 var tr = td.parentNode;
 var table = tr.parentNode;
 table.removeChild(tr);
@@ -381,9 +381,9 @@ table.removeChild(tr);
             CargarMoviles.init();
             
             
-            /*if(_id != 0){
+            if(_id != 0){
         			CargarDatos.init();
-      		}*/
+      		}
         });
 	</script>
 	</body>

@@ -1,7 +1,7 @@
 var CargarMoviles = {
 
 	init: function(){
-
+		//esta funcion crea la tabla en la ventana modal con todos los registros de la tabla Moviles
 		urlObtenerMoviles = "choferes/obtenerMoviles.php";
 
 		$.ajax({

@@ -72,9 +72,31 @@
 	$resultado = mysql_query($query, $conexion) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
 
 	if($resultado){
-		echo "OK_";//.mysql_insert_id(); //Con la funcion mysql_insert_id() se obtiene el id del elemento insertado
+		asignarMoviles(mysql_insert_id(), $moviles);
+		echo "OK_".mysql_insert_id(); //Con la funcion mysql_insert_id() se obtiene el id del elemento insertado
 	}
 
 	mysql_close($conexion);
+	
+	function asignarMoviles($idChofer, $moviles) {
+		if(!empty($moviles)){
+                    foreach ($moviles as $movil) {
+                        $idMovil = $movil;
+                        /*
+                         * ESTABLECER CONSULTA
+                         */
+                        $query = "
+                                INSERT INTO AsignacionesMovil(
+                                        id_chofer,
+                                        id_movil)
+                                VALUES(
+                                        $idChofer,
+                                        $idMovil)";
 
+                        $respuesta = mysql_query($query)or die('Error: '.mysql_error().'. Nro: '.mysql_errno());;
+                        
+                     		
+                    }	
+                }
+	}
 ?>

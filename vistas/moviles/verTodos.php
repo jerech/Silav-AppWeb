@@ -31,6 +31,7 @@ function eliminarRegistro() {
                     success: function(data) {
 								          
                     	notificacion("success", "Móvil borrado correctamente");
+                    	window.location.replace("panelSitio.php?subSeccion=VerMoviles");
                     },
                     error: function(a,b,c){
                         console.log(a);

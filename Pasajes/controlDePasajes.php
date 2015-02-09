@@ -66,6 +66,10 @@
 			margin: 0 auto;
 
         }
+        .col-md-0 {
+        	width: 30%;
+        	display: inline-block;
+        }
     </style>
 
     <div class="navbar navbar-default" role="navigation">
@@ -94,14 +98,13 @@
     </div>
     <div class="main-content">
 	
-    	<div class="row">
-     <div id="contenedor" class="col-sm-6 col-md-6">
-			        <div class="panel panel-default">
+     <!--<div id="contenedor" class="col-sm-6 col-md-6">-->
+			        <div class="panel panel-default" style="margin: 0 auto; width: 80%;">
 			            <a href="#widget2container2" class="panel-heading" data-toggle="collapse">Pasajes </a>
-			            <div id="widget2container2" class="panel-body collapse in">
-			            <div id="contenedorFormulario">
+			            <div id="widget2container2" class="panel-body collapse in" style="border: 1px solid #000;">
 
-			                <form id="formulario-pasajes" name="form" class="form">
+			                <form id="formulario-pasajes" name="form" class="form" >
+			                <div style="border: 1px solid #956;">
 							<div class="col-md-4">
 								<div class="form-group">
 								<label>Calle</label><input type="text" id="calle" name="calle" class="form-control">
@@ -130,7 +133,7 @@
 								
 							</div>
 
-													
+									</div>				
 						</form>
 <div class="row">
 	<div class="col-md-8" style="text-align: center;">
@@ -142,14 +145,12 @@
 					</div>
     			</div>
     	</div>
-						</div>
 						
 			            </div>
 			            
 			        </div>
 			        
-    			</div>
-    			</div>
+    			<!--</div>-->
     			
     			</div>		
 <script type="text/javascript">

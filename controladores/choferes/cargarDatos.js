@@ -57,24 +57,7 @@ var CargarDatos = {
                         	var contador = 0;
                         	$(data.movilesAsignados).each(function(index){
 
-                        	contador = contador + 1;
-                           
-                           var nuevaFila = "<tr>";
-		
-									nuevaFila += "<td>"+contador+"</td>";
-									nuevaFila += "<td>"+data.movilesAsignados[index].numero+"</td>";
-									nuevaFila += "<td>"+data.movilesAsignados[index].patente+"</td>";
-									nuevaFila += "<td>"+data.movilesAsignados[index].modelo+"</td>";
-									nuevaFila += "<td>"+data.movilesAsignados[index].marca+"</td>";
-
-									nuevaFila += "<td>";
-									nuevaFila += "<a href='panelSitio.php?subSeccion=ModificarMovil&id="+data.movilesAsignados[index].id+"'><i class='fa fa-pencil'></i></a>";
-      							nuevaFila += " <a href='#myModal' onclick='guardarId("+data.movilesAsignados[index].id+");' class='boton_eliminar' id='"+data.movilesAsignados[index].id+"' name='boton_eliminar' role='button' data-toggle='modal'><i class='fa fa-trash-o'></i></a>";
-      							nuevaFila += "</td>";
-		
-									nuevaFila +="</tr>";
-		
-									$("#tabla").append(nuevaFila); 
+                        	 
 								
 								                           
                         });
@@ -93,3 +76,21 @@ var CargarDatos = {
 
 	}
 }
+/*contador = contador + 1;
+                           
+                           var nuevaFila = "<tr>";
+		
+									nuevaFila += "<td>"+contador+"</td>";
+									nuevaFila += "<td>"+data.movilesAsignados[index].numero+"</td>";
+									nuevaFila += "<td>"+data.movilesAsignados[index].patente+"</td>";
+									nuevaFila += "<td>"+data.movilesAsignados[index].modelo+"</td>";
+									nuevaFila += "<td>"+data.movilesAsignados[index].marca+"</td>";
+
+									nuevaFila += "<td>";
+									nuevaFila += "<a href='panelSitio.php?subSeccion=ModificarMovil&id="+data.movilesAsignados[index].id+"'><i class='fa fa-pencil'></i></a>";
+      							nuevaFila += " <a href='#myModal' onclick='guardarId("+data.movilesAsignados[index].id+");' class='boton_eliminar' id='"+data.movilesAsignados[index].id+"' name='boton_eliminar' role='button' data-toggle='modal'><i class='fa fa-trash-o'></i></a>";
+      							nuevaFila += "</td>";
+		
+									nuevaFila +="</tr>";
+		
+									$("#tabla").append(nuevaFila);*/

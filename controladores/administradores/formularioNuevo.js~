@@ -94,8 +94,8 @@ var NuevoAdministrador = {
                     $("#re-contrasenia").val("");
 
                     var form = $(".form").serialize();
-
-                   $.ajax({
+alert(form);
+                   /* $.ajax({
                         type: 'post',
                         url: urlNuevo, 
                         data: form,           
@@ -121,7 +121,7 @@ var NuevoAdministrador = {
                         }
 
 
-                    });
+                    });*/
 
                 });
 

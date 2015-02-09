@@ -1,7 +1,7 @@
 var CargarMoviles = {
 
 	init: function(){
-
+		//esta funcion crea la tabla en la ventana modal con todos los registros de la tabla Moviles
 		urlObtenerMoviles = "choferes/obtenerMoviles.php";
 
 		$.ajax({
@@ -42,65 +42,5 @@ var CargarMoviles = {
 
                     });
 
-	
-	
-	function cargarTabla() {
-		var movilesSeleccionados = new Array();
-		var contador = 0;
-		var movilesEnTabla = new Array();
-		
-		$('.checks:checked').each(
-    function() {
-    	  movilesSeleccionados[contador] = $(this).prop("id");
-    	  contador = contador + 1;
-    });
-    
-    if ($('#tabla >tbody >tr').length != 0) {
-    	contador = 0;
-    	$("#tabla tr").find('td:eq(1)').each(function () {
- 				numeroMovil = $(this).html();
- 				movilesEnTabla[contador] = numeroMovil;
- 				contador = contador + 1;
-		});
-    }
-		contador = 0;
-		for (i=0 ; i < movilesSeleccionados.length; i++) {
-			for (j=0 ; j < registrosMoviles.moviles.length; j++) {
-				if (registrosMoviles.moviles[j].id == movilesSeleccionados[i]) {
-						movilEncontrado = false;
-						if (movilesEnTabla.length != 0) {
-							for (k=0 ; k < movilesEnTabla.length ; k++) {
-								if (movilesEnTabla[k] == registrosMoviles.moviles[j].numero) {
-									movilEncontrado = true;
-								}
-							}
-						}
-						
-						if (movilEncontrado == false) {
-							var parametro = registrosMoviles.moviles[j].id+"_"+registrosMoviles.moviles[j].numero;
-							var nuevaFila = "<tr>";
-                           contador = contador + 1;
-                           
-                           nuevaFila += "<td>"+contador+"</td>";
-
-									nuevaFila += "<td>"+registrosMoviles.moviles[j].numero+"</td>";
-									nuevaFila += "<td>"+registrosMoviles.moviles[j].patente+"</td>";
-									nuevaFila += "<td>"+registrosMoviles.moviles[j].modelo+"</td>";
-									nuevaFila += "<td>"+registrosMoviles.moviles[j].marca+"</td>";
-									
-									nuevaFila += "<td>";
-									nuevaFila += " <a href='#myModal' onClick='guardarIdyNumero("+parametro+");' class='boton_eliminar' id='tabla-"+registrosMoviles.moviles[j].id+"' name='boton_eliminar' role='button' data-toggle='modal'><i class='fa fa-trash-o'></i></a>";								
-									nuevaFila += "</td>";
-									
-									nuevaFila +="</tr>";
-		
-									$("#tabla").append(nuevaFila);
-						}
-						
-					}
-					
-				}
-			}
 	}
-} 
 }

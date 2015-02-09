@@ -6,7 +6,7 @@ var NuevoChofer = {
    	urlModificar = "choferes/modificar.php";   
 
       $("#btnGuardar").click(function(){
-
+alert("fdf");
 			var contrasenia = $("#contrasenia").val();
          var reContrasenia = $("#re-contrasenia").val();
 
@@ -19,11 +19,11 @@ var NuevoChofer = {
          $("#re-contrasenia").val("");
 
       	var form = $(".form").serialize();
-
-         $.ajax({
+alert(form);
+        /* $.ajax({
          	type: 'post',
             url: urlNuevo, 
-            data: form,           
+            data: form,         
             dataType: 'html',
             beforeSend: function(){
                            
@@ -35,7 +35,7 @@ var NuevoChofer = {
                }else{
                	notificacion("success", "Chofer guardado correctamente");
                   $(".form-control").val('');
-                  //$(".sexo").bootstrapSwitch2("state",false);
+
                }                         
              },
              error: function(a,b,c){
@@ -44,7 +44,7 @@ var NuevoChofer = {
                console.log(b);
                console.log(c);         
              }
-          });
+          });*/
        });
        
        $("#btnModificar").click(function(){
