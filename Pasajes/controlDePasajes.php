@@ -24,6 +24,7 @@
     <script src="../recursos/plugins/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
     
     <script src="cargarChoferes.js" type="text/javascript"></script>
+    <script src="enviarPasaje.js" type="text/javascript"></script>
     
     <script type="text/javascript">
         $(function() {
@@ -158,7 +159,7 @@
  				var choferesConectados;
  				
             CargarChoferes.init();	
-
+				EnviarPasaje.init();
         });
 </script>
 
@@ -171,8 +172,7 @@
 			
 			$("#movil").val(choferesConectados.choferes[i].numero_movil);
 		}
-	}
-			
+	}		
 
     });
 </script>
