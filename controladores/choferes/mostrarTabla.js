@@ -14,7 +14,7 @@ var mostrarDatos = {
                         
                     },   
                     success: function(data) {
-								var contador = 0;
+								//var contador = 0;
                         
                         $(data.choferes).each(function(index){
                         	

@@ -14,15 +14,15 @@ var mostrarDatos = {
                         
                     },   
                     success: function(data) {
-								var contador = 0;
+								//var contador = 0;
                         
-                        $(data.moviles).each(function(index){
+                        $(data.choferes).each(function(index){
                         	
                         	contador = contador + 1;
                            
                            var nuevaFila = "<tr>";
 		
-									nuevaFila += "<td>"+contador+"</td>";
+									//nuevaFila += "<td>"+contador+"</td>";
 									nuevaFila += "<td>"+data.choferes[index].nombre+"</td>";
 									nuevaFila += "<td>"+data.choferes[index].apellido+"</td>";
 									nuevaFila += "<td>"+data.choferes[index].usuario+"</td>";

@@ -26,9 +26,19 @@
 	$resultado = mysql_query($query, $conexion) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
 
 	if($resultado){
+		eliminarMovilesAsignados($id);
 		echo "OK_"; 
 	}
 
 	mysql_close($conexion);
 
+	function eliminarMovilesAsignados($idChofer) {
+		  	$query2 = "
+  				DELETE FROM AsignacionesMovil 
+
+         	WHERE 
+              id_chofer=$idChofer";
+			
+			$respuesta = mysql_query($query2)or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
+	}
 ?>

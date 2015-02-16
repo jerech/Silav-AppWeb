@@ -7,7 +7,7 @@ var EnviarPasaje = {
 			urlpasajeGCM = "../Pasajes/pasajeGCM.php";
 			
 			var form = $(".form").serialize();
-			alert(form);
+alert(form);
 		/*$.ajax({
                         type: 'post',
                         url: urlpasajeGCM, 

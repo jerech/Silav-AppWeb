@@ -25,12 +25,13 @@ var parametro = new Array();
 		var contador = 0;
 		var movilesEnTabla = new Array();
 		
-		
 		$('.checks:checked').each(
     function() {
     	  movilesSeleccionados[contador] = $(this).prop("id");
     	  contador = contador + 1;
     });
+    
+	idMovilesSeleccionados = movilesSeleccionados;    
     
     if ($('#tabla >tbody >tr').length != 0) {
     	contador = 0;
@@ -68,7 +69,7 @@ var parametro = new Array();
 									nuevaFila += "<td>"+registrosMoviles.moviles[j].modelo+"</td>";
 									nuevaFila += "<td>"+registrosMoviles.moviles[j].marca+"</td>";
 									
-									nuevaFila += "<td>";
+									nuevaFila += "<td id='"+registrosMoviles.moviles[j].id+"'>";
 									nuevaFila += " <a href='#myModal' onclick='guardarIdyNumero(this);' class='boton_eliminar' id='tabla-"+registrosMoviles.moviles[j].id+"' name='boton_eliminar' role='button' data-toggle='modal'><i class='fa fa-trash-o'></i></a>";								
 									nuevaFila += "</td>";
 									
@@ -126,7 +127,13 @@ var tr = td.parentNode;
 var table = tr.parentNode;
 table.removeChild(tr);
 
+}
 
+function eliminarRegistroParaModificar() {
+	var td = fila.parentNode;
+var tr = td.parentNode;
+var table = tr.parentNode;
+table.removeChild(tr);
 }
 </script>
 
@@ -310,7 +317,12 @@ table.removeChild(tr);
         </div>
         <div class="modal-footer">
             <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-            <button class="btn btn-danger" onclick="eliminarRegistro()" data-dismiss="modal">Borrar</button>
+            <?php if($subSeccion == 'NuevoChofer'){
+		     				echo '<button class="btn btn-danger" onclick="eliminarRegistro()" data-dismiss="modal">Borrar</button>';
+		    			}else{
+		    				echo '<button class="btn btn-danger" onclick="eliminarRegistroParaModificar()" data-dismiss="modal">Borrar</button>';
+		    	}?>
+            
         </div>
       </div>
     </div>
@@ -376,7 +388,11 @@ table.removeChild(tr);
             
             var idDeMovil;
 				var registrosMoviles;
-				var numeroDeMovil;	
+				var numeroDeMovil;
+				var idMovilesSeleccionados;	
+				var movilesAsignadosBD;
+				var contadorFilas = 0;
+				var contador = 0;
 				
 				NuevoChofer.init();
             CargarMoviles.init();

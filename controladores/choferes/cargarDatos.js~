@@ -4,6 +4,7 @@ var CargarDatos = {
 
 		urlObtenerDatos = "choferes/obtenerPorId.php";
 		urlObtenerMovilesAsignados = "choferes/obtenerMovilesAsignados.php";
+		urlObtenerMoviles = "choferes/obtenerMoviles.php";
 
 		$.ajax({
                         type: 'post',
@@ -55,31 +56,63 @@ var CargarDatos = {
                         },   
                         success: function(data) {
                         	var contador = 0;
+                        	var movilesAsignados = new Array();
+                        	
+                        	
                         	$(data.movilesAsignados).each(function(index){
-
-                        	contador = contador + 1;
+										movilesAsignados[contador] = data.movilesAsignados[index].id_movil;
+										contador = contador + 1;                  
+                        	});
+                        	
+									if (movilesAsignados.length > 0) {
+										movilesAsignadosBD = movilesAsignados;
+				$.ajax({
+					type: 'post',
+                    url: urlObtenerMoviles, 
+                    data: {},           
+                    dataType: 'json',
+                    beforeSend: function(){
+                        
+                    },   
+                    success: function(data) {
+                        //var contadorFilas = 0;
+                        $(data.moviles).each(function(index){
+                        	for (i=0 ; i<movilesAsignados.length ; i++) {
+                        		if (movilesAsignados[i] == data.moviles[index].id) {
+                        			contadorFilas = contadorFilas + 1;
                            
                            var nuevaFila = "<tr>";
 		
-									nuevaFila += "<td>"+contador+"</td>";
-									nuevaFila += "<td>"+data.movilesAsignados[index].numero+"</td>";
-									nuevaFila += "<td>"+data.movilesAsignados[index].patente+"</td>";
-									nuevaFila += "<td>"+data.movilesAsignados[index].modelo+"</td>";
-									nuevaFila += "<td>"+data.movilesAsignados[index].marca+"</td>";
+									//nuevaFila += "<td>"+contadorFilas+"</td>";
+									nuevaFila += "<td>"+data.moviles[index].numero+"</td>";
+									nuevaFila += "<td>"+data.moviles[index].patente+"</td>";
+									nuevaFila += "<td>"+data.moviles[index].modelo+"</td>";
+									nuevaFila += "<td>"+data.moviles[index].marca+"</td>";
 
-									nuevaFila += "<td>";
-									nuevaFila += "<a href='panelSitio.php?subSeccion=ModificarMovil&id="+data.movilesAsignados[index].id+"'><i class='fa fa-pencil'></i></a>";
-      							nuevaFila += " <a href='#myModal' onclick='guardarId("+data.movilesAsignados[index].id+");' class='boton_eliminar' id='"+data.movilesAsignados[index].id+"' name='boton_eliminar' role='button' data-toggle='modal'><i class='fa fa-trash-o'></i></a>";
+									nuevaFila += "<td id='"+data.moviles[index].id+"'>";
+      							nuevaFila += "<a href='#myModal' onclick='guardarIdyNumero(this);' class='boton_eliminar' id='"+data.moviles[index].id+"' name='boton_eliminar' role='button' data-toggle='modal'><i class='fa fa-trash-o'></i></a>";
       							nuevaFila += "</td>";
 		
 									nuevaFila +="</tr>";
 		
-									$("#tabla").append(nuevaFila); 
-								
-								                           
-                        });
-									
-                                                     
+									$("#tabla").append(nuevaFila);
+                        		}
+                        	}
+                        });	
+       
+                    },
+                    error: function(a,b,c){
+                        console.log(a);
+                        console.log(b);
+                        console.log(c);  		
+                    }
+
+				});										
+										
+									}
+                           else {
+                           	movilesAsignadosBD = new Array();	
+                           }                         
                         },
                         error: function(a,b,c){
                         	alert("dfd");
@@ -93,3 +126,4 @@ var CargarDatos = {
 
 	}
 }
+   								

@@ -26,6 +26,7 @@
   	$contrasenia = $_POST['contrasenia-encriptada'];
   	$numero_telefono = $_POST['numero_telefono'];
   	$venc_licencia = $_POST['venc_licencia'];
+  	$moviles = $_POST['idMovilesSeleccionados'];
 
   	if($_POST['sexo']=="on"){
   		$sexo="Hombre";

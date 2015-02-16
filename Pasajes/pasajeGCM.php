@@ -1,4 +1,10 @@
 <?php
+	//Se verifica que la sesion sea regurar, si no se sale del archivo
+	session_start();
+	if(!$_SESSION['sesion_reg']){
+        exit();
+    }
+
 $api = 'AIzaSyBRy8ZJ8bpiqg9Dny05p24WsKCDGLQLYSs'; //our api key from Google GCM
 
 // Cabecera
