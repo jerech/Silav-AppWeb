@@ -62,6 +62,18 @@ var NuevoChofer = {
        });
        
        $("#btnModificar").click(function(){
+
+		var contrasenia = $("#contrasenia").val();
+         var reContrasenia = $("#re-contrasenia").val();
+
+         var contraseniaEncriptada = hex_md5(contrasenia);
+         $("#contrasenia-encriptada").val(contraseniaEncriptada);
+         var reContraseniaEncriptada = hex_md5(reContrasenia);
+         $("#re-contrasenia-encriptada").val(reContraseniaEncriptada);
+
+         $("#contrasenia").val("");
+         $("#re-contrasenia").val("");
+
 		//movilesAsignadosBD: array con los ids de los moviles asignados a un chofer, almacenados en la base de datos
 		//movilesAsignadosModificados: array con los ids de los moviles asignados a un chofer, despues de la modificacion
 		var movilesAsignadosModificados = new Array();
@@ -69,6 +81,9 @@ var NuevoChofer = {
 		var movilesParaAgregar = new Array();		
 		var contadorParaEliminar = 0;
 		var contadorParaAgregar = 0;
+		
+		var form = $(".form").serialize();		
+		form += "&id="+_id;
 		
 		var cont = 0;
 		$('#tabla tr td').each(function () {
@@ -79,21 +94,28 @@ var NuevoChofer = {
 		}
 
 		});                    
-     	alert(movilesAsignadosModificados.length);
+
      	if (movilesAsignadosBD.length == 0) {
      		if (movilesAsignadosModificados.length == 0) {
      			//no hacer nada (no hay moviles asignados en ningun lado)
-     			alert("no hacer nada");
+     			form += "&asignacion=sinAsignaciones";
+     			
+     			modificarBD(form);
      		}
      		else {
      			//agregar todos los moviles que estan en el array movilesAsignadosModificados
-     			alert("agregar todos");
+     			form += "&asignacion=agregarAsignaciones";
+     			var formulario = serializarArray(form, movilesAsignadosModificados, "movilesParaAgregar");
+     			
+     			modificarBD(formulario);
      		}
      	}
      	else {
      		if (movilesAsignadosModificados.length == 0) {
      			//borrar todos los moviles asignados que estan en la base de datos
-     			alert("borrar todos los moviles de la BD");
+     			form += "&asignacion=borrarAsignaciones";
+     			
+     			modificarBD(form);
      		}
      		else {
      			//comparar cambios en los dos arrays
@@ -131,20 +153,34 @@ var NuevoChofer = {
      					movilEncontrado = false;
      				}
      			}
+     			if (movilesParaAgregar.length == 0 && movilesParaEliminar.length == 0) {
+     				var formulario = form+"&asignacion=sinAsignaciones";
+     			}
+     			else{
+     				form += "&asignacion=modificarAsignaciones";
+     				var formulario = serializarArray(form, movilesParaAgregar, "movilesParaAgregar");
+     				formulario = serializarArray(formulario, movilesParaEliminar, "movilesParaEliminar");
+     			}
+     			
+     			modificarBD(formulario);
      		}	
-     		alert("Agregar: "+movilesParaAgregar.length+"::Eliminar: "+movilesParaEliminar.length);
+     		
      	}
      	
      	          
 //***********************************************************
                    
-                    /*var form = $(".form").serialize();
-                
-                    form += "&id="+_id;
-                    $.ajax({
+                    
+
+                });
+	}
+}
+function modificarBD(formulario) {
+	  
+	$.ajax({
                         type: 'post',
                         url: urlModificar, 
-                        data: form,           
+                        data: formulario,           
                         dataType: 'html',
                         beforeSend: function(){
                            
@@ -165,8 +201,22 @@ var NuevoChofer = {
                         }
 
 
-                    });*/
+                    });
+}
 
-                });
+function serializarArray(formulario, arrayDatos, nombreArray) {
+	
+	if (arrayDatos.length == 0) {
+		formulario += "&";
+		formulario += nombreArray;
+		formulario += "%5B%5D=" + "0";
 	}
+	else {
+		for (i=0 ; i<arrayDatos.length ; i++) {
+			formulario += "&";
+			formulario += nombreArray;
+			formulario += "%5B%5D=" + arrayDatos[i];
+		}	
+	}
+	return formulario;
 }

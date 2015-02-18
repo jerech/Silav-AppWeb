@@ -83,7 +83,7 @@ var CargarDatos = {
                            
                            var nuevaFila = "<tr>";
 		
-									//nuevaFila += "<td>"+contadorFilas+"</td>";
+									nuevaFila += "<td>"+contadorFilas+"</td>";
 									nuevaFila += "<td>"+data.moviles[index].numero+"</td>";
 									nuevaFila += "<td>"+data.moviles[index].patente+"</td>";
 									nuevaFila += "<td>"+data.moviles[index].modelo+"</td>";

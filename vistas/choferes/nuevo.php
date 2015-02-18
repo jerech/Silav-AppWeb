@@ -391,8 +391,6 @@ table.removeChild(tr);
 				var numeroDeMovil;
 				var idMovilesSeleccionados;	
 				var movilesAsignadosBD;
-				var contadorFilas = 0;
-				var contador = 0;
 				
 				NuevoChofer.init();
             CargarMoviles.init();

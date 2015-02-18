@@ -260,7 +260,7 @@ table.removeChild(tr);
 								<table id="tabla" class="table">
   <thead>
     <tr>
-      <!--<th>#</th>-->
+      <th>#</th>
       <th>N&uacute;mero</th>
       <th>Patente</th>
       <th>Modelo</th>
