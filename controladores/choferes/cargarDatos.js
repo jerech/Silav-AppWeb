@@ -76,6 +76,7 @@ var CargarDatos = {
                     },   
                     success: function(data) {
                         var contadorFilas = 0;
+                        
                         $(data.moviles).each(function(index){
                         	for (i=0 ; i<movilesAsignados.length ; i++) {
                         		if (movilesAsignados[i] == data.moviles[index].id) {

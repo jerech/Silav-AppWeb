@@ -29,9 +29,9 @@ function eliminarRegistro() {
                         
                     },   
                     success: function(data) {
-								          
+							     window.location.replace("panelSitio.php?subSeccion=VerChoferes");
                     	notificacion("success", "Chofer borrado correctamente");
-                    	window.location.replace("panelSitio.php?subSeccion=VerChoferes");
+                    	
                     },
                     error: function(a,b,c){
                         console.log(a);
@@ -40,6 +40,7 @@ function eliminarRegistro() {
                     }
 
 				});
+
 }
  
     </script>         

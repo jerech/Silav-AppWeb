@@ -26,11 +26,12 @@ function eliminarRegistro() {
                     data: parametro,           
                     dataType: 'html',
                     beforeSend: function(){
-                        
+                        window.location.replace("panelSitio.php?subSeccion=VerChoferes");
                     },   
                     success: function(data) {
-								          
+							     
                     	notificacion("success", "Chofer borrado correctamente");
+                    	
                     },
                     error: function(a,b,c){
                         console.log(a);
@@ -39,6 +40,7 @@ function eliminarRegistro() {
                     }
 
 				});
+
 }
  
     </script>         

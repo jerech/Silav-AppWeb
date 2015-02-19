@@ -75,7 +75,8 @@ var CargarDatos = {
                         
                     },   
                     success: function(data) {
-                        //var contadorFilas = 0;
+                        var contadorFilas = 0;
+                        if($("#tabla tr:last").children('td').eq(0).text() == ""){alert("vacio");}
                         $(data.moviles).each(function(index){
                         	for (i=0 ; i<movilesAsignados.length ; i++) {
                         		if (movilesAsignados[i] == data.moviles[index].id) {

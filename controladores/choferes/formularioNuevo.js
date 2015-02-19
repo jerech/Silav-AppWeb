@@ -47,8 +47,9 @@ var NuevoChofer = {
                if(datos[0] != "OK"){
                	notificacion("error",data);      
                }else{
+               	//window.location.replace("panelSitio.php?subSeccion=NuevoChofer");
                	notificacion("success", "Chofer guardado correctamente");
-                  window.location.replace("panelSitio.php?subSeccion=NuevoChofer");
+                  $(".form-control").val('');
 
                }                         
              },
