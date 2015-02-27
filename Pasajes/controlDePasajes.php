@@ -11,7 +11,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="Sebastian" >
+    <meta name="author" content="jeremias" >
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="../recursos/plugins/lib/bootstrap/css/bootstrap.css">
@@ -178,7 +178,7 @@
  				
             CargarChoferes.init();
 				EnviarPasaje.init();
-				CargarPasajesEnCurso.init();
+				//CargarPasajesEnCurso.init();
         });
 </script>
 
