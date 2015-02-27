@@ -19,7 +19,7 @@ var CargarDatos = {
                             $("#numero").val(data.moviles[0].numero);
                             $("#patente").val(data.moviles[0].patente);
                             $("#marca").val(data.moviles[0].marca);
-                            $("#modelo").val(data.moviless[0].modelo);
+                            $("#modelo").val(data.moviles[0].modelo);
                             $("#vencseguro").val(data.moviles[0].vencseguro);
 
                             if(data.moviles[0].aa == "0"){

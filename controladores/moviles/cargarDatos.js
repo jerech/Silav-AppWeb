@@ -24,10 +24,11 @@ var CargarDatos = {
 
                             if(data.moviles[0].aa == "0"){
                             	
-                                $("[name='aa']").bootstrapSwitch.checked('false');
+                                $("[name='aa']").bootstrapSwitch("state", false);
                             }
 									if(data.moviles[0].gnc == "1"){
-                                $("[name='gnc']").bootstrapSwitch.state('true');
+
+                                $("[name='gnc']").bootstrapSwitch("state", true);
                             }
 
                                                      

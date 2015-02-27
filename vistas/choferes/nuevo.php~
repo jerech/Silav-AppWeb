@@ -134,6 +134,12 @@ var tr = td.parentNode;
 var table = tr.parentNode;
 table.removeChild(tr);
 
+var cont = 0;
+$("#tabla tr").find('td:eq(0)').each(function () {
+	cont = cont + 1;
+ 	$(this).text(cont);
+
+		});
 
 }
 

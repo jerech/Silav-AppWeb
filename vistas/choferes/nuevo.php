@@ -89,6 +89,7 @@ var parametro = new Array();
 					
 				}
 			}
+			$(".checks").prop("checked", "");
 	}
 </script>
 

@@ -36,7 +36,7 @@
 			<div class="row">
 				<div class="col-sm-6 col-md-6">
 			        <div class="panel panel-default">
-			            <a href="#widget2container1" class="panel-heading" data-toggle="collapse">M&oacute;viles </a>
+			            <a href="#widget2container1" class="panel-heading" >M&oacute;viles </a>
 			            <div id="widget2container1" class="panel-body collapse in">
 			                <h2>Geolocalizaci&oacute;n</h2>
 			                <table cellspacing="7" width="95%">
@@ -62,10 +62,10 @@
 			        <div class="panel panel-default">
 			            <a href="#widget2container2" class="panel-heading" data-toggle="collapse">Pasajes </a>
 			            <div id="widget2container2" class="panel-body collapse in">
-			                <h2>Pasajes</h2>
+			                <h2>Control de Pasajes</h2>
 			                <p>Ingresar nuevos pasajes al sistema y ver los que est&aacute;n en curso.</p>
-			                <?php if(in_array('Pasajes',$_SESSION['sesion_permisos'])){ ?>
-			                <p><button class="btn btn-primary" name="btnPasajes" id="btnPasajes">Ver »</button></p>
+			                <?php if(in_array('ControlDePasajes',$_SESSION['sesion_permisos'])){ ?>
+			                <p><button class="btn btn-primary" name="btnControlDePasajes" id="btnControlDePasajes">Ver »</button></p>
 			                <?php } ?>
 			            </div>
 			        </div>

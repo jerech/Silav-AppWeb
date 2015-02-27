@@ -24,13 +24,13 @@ var CargarDatos = {
                             $("#numero_telefono").val(data.choferes[0].numero_telefono);
                             $("#venc_licencia").val(data.choferes[0].venc_licencia);
 
-                            if(data.choferes[0].sexo == "0"){
+                            if(data.choferes[0].sexo == "Mujer"){
                             	
-                                $("[name='sexo']").bootstrapSwitch.checked('false');
+                                $("[name='sexo']").bootstrapSwitch2("state", false);
                             }
 									 if(data.choferes[0].habilitado == "0"){
-                            	
-                                $("[name='habilitado']").bootstrapSwitch.checked('false');
+
+                            	$("[name='habilitado']").bootstrapSwitch("state", false);
                             }
 
                                                      

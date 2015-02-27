@@ -18,7 +18,8 @@ $movil = $_POST['movil'];
 $cliente = $_POST['cliente'];
 
 // Datos
-$payload = array('mensaje' => utf8_encode($calle." ".$numero),
+$payload = array('direccion' => utf8_encode($calle." ".$numero),
+		'cliente' => utf8_encode($cliente),
                  'id' => '20135');
 
 

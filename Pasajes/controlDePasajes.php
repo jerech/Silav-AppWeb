@@ -20,11 +20,13 @@
     <script src="../recursos/plugins/lib/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="../recursos/plugins/lib/noty.js" type="text/javascript"></script>
     <script src="../recursos/plugins/lib/md5.js" type="text/javascript"></script>
+    <script src="../recursos/plugins/lib/bootstrap/js/bootstrap.js"></script>
 
     <script src="../recursos/plugins/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
     
     <script src="cargarChoferes.js" type="text/javascript"></script>
     <script src="enviarPasaje.js" type="text/javascript"></script>
+    <script src="cargarPasajesEnCurso.js" type="text/javascript"></script>
     
     <script type="text/javascript">
         $(function() {
@@ -67,10 +69,10 @@
 			margin: 0 auto;
 
         }
-        .col-md-0 {
-        	width: 30%;
-        	display: inline-block;
+        .centrar {
+				text-align:center;        
         }
+
     </style>
 
     <div class="navbar navbar-default" role="navigation">
@@ -98,68 +100,85 @@
       
     </div>
     <div class="main-content">
-	
-     <!--<div id="contenedor" class="col-sm-6 col-md-6">-->
-			        <div class="panel panel-default" style="margin: 0 auto; width: 80%;">
-			            <a href="#widget2container2" class="panel-heading" data-toggle="collapse">Pasajes </a>
-			            <div id="widget2container2" class="panel-body collapse in" style="border: 1px solid #000;">
 
-			                <form id="formulario-pasajes" name="form" class="form" >
-			                <div style="border: 1px solid #956;">
-							<div class="col-md-4">
-								<div class="form-group">
+			        <div class="panel panel-default" style="margin: 0 auto; width: 60%;">
+			            <a href="#widget2container2" class="panel-heading" data-toggle="collapse">Pasajes </a>
+			            <div id="widget2container2" class="panel-body collapse in" style=" width: 100%;margin:0 auto;">
+
+			             <form id="formulario-pasajes" name="form" class="form">
+							
+								<div style="width: 50%;float:left;margin:0 0 0 18%;" class="form-group">
 								<label>Calle</label><input type="text" id="calle" name="calle" class="form-control">
 								</div>
-
-								<div class="form-group">
-            <label>Chofer</label>
-            <select name="listaChoferes" id="listaChoferes" class="form-control">
+								
+								<div style="width: 10%;float:left;margin:0 0 0 3%;" class="form-group">
+								<label>N&uacute;mero</label><input type="text" id="numero" name="numero" class="form-control">
+								</div>
+						
+					
+								<div style="width: 50%;clear:left;float:left;margin:2% 0 0 18%;" class="form-group">
+            				<label>Chofer</label>
+            				<select name="listaChoferes" id="listaChoferes" class="form-control">
               
-            </select>
-          </div>
+            				</select>
+          					</div>
           
-          <div class="form-group">
+          					<div style="width: 10%;float:left;margin:2% 0 0 3%;" class="form-group">
+								<label>M&oacute;vil</label><input type="text" id="movil" name="movil" class="form-control">
+								</div>
+			
+          					<div style="width: 50%;float:left;margin:2% 0 0 18%;" class="form-group">
 								<label>Cliente</label><input type="text" id="cliente" name="cliente" class="form-control">
 								</div>
 
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-								<label>N&uacute;mero</label><input type="text" id="numero" name="numero" class="form-control">
-								</div>
-								<div class="form-group">
-								<label>M&oacute;vil</label><input type="text" id="movil" name="movil" class="form-control">
-								</div>
-								
-								
-							</div>
-
-									</div>				
+										
 						</form>
-<div class="row">
-	<div class="col-md-8" style="text-align: center;">
-					<div class="btn-toolbar list-toolbar">
 
-					<button id="btnAsignar" class="btn btn-primary"> Asignar</button>
-					
+					<div style="clear:left;text-align:center;">
 
+					<button style="margin:2% 0 0 0;" id="btnAsignar" class="btn btn-primary"> Asignar</button>
 					</div>
-    			</div>
-    	</div>
 						
 			            </div>
 			            
 			        </div>
 			        
-    			<!--</div>-->
+    <div  style="margin: 2% auto; width: 90%;">
+
+    <div class="panel panel-default">
+    
+        <div class="panel-heading" style="text-align:center;">Pasajes En Curso</div>
+        <table class="table table-bordered table-first-column-check table-hover">
+            <thead>
+                <tr>
+                    <th class="centrar">Fecha</th>
+                    <th class="centrar">Hora</th>
+                    <th class="centrar">Direcci&oacute;n</th>
+                    <th class="centrar">Cliente</th>
+                    <th class="centrar">Chofer</th>
+                    <th class="centrar">M&oacute;vil</th>
+                    <th class="centrar">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+                
+            </tbody>
+        </table>
+    </div>
+
+</div>    
     			
-    			</div>		
+    			</div>	
+    			
+    			
 <script type="text/javascript">
 	jQuery(document).ready(function() {	
  				var choferesConectados;
  				
-            CargarChoferes.init();	
+            CargarChoferes.init();
 				EnviarPasaje.init();
+				CargarPasajesEnCurso.init();
         });
 </script>
 
