@@ -178,7 +178,7 @@
  				
             CargarChoferes.init();
 				EnviarPasaje.init();
-				CargarPasajesEnCurso.init();
+				//CargarPasajesEnCurso.init();
         });
 </script>
 

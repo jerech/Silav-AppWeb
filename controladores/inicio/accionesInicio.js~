@@ -38,7 +38,7 @@ var Modulo = {
     }
     
     $("#btnControlDePasajes").click(function(){
-alert("prueba");
+
     		$.ajax({
                             type: 'POST',
                             url: 'usuarios/controlDePasajesActivo.php',
