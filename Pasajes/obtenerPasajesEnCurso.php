@@ -7,7 +7,7 @@
 
   	require_once("../conexionBD.php");
   	
-	$query = "select * from PasajesEnCurso"; 	
+	$query = "select * from PasajesEnCurso ORDER BY id DESC LIMIT 30"; 	
   	
 	$coneccion = establecerConexion();
 	if(!$coneccion){

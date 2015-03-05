@@ -7,7 +7,7 @@
 
 	//Se verifica que los campos obligatorios no esten vacios
   	if(empty($_POST['contrasenia-encriptada'])||empty($_POST['nombre'])||empty($_POST['apellido']) ||empty($_POST['usuario'])){
-  		
+  		echo date("Y-m-d H:i:s");
   		echo "Error. Campos obligatorios vacios.";
   		exit();
   	}
@@ -94,7 +94,7 @@
                                         $idChofer,
                                         $idMovil)";
 
-                        $respuesta = mysql_query($query)or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
+                        $respuesta = mysql_query($query)or die('Error: '.mysql_error().'. Nro: '.mysql_errno());;
                         
                      		
                     }	

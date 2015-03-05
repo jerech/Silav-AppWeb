@@ -11,7 +11,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="jeremias" >
+    <meta name="author" content="Sebastian" >
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="../recursos/plugins/lib/bootstrap/css/bootstrap.css">
@@ -70,7 +70,8 @@
 
         }
         .centrar {
-				text-align:center;        
+				text-align:center;
+				width: 16.5%;        
         }
 
     </style>
@@ -148,11 +149,10 @@
     <div class="panel panel-default">
     
         <div class="panel-heading" style="text-align:center;">Pasajes En Curso</div>
-        <table class="table table-bordered table-first-column-check table-hover">
+        <table class="table table-bordered table-first-column-check table-hover" id="tablaPasajes">
             <thead>
                 <tr>
                     <th class="centrar">Fecha</th>
-                    <th class="centrar">Hora</th>
                     <th class="centrar">Direcci&oacute;n</th>
                     <th class="centrar">Cliente</th>
                     <th class="centrar">Chofer</th>
@@ -162,7 +162,6 @@
             </thead>
             <tbody>
                
-                
             </tbody>
         </table>
     </div>
@@ -174,11 +173,11 @@
     			
 <script type="text/javascript">
 	jQuery(document).ready(function() {	
- 				var choferesConectados;
+ 				var choferesConectados;			
  				
             CargarChoferes.init();
 				EnviarPasaje.init();
-				//CargarPasajesEnCurso.init();
+				CargarPasajesEnCurso.init();
         });
 </script>
 

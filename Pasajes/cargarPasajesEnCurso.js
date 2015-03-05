@@ -1,14 +1,14 @@
 var CargarPasajesEnCurso = {
 
-	var urlObtenerPasajesEnCurso = "../Pasajes/obtenerPasajesEnCurso.php";
-
 	init: function(){
 			
-			var temporizador=setInterval(function(){
+			var urlObtenerPasajes = "../Pasajes/obtenerPasajesEnCurso.php";
 			
+			var temporizador=setInterval(function(){
+
 			$.ajax({
                         type: 'post',
-                        url: urlObtenerPasajesEnCurso, 
+                        url: urlObtenerPasajes, 
                         data: {},           
                         dataType: 'json',
                         beforeSend: function(){
@@ -16,20 +16,41 @@ var CargarPasajesEnCurso = {
                         },   
                         success: function(data) {
 								
+								$("#tablaPasajes > tbody:last").children().remove();
+								
 								$(data.pasajes).each(function(index){
-                        	/*<tr>
-                    <td>
 
-                    </td>
-                    <td></td>
-                    <td>
-
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>             */  
+									var nuevaFila = "<tr id='"+data.pasajes[index].id+"'>";
+									
+									nuevaFila += "<td>"+data.pasajes[index].fecha+"</td>";
+                        	nuevaFila += "<td>"+data.pasajes[index].direccion+"</td>";
+                        	nuevaFila += "<td>"+data.pasajes[index].nombreCliente+"</td>";
+                        	nuevaFila += "<td>"+data.pasajes[index].usuarioChofer+"</td>";
+                        	nuevaFila += "<td>"+data.pasajes[index].numeroMovil+"</td>";
+                        	nuevaFila += "<td>"+data.pasajes[index].estado+"</td>";
+                        	
+                        	nuevaFila += "</tr>";
+                        	
+                        	$("#tablaPasajes").append(nuevaFila);
+                        	
+                        	if (data.pasajes[index].estado == "por_asignar") { 
+                        		$("#"+data.pasajes[index].id).css("background-color", "#f00");
+                        	}
+                        	else {
+                        		if (data.pasajes[index].estado == "asignado") {
+                        			//insertar color para estado ASIGNADO
+                        		}
+                        		else {
+                        			if (data.pasajes[index].estado == "terminado") {
+                        				//insertar color para estado TERMINADO
+                        			}
+                        			else {
+                        				if (data.pasajes[index].estado == "rechazado") {
+                        					//insertar color para estado RECHAZADO
+                        				}	
+                        			}
+                        		}
+                        	}
                         });
                                                      
                         },

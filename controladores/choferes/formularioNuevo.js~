@@ -45,11 +45,11 @@ var NuevoChofer = {
             success: function(data) {
             	var datos = data.split("_");;
                if(datos[0] != "OK"){
-               	notificacion("error",data);      
+               	//notificacion("error",data);      
                }else{
-               	window.location.replace("panelSitio.php?subSeccion=NuevoChofer");
+               	//window.location.replace("panelSitio.php?subSeccion=NuevoChofer");
                	notificacion("success", "Chofer guardado correctamente");
-                  
+                  $(".form-control").val('');
 
                }                         
              },

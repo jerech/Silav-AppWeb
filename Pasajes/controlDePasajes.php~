@@ -70,7 +70,8 @@
 
         }
         .centrar {
-				text-align:center;        
+				text-align:center;
+				width: 16.5%;        
         }
 
     </style>
@@ -148,11 +149,10 @@
     <div class="panel panel-default">
     
         <div class="panel-heading" style="text-align:center;">Pasajes En Curso</div>
-        <table class="table table-bordered table-first-column-check table-hover">
+        <table class="table table-bordered table-first-column-check table-hover" id="tablaPasajes">
             <thead>
                 <tr>
                     <th class="centrar">Fecha</th>
-                    <th class="centrar">Hora</th>
                     <th class="centrar">Direcci&oacute;n</th>
                     <th class="centrar">Cliente</th>
                     <th class="centrar">Chofer</th>
@@ -161,8 +161,38 @@
                 </tr>
             </thead>
             <tbody>
-               
-                
+               <tr>
+						<td>1/1/1</td>
+						<td>dir1</td>
+						<td>cliente1</td>
+						<td>chofer1</td>
+						<td>movil1</td>
+						<td>estado</td>             
+               </tr>
+               <tr>
+						<td>2/2/2</td>
+						<td>dir2</td>
+						<td>cliente2</td>
+						<td>chofer2</td>
+						<td>movil2</td>
+						<td>estado</td>             
+               </tr>
+               <tr>
+						<td>3/3/3</td>
+						<td>dir3</td>
+						<td>cliente3</td>
+						<td>chofer3</td>
+						<td>movil3</td>
+						<td>estado</td>             
+               </tr>
+               <tr>
+						<td>4/4/4</td>
+						<td>dir4</td>
+						<td>cliente4</td>
+						<td>chofer4</td>
+						<td>movil4</td>
+						<td>estado</td>             
+               </tr>
             </tbody>
         </table>
     </div>
@@ -174,7 +204,7 @@
     			
 <script type="text/javascript">
 	jQuery(document).ready(function() {	
- 				var choferesConectados;
+ 				var choferesConectados;			
  				
             CargarChoferes.init();
 				EnviarPasaje.init();
