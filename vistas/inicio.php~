@@ -36,7 +36,7 @@
 			<div class="row">
 				<div class="col-sm-6 col-md-6">
 			        <div class="panel panel-default">
-			            <a href="#widget2container1" class="panel-heading" >M&oacute;viles </a>
+			            <a href="#widget2container1" class="panel-heading" data-toggle="collapse">M&oacute;viles </a>
 			            <div id="widget2container1" class="panel-body collapse in">
 			                <h2>Geolocalizaci&oacute;n</h2>
 			                <table cellspacing="7" width="95%">
@@ -48,7 +48,7 @@
 			                				<li>Mapa Interactivo</li>
 			                			</ul>
 			                		</p></td>
-			                		<td><p><img class="img-polaroid" src="../recursos/imagenes/mapa.jpg"></img></p></td>
+			                		<td><p><img class="img-polaroid" src="../recursos/imagenes/san_francisco2.png"></img></p></td>
 			                	</tr>
 			                </table>			            
 			                <p>Forma sencilla de monitorear la distribución de Móviles situados en la ciudad. También podrá visualizar como se asignan los pasajes automáticamente.</p>
