@@ -9,6 +9,10 @@
 	$query = "UPDATE Usuarios SET mapa_activo = 0 where usuario='$usuario'";
 
     $resultado = mysql_query($query, $conexion);
+    
+	$query2 = "UPDATE Usuarios SET pasajes_activo = 0 where usuario='$usuario'";
+
+    $resultado2 = mysql_query($query2, $conexion);
 
     mysql_close($conexion);
 

@@ -1,7 +1,7 @@
 var Modulo = {
     init : function(){
     	$("#btnGeolocalizacion").click(function(){
-
+$('#choferes').text(1);
     		$.ajax({
                             type: 'POST',
                             url: 'usuarios/mapaActivo.php',

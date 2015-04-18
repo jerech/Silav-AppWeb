@@ -52,7 +52,7 @@ $('#choferes').text(1);
                                     notificacion("error","Error al intentar ingresar al Control de Pasajes. ");
             
                                 }else{
-                                	setMapaActivo();
+                                	setControlDePasajesActivo();
                                     window.open("../Pasajes/controlDePasajes.php","_blank");
                                 }
 
