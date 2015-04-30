@@ -48,7 +48,7 @@
 			                				<li>Mapa Interactivo</li>
 			                			</ul>
 			                		</p></td>
-			                		<td><p><img class="img-polaroid" src="../recursos/imagenes/mapa.jpg"></img></p></td>
+			                		<td><p><img class="img-polaroid" src="../recursos/imagenes/geolocalizacion.jpeg"></img></p></td>
 			                	</tr>
 			                </table>			            
 			                <p>Forma sencilla de monitorear la distribución de Móviles situados en la ciudad. También podrá visualizar como se asignan los pasajes automáticamente.</p>
@@ -63,7 +63,19 @@
 			            <a href="#widget2container2" class="panel-heading" data-toggle="collapse">Pasajes </a>
 			            <div id="widget2container2" class="panel-body collapse in">
 			                <h2>Control de Pasajes</h2>
-			                <p>Ingresar nuevos pasajes al sistema y ver los que est&aacute;n en curso.</p>
+			                <table cellspacing="7" width="95%">
+			                	<tr>
+			                		<td valign="top"><p>
+			                			<ul>
+			                				<li>Monitor de Pasajes</li>
+			                				<li>Creaci&oacute;n de Pasajes</li>
+			                				<li>Asignaci&oacute;n de M&oacute;viles</li>
+			                			</ul>
+			                		</p></td>
+			                		<td><p><img class="img-polaroid" src="../recursos/imagenes/semaforo.jpeg"></img></p></td>
+			                	</tr>
+			                </table>
+			                <p>Ingresar nuevos pasajes al sistema y ver los que est&aacute;n en curso.</p><br><br>
 			                <?php if(in_array('ControlDePasajes',$_SESSION['sesion_permisos'])){ ?>
 			                <p><button class="btn btn-primary" name="btnControlDePasajes" id="btnControlDePasajes">Ver »</button></p>
 			                <?php } ?>

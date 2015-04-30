@@ -34,6 +34,29 @@
         });
     </script>
 
+    <script type="text/javascript">
+	  var usuarioNombre = '<?php echo $_SESSION["sesion_usuario"]; ?>';
+        function cerrar() {
+        	
+        	$.ajax({
+                        type: 'POST',
+                        url: '../controladores/usuarios/cerrarControlPasajesActivo.php',
+                        data:{
+									usuario: usuarioNombre
+                        },
+                        dataType: 'html',
+                        success: function(data){
+ 
+                        },
+                        error: function(a,b,c){
+                        }
+                    });    	  
+          
+          window.close();
+        }
+        
+    </script>
+    
     <link rel="stylesheet" type="text/css" href="../recursos/plugins/stylesheets/theme.css">
     <link rel="stylesheet" type="text/css" href="../recursos/plugins/stylesheets/premium.css">
 
@@ -89,7 +112,7 @@
         <div class="navbar-collapse collapse" style="height: 1px;">
           <ul id="main-menu" class="nav navbar-nav navbar-right">
             <li class="dropdown hidden-xs">
-                <a href="#">
+                <a onclick="cerrar();" href="#">
                     <b>Salir</b>      
                 </a>
 

@@ -161,38 +161,7 @@
                 </tr>
             </thead>
             <tbody>
-               <tr>
-						<td>1/1/1</td>
-						<td>dir1</td>
-						<td>cliente1</td>
-						<td>chofer1</td>
-						<td>movil1</td>
-						<td>estado</td>             
-               </tr>
-               <tr>
-						<td>2/2/2</td>
-						<td>dir2</td>
-						<td>cliente2</td>
-						<td>chofer2</td>
-						<td>movil2</td>
-						<td>estado</td>             
-               </tr>
-               <tr>
-						<td>3/3/3</td>
-						<td>dir3</td>
-						<td>cliente3</td>
-						<td>chofer3</td>
-						<td>movil3</td>
-						<td>estado</td>             
-               </tr>
-               <tr>
-						<td>4/4/4</td>
-						<td>dir4</td>
-						<td>cliente4</td>
-						<td>chofer4</td>
-						<td>movil4</td>
-						<td>estado</td>             
-               </tr>
+               
             </tbody>
         </table>
     </div>

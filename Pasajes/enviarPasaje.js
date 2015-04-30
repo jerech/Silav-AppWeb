@@ -4,7 +4,6 @@ var EnviarPasaje = {
 			
 			$("#btnAsignar").click(function(){
 				
-			urlpasajeGCM = "../Pasajes/pasajeGCM.php";
 			urlNuevoPasaje = "../Pasajes/nuevo.php";
 			
 			var form = $(".form").serialize();

@@ -31,26 +31,32 @@
             $(".knob").knob();
         });
     </script>
-	
-	 <script type="text/javascript">
+ 	
+ 	 <script type="text/javascript">
+    	
+    </script>
+    
+    <script type="text/javascript">
+	  var usuarioNombre = '<?php echo $_SESSION["sesion_usuario"]; ?>';
         function cerrar() {
-        	var usuarioNombre = '<?php echo $_SESSION["sesion_usuario"]; ?>';      	  
-           $.ajax({
+        	
+        	$.ajax({
                         type: 'POST',
-                        url: 'usuarios/cerrarMapaActivo.php',
+                        url: '../controladores/usuarios/cerrarMapaActivo.php',
                         data:{
 									usuario: usuarioNombre
                         },
                         dataType: 'html',
                         success: function(data){
-
+ 
                         },
                         error: function(a,b,c){
-                        	alert("error");	
                         }
-                    });
+                    });    	  
+          
           window.close();
         }
+        
     </script>
     
     <link rel="stylesheet" type="text/css" href="../recursos/plugins/stylesheets/theme.css">
@@ -74,7 +80,7 @@
         }
         #contenedorMapa {
         		width:100%;
-        		height:90%;        
+        		height:90%;        1
         }
     </style>
 
@@ -88,7 +94,7 @@
           </button>
           <a class="" href="index.html"><span class="navbar-brand"><span class="fa fa-taxi"></span> SiLAV</span></a></div>
 
-        <div class="navbar-collapse collapse" style="height: 1px;">
+        <div class="navbar-collapse coll1apse" style="height: 1px;">
           <ul id="main-menu" class="nav navbar-nav navbar-right">
             <li class="dropdown hidden-xs">
                 <a onclick="cerrar();" href="#">
@@ -106,7 +112,7 @@
      <div id="contenedorMapa">
      
      </div>
-     
+
 </body>
 </html>
 

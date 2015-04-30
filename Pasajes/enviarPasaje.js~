@@ -21,7 +21,7 @@ var EnviarPasaje = {
 									var datos = data.split("_");
                				if(datos[0] != "OK"){
                					//notificacion("error",data); 
-               					alert("Error: "+data);     
+               					alert(data);     
                				}else{
                					//window.location.replace("panelSitio.php?subSeccion=NuevoChofer");
                					alert("Pasaje enviado correctamente"); 
