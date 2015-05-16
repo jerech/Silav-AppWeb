@@ -1,3 +1,4 @@
+//Esta función se ejecuta una sola vez. Carga los choferes iniciales.
 var CargarChoferes = {
 
 	init: function(){
@@ -14,6 +15,7 @@ var CargarChoferes = {
                         },   
                         success: function(data) {
 								choferesConectados = data;
+								choferesAnteriores = data;
 								var contador = 0;
 								$(data.choferes).each(function(index){
                            contador = contador + 1;

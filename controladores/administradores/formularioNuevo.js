@@ -61,7 +61,7 @@ var NuevoAdministrador = {
                         grupo += '</div>';
                         grupo += '</div>';
                         grupo += '</div>';
-
+                        
                         $("#secciones").append(grupo);                  
                     
 

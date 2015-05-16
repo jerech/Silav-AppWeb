@@ -16,13 +16,13 @@
 
 		    <div class="stats">
 		        <p class="stat">
-		            <span class="label label-info" id="choferes">25</span>Choferes
+		            <span class="label label-info" id="conectados">25</span>Conectados
 		        </p>
 		        <p class="stat">
-		            <span class="label label-success" id="moviles">27</span>M&oacute;viles
+		            <span class="label label-success" id="pasajes">27</span>Pasajes en Curso
 		        </p>
 		        <p class="stat">
-		            <span class="label label-danger" id="conectados">15</span>Conectados
+		            <span class="label label-danger" id="choferes">15</span>Choferes
 		        </p>
 		    </div>
 		    <h1 class="page-title">Inicio</h1>
@@ -117,6 +117,7 @@
 		var usuarioNombre = '<?php echo $_SESSION["sesion_usuario"]; ?>';
 
 		Modulo.init();
+		MostrarInformacionResumen.init();
 	</script>
 	</body>
 </html>

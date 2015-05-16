@@ -14,6 +14,7 @@ var CargarChoferes = {
                         },   
                         success: function(data) {
 								choferesConectados = data;
+								choferesAnteriores = data;
 								var contador = 0;
 								$(data.choferes).each(function(index){
                            contador = contador + 1;
@@ -22,7 +23,7 @@ var CargarChoferes = {
                            
 									if (contador == 1) {
 										nuevaOpcion += " selected='selected' ";
-
+										$("#movil").val(data.choferes[index].numero_movil);
 									}
 									
 									nuevaOpcion += "value="+data.choferes[index].usuario+">"+data.choferes[index].usuario+"</option>";

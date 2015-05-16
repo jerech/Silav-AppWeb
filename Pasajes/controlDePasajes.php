@@ -27,6 +27,7 @@
     <script src="cargarChoferes.js" type="text/javascript"></script>
     <script src="enviarPasaje.js" type="text/javascript"></script>
     <script src="cargarPasajesEnCurso.js" type="text/javascript"></script>
+    <script src="cargarDatos.js" type="text/javascript"></script>
     
     <script type="text/javascript">
         $(function() {
@@ -198,7 +199,9 @@
 	jQuery(document).ready(function() {	
  				var choferesConectados;			
  				
-            CargarChoferes.init();
+ 				CargarChoferes.init();
+ 				//CargarDatos.init();
+            
 				EnviarPasaje.init();
 				CargarPasajesEnCurso.init();
         });
@@ -216,6 +219,12 @@
 	}		
 
     });
+</script>
+<script type="text/javascript">
+	function prueba() {
+		alert("hola");
+		return true;
+	}
 </script>
 </body>
 </html>

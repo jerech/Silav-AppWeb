@@ -61,7 +61,7 @@ var NuevoAdministrador = {
                         grupo += '</div>';
                         grupo += '</div>';
                         grupo += '</div>';
-
+alert(grupo);
                         $("#secciones").append(grupo);                  
                     
 
@@ -94,8 +94,8 @@ var NuevoAdministrador = {
                     $("#re-contrasenia").val("");
 
                     var form = $(".form").serialize();
-alert(form);
-                   /*$.ajax({
+
+                   $.ajax({
                         type: 'post',
                         url: urlNuevo, 
                         data: form,           
@@ -121,7 +121,7 @@ alert(form);
                         }
 
 
-                    });*/
+                    });
 
                 });
 
