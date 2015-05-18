@@ -48,7 +48,7 @@
 			                				<li>Mapa Interactivo</li>
 			                			</ul>
 			                		</p></td>
-			                		<td><p><img class="img-polaroid" src="../recursos/imagenes/geolocalizacion.jpeg"></img></p></td>
+			                		<td><p><img class="img-polaroid" src="../recursos/imagenes/mapa.png"></img></p></td>
 			                	</tr>
 			                </table>			            
 			                <p>Forma sencilla de monitorear la distribución de Móviles situados en la ciudad. También podrá visualizar como se asignan los pasajes automáticamente.</p>
@@ -72,7 +72,7 @@
 			                				<li>Asignaci&oacute;n de M&oacute;viles</li>
 			                			</ul>
 			                		</p></td>
-			                		<td><p><img class="img-polaroid" src="../recursos/imagenes/semaforo.jpeg"></img></p></td>
+			                		<td><p><img class="img-polaroid" src="../recursos/imagenes/pasajes.png"></img></p></td>
 			                	</tr>
 			                </table>
 			                <p>Ingresar nuevos pasajes al sistema y ver los que est&aacute;n en curso.</p><br><br>
