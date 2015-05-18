@@ -62,7 +62,7 @@
     <link rel="stylesheet" type="text/css" href="../recursos/plugins/stylesheets/premium.css">
 
 </head>
-<body class=" theme-blue" onunload="prueba();">
+<body class=" theme-blue">
 
     <style type="text/css">
         #line-chart {
@@ -138,14 +138,13 @@
 								
 								<div style="width: 10%;float:left;margin:0 0 0 3%;" class="form-group">
 								<label>N&uacute;mero</label><input type="text" id="numero" name="numero" class="form-control">
-								</div>
-						
+								</div>					
 					
 								<div style="width: 50%;clear:left;float:left;margin:2% 0 0 18%;" class="form-group">
             				<label>Chofer</label>
-            				<select name="listaChoferes" id="listaChoferes" class="form-control">
-              
-            				</select>
+            				
+              				<input type="text" id="listaChoferes" name="listaChoferes" class="form-control">
+            				
           					</div>
           
           					<div style="width: 10%;float:left;margin:2% 0 0 3%;" class="form-group">
@@ -193,17 +192,43 @@
 </div>    
     			
     			</div>	
-    			
+<div class="modal fade" id="ModaldeTabla">
+        <div class="modal-dialog">
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                               <h4 class="modal-title">Lista de Choferes</h4>
+                        </div>
+                        
+  <div class="modal-body" style="height: 400px; overflow: auto;">
+   <table id="tablaModal" class="table">
+  <thead>
+    <tr>
+      <th style="width: 4em;"></th>
+      <th>Chofer</th>
+      <th>M&oacute;vil</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>
+  </div>
+                         <div class="modal-footer">
+                              <button type="button" id="btnAceptar" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                         </div>
+                </div>
+        </div>
+</div>    			
     			
 <script type="text/javascript">
 	jQuery(document).ready(function() {	
  				var choferesConectados;			
- 				
- 				CargarChoferes.init();
- 				//CargarDatos.init();
             
 				EnviarPasaje.init();
 				CargarPasajesEnCurso.init();
+				
         });
 </script>
 
@@ -219,11 +244,21 @@
 	}		
 
     });
+    
+  
+    
+	$("#listaChoferes").focus(function () {
+		
+   	CargarTablaModal.init();
+		$('#ModaldeTabla').modal();
+   });
 </script>
 <script type="text/javascript">
-	function prueba() {
-		alert("hola");
-		return true;
+	function seleccionar(check) {
+		$('.checks:checked').each(function(){
+    		$(this).prop("checked", "");
+    	});
+    	$(check).prop("checked", "checked");
 	}
 </script>
 </body>

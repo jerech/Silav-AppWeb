@@ -74,24 +74,19 @@ var CargarDatos = {
                            
                         },   
                         success: function(data) {
-                        $('#listaChoferes').html('');
-                        
-								choferesConectados = data;
-								var contador = 0;
+
 								$(data.choferes).each(function(index){
-	
-                           contador = contador + 1;
+                           var nuevaFila = "<tr>";
                            
-                           var nuevaOpcion = "<option ";
-                           
-									if (contador == 1) {
-										nuevaOpcion += " selected='selected' ";
-										$("#movil").val(data.choferes[index].numero_movil);
-									}
-									
-									nuevaOpcion += "value="+data.choferes[index].usuario+">"+data.choferes[index].usuario+"</option>";
-									
-									$('#listaChoferes').append(nuevaOpcion);                           
+                           nuevaFila += "<td><input type='checkbox' id='"+data.choferes[index].usuario+"' class='checks'></td>";
+
+									nuevaFila += "<td>"+data.choferes[index].usuario+"</td>";
+									nuevaFila += "<td>"+data.choferes[index].numero_movil+"</td>";
+		
+									nuevaFila +="</tr>";
+		
+									$("#tablaModal").append(nuevaFila);
+                          
                         });
                                                      
                         },

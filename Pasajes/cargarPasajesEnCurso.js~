@@ -27,18 +27,18 @@ var CargarPasajesEnCurso = {
                         	nuevaFila += "<td>"+data.pasajes[index].nombreCliente+"</td>";
                         	nuevaFila += "<td>"+data.pasajes[index].usuarioChofer+"</td>";
                         	nuevaFila += "<td>"+data.pasajes[index].numeroMovil+"</td>";
-                        	nuevaFila += "<td>"+data.pasajes[index].estado+"</td>";
+                        	nuevaFila += "<td id='estado_"+data.pasajes[index].id+"'>"+data.pasajes[index].estado+"</td>";
                         	
                         	nuevaFila += "</tr>";
                         	
                         	$("#tablaPasajes").append(nuevaFila);
                         	
                         	if (data.pasajes[index].estado == "por_asignar") { 
-                        		//$("#"+data.pasajes[index].id).css("background-color", "#f00");
+                        		$("#estado_"+data.pasajes[index].id).css("background-color", "#FF6969");
                         	}
                         	else {
                         		if (data.pasajes[index].estado == "asignado") {
-                        			//insertar color para estado ASIGNADO
+                        			$("#estado_"+data.pasajes[index].id).css("background-color", "#69FF69");
                         		}
                         		else {
                         			if (data.pasajes[index].estado == "terminado") {

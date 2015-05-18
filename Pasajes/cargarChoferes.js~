@@ -1,46 +1,70 @@
 var CargarChoferes = {
-
+/*
+ * Esta función carga los datos de los choferes conectados en la tabla modal.
+ */
 	init: function(){
 
 		urlObtenerChoferes = "../Pasajes/obtenerChoferes.php";
-
+		
 		$.ajax({
-                        type: 'post',
-                        url: urlObtenerChoferes, 
-                        data: {},           
-                        dataType: 'json',
-                        beforeSend: function(){
+      	type: 'post',
+         url: urlObtenerChoferes, 
+         data: {},           
+         dataType: 'json',
+         beforeSend: function(){
                            
-                        },   
-                        success: function(data) {
-								choferesConectados = data;
-								choferesAnteriores = data;
-								var contador = 0;
-								$(data.choferes).each(function(index){
-                           contador = contador + 1;
+         },   
+         success: function(data) {
+			
+				$(data.choferes).each(function(index){
+         		var nuevaFila = "<tr>";
                            
-                           var nuevaOpcion = "<option ";
-                           
-									if (contador == 1) {
-										nuevaOpcion += " selected='selected' ";
-										$("#movil").val(data.choferes[index].numero_movil);
-									}
-									
-									nuevaOpcion += "value="+data.choferes[index].usuario+">"+data.choferes[index].usuario+"</option>";
-									
-									$('#listaChoferes').append(nuevaOpcion);                           
-                        });
-                                                     
-                        },
-                        error: function(a,b,c){
+            	nuevaFila += "<td><input type='checkbox' onclick='seleccionar(this)' id='"+data.choferes[index].usuario+"_"+data.choferes[index].numero_movil+"' class='checks'></td>";
 
-                            console.log(a);
-                            console.log(b);
-                            console.log(c);         
-                        }
+					nuevaFila += "<td>"+data.choferes[index].usuario+"</td>";
+					nuevaFila += "<td>"+data.choferes[index].numero_movil+"</td>";
+		
+					nuevaFila +="</tr>";
+		
+					$("#tablaModal").append(nuevaFila);
+                          
+          	});                                                  
+          },
+          error: function(a,b,c){
 
+          	console.log(a);
+            console.log(b);
+            console.log(c);         
+          }
+		});
+	}
+}
 
-                    });
+var CargarTablaModal = {
+/*
+ * Esta función borra las filas de la tabla modal (que contienen datos viejos)
+ * y carga los nuevos datos de choferes.
+ */
+	init: function () {
+		
+		var cantidadDeFilas = $("#tablaModal >tbody >tr").length;
+		if (cantidadDeFilas > 0) {
+			$("#tablaModal >tbody >tr").each(function () {
+				$(this).remove();
+			});
+		}
+		CargarChoferes.init();
+	}
+}
 
+var SeleccionarChofer = {
+
+	init: function () {
+	
+		var nombre;
+		$('.checks:checked').each(function (){
+      	nombre = $(this).prop('id');
+    	});
+   	
 	}
 }
