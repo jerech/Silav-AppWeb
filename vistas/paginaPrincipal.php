@@ -19,6 +19,9 @@
     <script src="../recursos/plugins/lib/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="../recursos/plugins/lib/noty.js" type="text/javascript"></script>
     <script src="../recursos/plugins/lib/md5.js" type="text/javascript"></script>
+    <script src="../recursos/plugins/lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../recursos/plugins/lib/bootstrapValidator.min.js" type="text/javascript"></script>
+    <script src="../recursos/plugins/lib/jquery.blockui.js" type="text/javascript"></script>
 
     <script src="../recursos/plugins/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -161,6 +164,8 @@
 
 
 
+
+
     <script src="../recursos/plugins/lib/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript">
         $("[rel=tooltip]").tooltip();
@@ -168,13 +173,44 @@
             $('.demo-cancel-click').click(function(){return false;});
         });
 
+        //Funciones de la notificacion
         // "op" puede estar valuada en "error", "info" o "success"
         function notificacion(op,msg,time){
             if(time == undefined)
-                time = 5000;
+                time = 8000;
             var n = noty({text:msg,maxVisible: 1,type:op,killer:true,timeout:time,layout: 'top'});
 
         }
+
+
+        //Funciones del blockUI
+        function blockUI(el, centerY) {
+            var el = jQuery(el); 
+            el.block({
+                    message: '<img src="../recursos/imagenes/cargando4.gif" align=""/><br><h3><font color="#454545"><b>Cargado...</font></h3>',
+                    centerY: centerY != undefined ? centerY : true,
+                    css: {
+                        top: '30%',
+                        border: 'none',
+                        padding: '5px',
+                        backgroundColor: '#FFF',
+                        opacity: 0.80
+                    },
+                    overlayCSS: {
+                        backgroundColor: '#000',
+                        opacity: 0.25,
+                        cursor: 'wait'
+                    }
+                });
+        }
+        function unblockUI(el) {          
+            jQuery(el).unblock({
+                    onUnblock: function () {
+                        jQuery(el).removeAttr("style");
+                    }
+                });
+        }
+
     </script>
     
   

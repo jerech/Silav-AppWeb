@@ -66,7 +66,7 @@ function eliminarRegistro() {
   <div class="btn-group">
   </div>
 </div>   
-
+<div id="div-tabla">
 <table id="tabla" class="table">
   <thead>
     <tr>
@@ -92,6 +92,8 @@ function eliminarRegistro() {
   <li><a href="#">5</a></li>
   <li><a href="#">&raquo;</a></li>
 </ul>
+
+</div>
 
 <div class="modal small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

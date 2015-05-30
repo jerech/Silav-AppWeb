@@ -12,7 +12,9 @@ var CargarDatos = {
                         },           
                         dataType: 'json',
                         beforeSend: function(){
-                           
+                          
+                            blockUI($(".main-content"));
+                      
                         },   
                         success: function(data) {
 
@@ -31,9 +33,10 @@ var CargarDatos = {
                                 $("[name='gnc']").bootstrapSwitch("state", true);
                             }
 
-                                                     
+                            unblockUI($(".main-content"));                     
                         },
                         error: function(a,b,c){
+                            unblockUI($(".main-content"));
                             console.log(a);
                             console.log(b);
                             console.log(c);         

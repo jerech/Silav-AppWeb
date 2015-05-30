@@ -76,7 +76,7 @@
 								</div>
 
 								<div class="form-group">
-								<label>Vencimiento de Seguro</label><input type="text" id="vencseguro" name="vencseguro" class="form-control">
+								<label>Vencimiento de Seguro</label><input type="text" placeholder="dd/mm/yyyy" id="vencseguro" name="vencseguro" class="form-control">
 								</div>
 			
 
