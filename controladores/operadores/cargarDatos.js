@@ -12,7 +12,7 @@ var CargarDatos = {
                         },           
                         dataType: 'json',
                         beforeSend: function(){
-                           
+                           blockUI($(".main-content"));
                         },   
                         success: function(data) {
 
@@ -28,9 +28,11 @@ var CargarDatos = {
 
 
                             cargarPermisos(data.permisos);
+                            unblockUI($(".main-content"));
                                                      
                         },
                         error: function(a,b,c){
+                            unblockUI($(".main-content"));
                             console.log(a);
                             console.log(b);
                             console.log(c);         
@@ -43,6 +45,7 @@ var CargarDatos = {
                 $('#'+permisos[i].Secciones_id).prop("checked","checked");
             }
             $(".control").show();
+            return;
         }
 	}
 }

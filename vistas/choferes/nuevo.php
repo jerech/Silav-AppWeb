@@ -171,7 +171,7 @@ $("#tabla tr").find('td:eq(0)').each(function () {
 		            <a href="panelSitio.php?seccion=Inicio">Inicio</a>
 		        </li>
 		        <li>
-		            <a href="panelSitio.php?subSeccion=NuevoChofer">Choferes</a>
+		            <a href="panelSitio.php?subSeccion=VerChoferes">Choferes</a>
 		        </li>
 		        <li>
 		        	<?php if($subSeccion == 'NuevoChofer'){
@@ -215,15 +215,15 @@ $("#tabla tr").find('td:eq(0)').each(function () {
 						<form id="formulario-perfil" name="form" class="form">
 							<div class="col-md-4">
 								<div class="form-group">
-								<label>Nombre</label><input type="text" id="nombre" name="nombre" class="form-control">
+								<label>Nombre</label><span>*</span><input type="text" id="nombre" name="nombre" class="form-control">
 								</div>
 
 								<div class="form-group">
-								<label>Apellido</label><input type="text" id="apellido" name="apellido" class="form-control">
+								<label>Apellido</label><span>*</span><input type="text" id="apellido" name="apellido" class="form-control">
 								</div>
 
 								<div class="form-group">
-								<label>Usuario</label><input type="text" id="usuario" name="usuario" class="form-control">
+								<label>Usuario</label><span>*</span><input type="text" id="usuario" name="usuario" class="form-control">
 								</div>
 			
 								<div class="form-group">
@@ -236,7 +236,7 @@ $("#tabla tr").find('td:eq(0)').each(function () {
 								<label>Tel&eacute;fono</label><input type="text" id="numero_telefono" name="numero_telefono" class="form-control">
 								</div>
 								<div class="form-group">
-								<label>Vencimiento de licencia</label><input type="text" id="venc_licencia" name="venc_licencia" class="form-control">
+								<label>Vencimiento de licencia</label><input type="text" id="venc_licencia" name="venc_licencia" placeholder="dd/mm/yyyy" class="form-control">
 								</div>
 								
 								

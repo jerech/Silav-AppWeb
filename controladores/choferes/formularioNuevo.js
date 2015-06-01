@@ -6,167 +6,222 @@ var NuevoChofer = {
    	urlModificar = "choferes/modificar.php";
    	urlObtenerMovilesAsignados = "choferes/obtenerMovilesAsignados.php";   
 
+     //Se declaran las caracteristicas del validador de formulario
+            $("#formulario-perfil").bootstrapValidator({
+                  message: 'Este valor no es valido',
+                        feedbackIcons: {
+                            valid: 'glyphicon glyphicon-ok',
+                            invalid: 'glyphicon glyphicon-remove',
+                            validating: 'glyphicon glyphicon-refresh'
+                        },
+                        submitHandler: function(validator, form, submitButton) {
+                            // Do nothing
+                        },
+                        fields: {
+                            nombre: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'El nombre es requerido'
+                                    }
+                                }
+                            },
+                            apellido: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'El apellido es requerido'
+                                    }
+                                }
+                              },
+                            usuario: {
+                                validators:{
+                                    notEmpty: {
+                                        message: 'El usuario es requerido'
+                                    }
+                                }
+                            },
+                            venc_licencia: {
+                                validators:{
+                                    date:{
+                                      format: 'DD/MM/YYYY',
+                                      message: 'El formato es incorrecto'
+                                    }
+                                }
+                            }
+                        }
+                    });
+
       $("#btnGuardar").click(function(){
 
-			var contrasenia = $("#contrasenia").val();
-         var reContrasenia = $("#re-contrasenia").val();
+        $("#formulario-perfil").data('bootstrapValidator').validate();
+        if($("#formulario-perfil").data('bootstrapValidator').isValid() == true){
 
-         var contraseniaEncriptada = hex_md5(contrasenia);
-         $("#contrasenia-encriptada").val(contraseniaEncriptada);
-         var reContraseniaEncriptada = hex_md5(reContrasenia);
-         $("#re-contrasenia-encriptada").val(reContraseniaEncriptada);
+        			var contrasenia = $("#contrasenia").val();
+                 var reContrasenia = $("#re-contrasenia").val();
 
-         $("#contrasenia").val("");
-         $("#re-contrasenia").val("");
+                 var contraseniaEncriptada = hex_md5(contrasenia);
+                 $("#contrasenia-encriptada").val(contraseniaEncriptada);
+                 var reContraseniaEncriptada = hex_md5(reContrasenia);
+                 $("#re-contrasenia-encriptada").val(reContraseniaEncriptada);
 
-      	var form = $(".form").serialize();
-			
-			var arraySerializado = "";
-			if (typeof(idMovilesSeleccionados) === "undefined"){
-				
-			}
-			else {
-				for (i=0 ; i<idMovilesSeleccionados.length ; i++) {
-					arraySerializado += "&";
-					arraySerializado += "idMovilesSeleccionados";
-					arraySerializado += "%5B%5D=" + idMovilesSeleccionados[i];
-				}
-				form += arraySerializado;
-			}
+                 $("#contrasenia").val("");
+                 $("#re-contrasenia").val("");
 
-         $.ajax({
-         	type: 'post',
-            url: urlNuevo, 
-            data: form,         
-            dataType: 'html',
-            beforeSend: function(){
-                           
-            },   
-            success: function(data) {
-            	var datos = data.split("_");;
-               if(datos[0] != "OK"){
-               	notificacion("error",data);      
-               }else{
-               	//window.location.replace("panelSitio.php?subSeccion=NuevoChofer");
-               	notificacion("success", "Chofer guardado correctamente");
-                  $(".form-control").val('');
+              	var form = $(".form").serialize();
+        			
+        			var arraySerializado = "";
+        			if (typeof(idMovilesSeleccionados) === "undefined"){
+        				
+        			}
+        			else {
+        				for (i=0 ; i<idMovilesSeleccionados.length ; i++) {
+        					arraySerializado += "&";
+        					arraySerializado += "idMovilesSeleccionados";
+        					arraySerializado += "%5B%5D=" + idMovilesSeleccionados[i];
+        				}
+        				form += arraySerializado;
+        			}
 
-               }                         
-             },
-             error: function(a,b,c){
-             	alert("error");
-             	console.log(a);
-               console.log(b);
-               console.log(c);         
-             }
-          });
+                 $.ajax({
+                 	type: 'post',
+                    url: urlNuevo, 
+                    data: form,         
+                    dataType: 'html',
+                    beforeSend: function(){
+                        blockUI($(".main-content"));    
+                    },   
+                    success: function(data) {
+                    	var datos = data.split("_");;
+                       if(datos[0] != "OK"){
+                       	notificacion("error",data);      
+                       }else{
+                       	//window.location.replace("panelSitio.php?subSeccion=NuevoChofer");
+                       	notificacion("success", "Chofer guardado correctamente");
+                          $(".form-control").val('');
+
+                       }     
+                       unblockUI($(".main-content"));                    
+                     },
+                     error: function(a,b,c){
+                        unblockUI($(".main-content"));
+                     	console.log(a);
+                       console.log(b);
+                       console.log(c);         
+                     }
+                  });
+
+            }
        });
        
        $("#btnModificar").click(function(){
 
-		var contrasenia = $("#contrasenia").val();
-         var reContrasenia = $("#re-contrasenia").val();
+        $("#formulario-perfil").data('bootstrapValidator').validate();
+        if($("#formulario-perfil").data('bootstrapValidator').isValid() == true){
 
-         var contraseniaEncriptada = hex_md5(contrasenia);
-         $("#contrasenia-encriptada").val(contraseniaEncriptada);
-         var reContraseniaEncriptada = hex_md5(reContrasenia);
-         $("#re-contrasenia-encriptada").val(reContraseniaEncriptada);
+            		var contrasenia = $("#contrasenia").val();
+                     var reContrasenia = $("#re-contrasenia").val();
 
-         $("#contrasenia").val("");
-         $("#re-contrasenia").val("");
+                     var contraseniaEncriptada = hex_md5(contrasenia);
+                     $("#contrasenia-encriptada").val(contraseniaEncriptada);
+                     var reContraseniaEncriptada = hex_md5(reContrasenia);
+                     $("#re-contrasenia-encriptada").val(reContraseniaEncriptada);
 
-		//movilesAsignadosBD: array con los ids de los moviles asignados a un chofer, almacenados en la base de datos
-		//movilesAsignadosModificados: array con los ids de los moviles asignados a un chofer, despues de la modificacion
-		var movilesAsignadosModificados = new Array();
-		var movilesParaEliminar = new Array();
-		var movilesParaAgregar = new Array();		
-		var contadorParaEliminar = 0;
-		var contadorParaAgregar = 0;
-		
-		var form = $(".form").serialize();		
-		form += "&id="+_id;
-		
-		var cont = 0;
-		$('#tabla tr td').each(function () {
+                     $("#contrasenia").val("");
+                     $("#re-contrasenia").val("");
 
-		if (typeof($(this).attr('id')) != 'undefined') {
-			movilesAsignadosModificados[cont] = $(this).attr('id');
-			cont = cont + 1;
-		}
+            		//movilesAsignadosBD: array con los ids de los moviles asignados a un chofer, almacenados en la base de datos
+            		//movilesAsignadosModificados: array con los ids de los moviles asignados a un chofer, despues de la modificacion
+            		var movilesAsignadosModificados = new Array();
+            		var movilesParaEliminar = new Array();
+            		var movilesParaAgregar = new Array();		
+            		var contadorParaEliminar = 0;
+            		var contadorParaAgregar = 0;
+            		
+            		var form = $(".form").serialize();		
+            		form += "&id="+_id;
+            		
+            		var cont = 0;
+            		$('#tabla tr td').each(function () {
 
-		});                    
+            		if (typeof($(this).attr('id')) != 'undefined') {
+            			movilesAsignadosModificados[cont] = $(this).attr('id');
+            			cont = cont + 1;
+            		}
 
-     	if (movilesAsignadosBD.length == 0) {
-     		if (movilesAsignadosModificados.length == 0) {
-     			//no hacer nada (no hay moviles asignados en ningun lado)
-     			form += "&asignacion=sinAsignaciones";
-     			
-     			modificarBD(form);
-     		}
-     		else {
-     			//agregar todos los moviles que estan en el array movilesAsignadosModificados
-     			form += "&asignacion=agregarAsignaciones";
-     			var formulario = serializarArray(form, movilesAsignadosModificados, "movilesParaAgregar");
-     			
-     			modificarBD(formulario);
-     		}
-     	}
-     	else {
-     		if (movilesAsignadosModificados.length == 0) {
-     			//borrar todos los moviles asignados que estan en la base de datos
-     			form += "&asignacion=borrarAsignaciones";
-     			
-     			modificarBD(form);
-     		}
-     		else {
-     			//comparar cambios en los dos arrays
-     			var movilEncontrado = false;
-     			//comprobar los moviles a eliminar
-     			for (i=0 ; i<movilesAsignadosBD.length ; i++) {
-     				for (j=0 ; j<movilesAsignadosModificados.length ; j++) {
-     					
-     					if (movilesAsignadosBD[i] == movilesAsignadosModificados[j]) {
-     						movilEncontrado = true;
-     					}
-     				}
-     				if (movilEncontrado == false) {
-     					movilesParaEliminar[contadorParaEliminar] = movilesAsignadosBD[i];
-     					contadorParaEliminar = contadorParaEliminar + 1;
-     				}
-     				else {
-     					movilEncontrado = false;
-     				}
-     			}
-     			//comprobar los moviles a agregar
-     			movilEncontrado = false
-     			for (i=0 ; i<movilesAsignadosModificados.length ; i++) {
-     				for (j=0 ; j<movilesAsignadosBD.length ; j++) {
-     					
-     					if (movilesAsignadosModificados[i] == movilesAsignadosBD[j]) {
-     						movilEncontrado = true;
-     					}
-     				}
-     				if (movilEncontrado == false) {
-     					movilesParaAgregar[contadorParaAgregar] = movilesAsignadosModificados[i];
-     					contadorParaAgregar = contadorParaAgregar + 1;
-     				}
-     				else {
-     					movilEncontrado = false;
-     				}
-     			}
-     			if (movilesParaAgregar.length == 0 && movilesParaEliminar.length == 0) {
-     				var formulario = form+"&asignacion=sinAsignaciones";
-     			}
-     			else{
-     				form += "&asignacion=modificarAsignaciones";
-     				var formulario = serializarArray(form, movilesParaAgregar, "movilesParaAgregar");
-     				formulario = serializarArray(formulario, movilesParaEliminar, "movilesParaEliminar");
-     			}
-     			
-     			modificarBD(formulario);
-     		}	
-     		
-     	}
+            		});                    
+
+                 	if (movilesAsignadosBD.length == 0) {
+                 		if (movilesAsignadosModificados.length == 0) {
+                 			//no hacer nada (no hay moviles asignados en ningun lado)
+                 			form += "&asignacion=sinAsignaciones";
+                 			
+                 			modificarBD(form);
+                 		}
+                 		else {
+                 			//agregar todos los moviles que estan en el array movilesAsignadosModificados
+                 			form += "&asignacion=agregarAsignaciones";
+                 			var formulario = serializarArray(form, movilesAsignadosModificados, "movilesParaAgregar");
+                 			
+                 			modificarBD(formulario);
+                 		}
+                 	}
+                 	else {
+                 		if (movilesAsignadosModificados.length == 0) {
+                 			//borrar todos los moviles asignados que estan en la base de datos
+                 			form += "&asignacion=borrarAsignaciones";
+                 			
+                 			modificarBD(form);
+                 		}
+                 		else {
+                 			//comparar cambios en los dos arrays
+                 			var movilEncontrado = false;
+                 			//comprobar los moviles a eliminar
+                 			for (i=0 ; i<movilesAsignadosBD.length ; i++) {
+                 				for (j=0 ; j<movilesAsignadosModificados.length ; j++) {
+                 					
+                 					if (movilesAsignadosBD[i] == movilesAsignadosModificados[j]) {
+                 						movilEncontrado = true;
+                 					}
+                 				}
+                 				if (movilEncontrado == false) {
+                 					movilesParaEliminar[contadorParaEliminar] = movilesAsignadosBD[i];
+                 					contadorParaEliminar = contadorParaEliminar + 1;
+                 				}
+                 				else {
+                 					movilEncontrado = false;
+                 				}
+                 			}
+                 			//comprobar los moviles a agregar
+                 			movilEncontrado = false
+                 			for (i=0 ; i<movilesAsignadosModificados.length ; i++) {
+                 				for (j=0 ; j<movilesAsignadosBD.length ; j++) {
+                 					
+                 					if (movilesAsignadosModificados[i] == movilesAsignadosBD[j]) {
+                 						movilEncontrado = true;
+                 					}
+                 				}
+                 				if (movilEncontrado == false) {
+                 					movilesParaAgregar[contadorParaAgregar] = movilesAsignadosModificados[i];
+                 					contadorParaAgregar = contadorParaAgregar + 1;
+                 				}
+                 				else {
+                 					movilEncontrado = false;
+                 				}
+                 			}
+                 			if (movilesParaAgregar.length == 0 && movilesParaEliminar.length == 0) {
+                 				var formulario = form+"&asignacion=sinAsignaciones";
+                 			}
+                 			else{
+                 				form += "&asignacion=modificarAsignaciones";
+                 				var formulario = serializarArray(form, movilesParaAgregar, "movilesParaAgregar");
+                 				formulario = serializarArray(formulario, movilesParaEliminar, "movilesParaEliminar");
+                 			}
+                 			
+                 			modificarBD(formulario);
+                 		}	
+                 		
+                 	}
+
+                }
      	
                 });
 	}

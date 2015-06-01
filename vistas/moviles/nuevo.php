@@ -26,7 +26,7 @@
 		            <a href="panelSitio.php?seccion=Inicio">Inicio</a>
 		        </li>
 		        <li>
-		            <a href="panelSitio.php?subSeccion=NuevoMovil">M&oacute;viles</a>
+		            <a href="panelSitio.php?subSeccion=VerMoviles">M&oacute;viles</a>
 		        </li>
 		        <li>
 		        	<?php if($subSeccion == 'NuevoMovil'){
@@ -68,7 +68,7 @@
 						<form id="formulario-automovil" name="form" class="form">
 							<div class="col-md-4">
 								<div class="form-group">
-								<label>N&uacute;mero</label><input type="text" id="numero" name="numero" class="form-control">
+								<label>N&uacute;mero</label><span>*</span><input type="text" id="numero" name="numero" class="form-control">
 								</div>
 
 								<div class="form-group">
@@ -83,7 +83,7 @@
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-								<label>Patente</label><input type="text" id="patente" name="patente" class="form-control">
+								<label>Patente</label><span>*</span><input type="text" id="patente" name="patente" class="form-control">
 								</div>
 								<div class="form-group">
 								<label>Modelo</label><input type="text" id="modelo" name="modelo" class="form-control">
