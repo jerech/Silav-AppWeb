@@ -21,6 +21,8 @@
     <script src="../recursos/plugins/lib/noty.js" type="text/javascript"></script>
     <script src="../recursos/plugins/lib/md5.js" type="text/javascript"></script>
     <script src="../recursos/plugins/lib/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="../recursos/plugins/lib/bootstrap/css/bootstrap-switch.css">
+    <script type="text/javascript" src="../recursos/plugins/lib/bootstrap/js/bootstrap-switch.js"></script>
 
     <script src="../recursos/plugins/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
     
@@ -131,37 +133,94 @@
 			            <div id="widget2container2" class="panel-body collapse in" style=" width: 100%;margin:0 auto;">
 
 			             <form id="formulario-pasajes" name="form" class="form">
-							
-								<div style="width: 50%;float:left;margin:0 0 0 18%;" class="form-group">
-								<label>Calle</label><input type="text" id="calle" name="calle" class="form-control">
-								</div>
-								
-								<div style="width: 10%;float:left;margin:0 0 0 3%;" class="form-group">
-								<label>N&uacute;mero</label><input type="text" id="numero" name="numero" class="form-control">
-								</div>					
-					
-								<div style="width: 50%;clear:left;float:left;margin:2% 0 0 18%;" class="form-group">
-            				<label>Chofer</label>
-            				
-              				<input type="text" id="listaChoferes" name="listaChoferes" class="form-control">
-            				
-          					</div>
-          
-          					<div style="width: 10%;float:left;margin:2% 0 0 3%;" class="form-group">
-								<label>M&oacute;vil</label><input type="text" id="movil" name="movil" class="form-control">
-								</div>
+                            <!--Fila donde va el switch-->                         
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <input type="checkbox" checked id="tipo" name="tipo" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                    
+                                </div>
+                                <div class="col-md-2">
+                                    
+                                </div>
+                                <div class="col-md-1">
+                                </div>
+                            </div>
+
+                            <!--Fila donde va la calle, lon, lat, y lbel con la info-->
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label>Dirección</label><input type="text" id="calle" name="calle" class="form-control">
+                                        <br><label>Aca va la direccion completa.</label><br>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                    <br><label>Lat: -32.23458</label><br>
+                                    <label>Lon: -65.26778</label>
+                                </div>
+                                </div>
+                                <div class="col-md-1">
+                                </div>
+                        
+                            </div>
+
+                            <!--Fila donde va el chofer, movil, cliente-->
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Chofer</label>                    
+                                        <input type="text" id="listaChoferes" name="listaChoferes" class="form-control">                  
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>M&oacute;vil</label><input style="width: 45px" type="text" disabled id="movil" name="movil" class="form-control">
+                                    </div>
+                                </div>
+                               
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label>Cliente</label><input type="text" id="cliente" name="cliente" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                </div>
+                            </div>
+
+                            <!--Fila donde va el boton enviar-->
+							<div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-5">
+                                </div>
+                                <div class="col-md-3">
+                                    
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-control">
+                                    <input id="btnAsignar" type="button" value"Asignar" class="btn btn-primary"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                </div>
+                            </div>
+
 			
-          					<div style="width: 50%;float:left;margin:2% 0 0 18%;" class="form-group">
-								<label>Cliente</label><input type="text" id="cliente" name="cliente" class="form-control">
-								</div>
 
 										
 						</form>
 
-					<div style="clear:left;text-align:center;">
-
-					<button style="margin:2% 0 0 0;" id="btnAsignar" class="btn btn-primary"> Asignar</button>
-					</div>
 						
 			            </div>
 			            
@@ -225,7 +284,9 @@
 <script type="text/javascript">
 	jQuery(document).ready(function() {	
  				var choferesConectados;			
-            
+                $("#tipo").bootstrapSwitch('onText', 'Manual');
+                $("#tipo").bootstrapSwitch('offText', 'Automatico');
+                
 				EnviarPasaje.init();
 				CargarPasajesEnCurso.init();
 				
