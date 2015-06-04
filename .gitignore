@@ -12,3 +12,6 @@ Thumbs.db
 #PHP
 #################
 *.php~
+
+#Ignorar datos de conexion
+conexionDB.php
