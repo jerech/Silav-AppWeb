@@ -6,7 +6,9 @@
     }
 
 	//Se verifica que los campos obligatorios no esten vacios
-  	if(empty($_POST['calle'])||empty($_POST['numero'])){
+  	if(empty($_POST['direccionCalle'])||empty($_POST['direccionNumero']) 
+          || empty($_POST['lon'])
+          || empty($_POST['lat'])){
   
   		echo "Error. Campos obligatorios vacios.";
   		exit();
@@ -15,11 +17,13 @@
   	require_once("../conexionBD.php");
 
   	//Se obtienen los datos a guardar
-  	$calle = $_POST['calle'];
-  	$numero = $_POST['numero'];
+  	$calle = $_POST['direccionCalle'];
+  	$numero = $_POST['direccionNumero'];
   	$chofer = $_POST['listaChoferes'];
   	$movil = $_POST['movil'];
   	$cliente = $_POST['cliente'];
+    $lat = $_POST['lat'];
+    $lon = $_POST['lon'];
   	
   	$direccion = $calle . " " . $numero;
   	$fecha = date("Y-m-d H:i:s");
@@ -30,13 +34,17 @@
   				fecha,
   				usuarioChofer,
   				nombreCliente,
-  				numeroMovil)
+  				numeroMovil,
+          latDireccion,
+          lonDireccion)
   			values(
   				'$direccion',
   				'$fecha',
   				'$chofer',
   				'$cliente',
-  				'$movil')";
+  				'$movil',
+          $lat,
+          $lon)";
 
 	$conexion = establecerConexion();
 	if(!$conexion){
