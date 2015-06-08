@@ -160,13 +160,14 @@
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label>Dirección</label><input type="text" id="calle" onKeydown="Javascript: if(event.keyCode==16)EnviarPasaje.buscarCoordenadas();" placeholder="Calle Nro" name="calle" class="form-control">
-                                        <br><label id="lbl-info-direccion" style="color:#2E64FE;"></label><br>
+                                        <br><label id="lbl-info-direccion" style="color:#2E64FE;" class="lbl-asignacion"></label><br>
                                     </div>
                                 </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                    <br><label>Lat: </label><label style="color:#2E64FE;" id="lbl-lat"></label><br>
-                                    <label>Lon: </label><label style="color:#2E64FE;" id="lbl-lon"></label>
+                                    <br><label>Lat: </label><label style="color:#2E64FE;" id="lbl-lat" class="lbl-asignacion"></label><br>
+                                    <label>Lon: </label><label style="color:#2E64FE;" id="lbl-lon" class="lbl-asignacion"></label><br>
+                                    <label><a id="abrirModalEdicionCoordenadas" href="javascript:;">Editar</a></label>
                                 </div>
                                 </div>
                                 <div class="col-md-1">
@@ -282,7 +283,44 @@
                          </div>
                 </div>
         </div>
-</div>    	
+</div>   
+
+<div class="modal fade" id="ModalEdicionCoordenadas">
+        <div class="modal-dialog">
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                               <h3 class="modal-title">Edición de Coordenadas</h3>
+                        </div>
+                        
+                          <div class="modal-body" style="height: 120px; overflow: auto;">
+                            <p>Atención! A esta ubicación será enviado el pasaje.</p><br>
+                           <input type="text" id="coordenadas" placeholder="Latitud,Longitud" style="width=350px;" name="coordenadas" class="form-control">
+                          </div>
+                         <div class="modal-footer">
+                              <button type="button" onclick="EnviarPasaje.editarCoordenadas()" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                         </div>
+                </div>
+        </div>
+</div> 	
+
+<div class="modal fade" id="ModalSeleccionDireccion">
+        <div class="modal-dialog">
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                               <h3 class="modal-title">Direcciones</h3>
+                        </div>
+                        
+                          <div class="modal-body" style="overflow: auto;">
+                            <p>Selecciona una dirección.</p><br>
+                           <div id="direccionesEncontradas">
+                           </div>
+                          </div>
+                </div>
+        </div>
+</div> 
 
 <script type="text/javascript">
     //Funciones de la notificacion
@@ -334,10 +372,10 @@
                 var direccionNumero="";	
                 $("#tipo").bootstrapSwitch('onText', 'Manual');
                 $("#tipo").bootstrapSwitch('offText', 'Automático');
-                $("#tipo").bootstrapSwitch('state', false, true);
                 $("#tipo").focus();
                 
 				EnviarPasaje.init();
+                $("#tipo").bootstrapSwitch('state', false, true);
 				CargarPasajesEnCurso.init();
 				
         });

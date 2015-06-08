@@ -8,7 +8,8 @@
 	//Se verifica que los campos obligatorios no esten vacios
   	if(empty($_POST['direccionCalle'])||empty($_POST['direccionNumero']) 
           || empty($_POST['lon'])
-          || empty($_POST['lat'])){
+          || empty($_POST['lat'])
+          || empty($_POST['calle'])){
   
   		echo "Error. Campos obligatorios vacios.";
   		exit();
