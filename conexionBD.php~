@@ -4,7 +4,7 @@
 function establecerConexion(){
 
 	$usuarioDB="silav";
-	$contraseniaDB="12345";//12345
+	$contraseniaDB="MS_1lh4_83l4";
 	$servidorDB="localhost";
 	$nombreDB="silav";
 	

@@ -1,18 +1,12 @@
 <?php
-	//Se verifica que la sesion sea regurar, si no se sale del archivo
-	session_start();
-	if(!$_SESSION['sesion_reg']){
-        exit();
-    }
+	//session_start();
+	//if(!$_SESSION['sesion_reg']){
+   //     exit();
+   // }
 
-  	require_once("../conexionBD.php");
+  	require_once("../../conexionBD.php");
   	
-	$query = "select usuario,
-						  numero_movil
-				 
-				 from ChoferesConectados
-				 
-				 WHERE estado_movil = 'LIBRE'"; 	
+	$query = "SELECT * FROM ChoferesConectados WHERE estado_movil = 'LIBRE'"; 	
   	
 	$coneccion = establecerConexion();
 	if(!$coneccion){
