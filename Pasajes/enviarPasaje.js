@@ -106,6 +106,7 @@ var EnviarPasaje = {
           calle += array_direccion[count]+" ";
         }
         var numero = array_direccion[array_direccion.length-1];
+        console.log(calle);
         if(!calle || !numero){
           alert("Formato de direccion incorrecta.");
           return;
@@ -199,6 +200,9 @@ var EnviarPasaje = {
    },
 
    setCoordenadas: function(lat,lon,road,house_number,town,state){
+      if(house_number=="undefined"){
+        house_number=undefined;
+      }
       $("#lbl-lat").html(lat);
       $("#lbl-lon").html(lon);
       $("#lbl-info-direccion").html(road+" "+house_number+" - "+town+" - "+state);

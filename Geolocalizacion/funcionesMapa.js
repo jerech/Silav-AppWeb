@@ -2,7 +2,7 @@ var map, zoom=15;
 	//choferesConectados: array de objetos choferes que corresponde a los choferes que aparecen en la pagina web
 	//nuevosChoferes: array de objetos choferes que corresponde a los datos de choferes leidos de la base de datos	
 	var choferesConectados, nuevosChoferes;
-	var urlDirImagenes = 'http://'+window.location.host+'/Geolocalizacion/img/';
+	var urlDirImagenes = 'http://'+window.location.host+'/app/Geolocalizacion/img/';
 
 
 	function iniciar()
