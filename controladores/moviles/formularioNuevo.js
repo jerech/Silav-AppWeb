@@ -90,7 +90,7 @@ var NuevoMovil = {
              }
 
              unblockUI($(".main-content"));
-
+             
 
            },
            error: function(a,b,c){

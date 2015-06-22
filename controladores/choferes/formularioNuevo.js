@@ -99,7 +99,8 @@ var NuevoChofer = {
                           $(".form-control").val('');
 
                        }     
-                       unblockUI($(".main-content"));                    
+                       unblockUI($(".main-content"));     
+                             
                      },
                      error: function(a,b,c){
                         unblockUI($(".main-content"));
@@ -234,6 +235,7 @@ function modificarBD(formulario) {
                         data: formulario,           
                         dataType: 'html',
                         beforeSend: function(){
+                            blockUI($(".main-content")); 
                            
                         },   
                         success: function(data) {
@@ -243,6 +245,8 @@ function modificarBD(formulario) {
                             }else{
                                 notificacion("success", "Chofer guardado correctamente");
                                 $(".form-control").val('');
+                                unblockUI($(".main-content"));     
+                   
                             }                         
                         },
                         error: function(a,b,c){

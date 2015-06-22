@@ -6,7 +6,7 @@
     }
 
 	//Se verifica que los campos obligatorios no esten vacios
-  	if(empty($_POST['contrasenia-encriptada'])||empty($_POST['nombre'])||empty($_POST['apellido']) ||empty($_POST['usuario'])){
+  	if(empty($_POST['nombre'])||empty($_POST['apellido']) ||empty($_POST['usuario'])){
   		
   		echo "Error. Campos obligatorios vacios.";
   		exit();
@@ -23,7 +23,6 @@
   	$nombre = $_POST['nombre'];
   	$apellido = $_POST['apellido'];
   	$usuario = $_POST['usuario'];
-  	$contrasenia = $_POST['contrasenia-encriptada'];
   	$numero_telefono = $_POST['numero_telefono'];
   	$venc_licencia = $_POST['venc_licencia'];
   	$id = $_POST['id'];
@@ -50,7 +49,6 @@
   				    nombre='$nombre',
   				    apellido='$apellido',
   				    usuario='$usuario',
-  				    contrasenia='$contrasenia',
   				    numero_telefono='$numero_telefono',
   				    venc_licencia='$venc_licencia',
   				    sexo='$sexo',
@@ -87,6 +85,11 @@
 		
 		echo "OK_"; //Con la funcion mysql_insert_id() se obtiene el id del elemento insertado
 	}
+
+  if(!empty($_POST['contrasenia-encriptada']) && $_POST['contrasenia-encriptada'] != "" && $_POST['contrasenia-encriptada'] != "d41d8cd98f00b204e9800998ecf8427e"){
+    $contrasenia = $_POST['contrasenia-encriptada'];
+    modificarContrasenia($id, $contrasenia);
+  }
 
 	mysql_close($conexion);
 
@@ -165,5 +168,15 @@
                     }
 		}
 	}
+
+  function modificarContrasenia($id, $contrasenia){
+    $query = "UPDATE
+                Choferes
+              SET
+                contrasenia='$contrasenia'
+              WHERE
+                id=$id";
+    mysql_query($query)or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
+  } 
 	
 ?>
