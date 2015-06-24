@@ -19,6 +19,11 @@
     <script src="../recursos/plugins/lib/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="../recursos/plugins/lib/noty.js" type="text/javascript"></script>
     <script src="../recursos/plugins/lib/md5.js" type="text/javascript"></script>
+    <script src="../recursos/plugins/lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../recursos/plugins/lib/bootstrapValidator.min.js" type="text/javascript"></script>
+    <script src="../recursos/plugins/lib/jquery.blockui.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../recursos/plugins/lib/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="../recursos/plugins/lib/jquery.dataTables.css">
 
     <script src="../recursos/plugins/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -45,6 +50,7 @@
             color: #fff;
         }
     </style>
+    
 
     <div class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
@@ -54,9 +60,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="" href="index.html"><span class="navbar-brand"><span class="fa fa-taxi"></span> SiLAV</span></a></div>
+          <a class="" href="panelSitio.php?seccion=Inicio"><span class="navbar-brand"><span class="fa fa-taxi"></span> SiLAV</span></a></div>
 
-        <div class="navbar-collapse collapse" style="height: 1px;">
+        <div id="div-main-menu" class="navbar-collapse collapse" style="height: 1px;">
           <ul id="main-menu" class="nav navbar-nav navbar-right">
             <li class="dropdown hidden-xs">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -161,20 +167,92 @@
 
 
 
-    <script src="../recursos/plugins/lib/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript">
+
+    $(function() {
+            var uls = $('.sidebar-nav > ul > *').clone();
+            uls.addClass('visible-xs');
+            $('#main-menu').append(uls.clone());
+        });
+
         $("[rel=tooltip]").tooltip();
         $(function() {
             $('.demo-cancel-click').click(function(){return false;});
         });
 
+        //Funciones de la notificacion
         // "op" puede estar valuada en "error", "info" o "success"
         function notificacion(op,msg,time){
             if(time == undefined)
-                time = 5000;
+                time = 8000;
             var n = noty({text:msg,maxVisible: 1,type:op,killer:true,timeout:time,layout: 'top'});
 
         }
+
+
+        //Funciones del blockUI
+        function blockUI(el, centerY) {
+            var el = jQuery(el); 
+            el.block({
+                    message: '<img src="../recursos/imagenes/cargando4.gif" align=""/><br><h3><font color="#454545"><b>Cargado...</font></h3>',
+                    centerY: centerY != undefined ? centerY : true,
+                    css: {
+                        top: '30%',
+                        border: 'none',
+                        padding: '5px',
+                        backgroundColor: '#FFF',
+                        opacity: 0.80
+                    },
+                    overlayCSS: {
+                        backgroundColor: '#000',
+                        opacity: 0.25,
+                        cursor: 'wait'
+                    }
+                });
+        }
+        function unblockUI(el) {          
+            jQuery(el).unblock({
+                    onUnblock: function () {
+                        jQuery(el).removeAttr("style");
+                    }
+                });
+        }
+
+        function initDataTable(tb) {
+            jQuery(tb).dataTable({
+                    "bProcessing": true,
+                    "bPaginate": true,
+                    "sPaginationType": "full_numbers",
+                    "aLengthMenu": [
+                        [5, 10, 20, -1],
+                        [5, 10, 20, "Todos"] // change per page values here
+                    ],
+                    "bLengthChange": true,
+                    "bFilter": true,
+                    "bSort": true,
+                    "bInfo": false,
+                    "bAutoWidth": false,
+                    "bInfoEmpty": true,
+                    "bInfo": true,
+                    "sInfoFiltered": true,
+                    "oLanguage": {
+                            "sLengthMenu": "Mostrar _MENU_ registros por página",
+                            "sSearch": "Buscar: ",
+                            "sZeroRecords": "Sin registros",
+                            "sInfo": "Mostrando _START_ - _END_ de _TOTAL_ registros",
+                            "sInfoEmpty": "Mostrando 0 - 0 de 0 registros",
+                            "sInfoFiltered": "(Filtrado de _MAX_ registros)",
+                            "oPaginate": {
+                                "sPrevious": "Pre",
+                                "sNext": "Sig",
+                                "sFirst": "<<",
+                                "sLast": ">>"
+
+                            }
+                        }
+            }); 
+        }
+
     </script>
     
   

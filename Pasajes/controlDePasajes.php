@@ -21,6 +21,9 @@
     <script src="../recursos/plugins/lib/noty.js" type="text/javascript"></script>
     <script src="../recursos/plugins/lib/md5.js" type="text/javascript"></script>
     <script src="../recursos/plugins/lib/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="../recursos/plugins/lib/bootstrap/css/bootstrap-switch.css">
+    <script type="text/javascript" src="../recursos/plugins/lib/bootstrap/js/bootstrap-switch.js"></script>
+    <script src="../recursos/plugins/lib/jquery.blockui.js" type="text/javascript"></script>
 
     <script src="../recursos/plugins/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
     
@@ -125,47 +128,106 @@
       
     </div>
     <div class="main-content">
-
+                <div id="div-block">
 			        <div class="panel panel-default" style="margin: 0 auto; width: 60%;">
-			            <a href="#widget2container2" class="panel-heading" data-toggle="collapse">Pasajes </a>
+			            <a href="#widget2container2" class="panel-heading" data-toggle="collapse">Despacho Pasajes </a>
 			            <div id="widget2container2" class="panel-body collapse in" style=" width: 100%;margin:0 auto;">
 
 			             <form id="formulario-pasajes" name="form" class="form">
-							
-								<div style="width: 50%;float:left;margin:0 0 0 18%;" class="form-group">
-								<label>Calle</label><input type="text" id="calle" name="calle" class="form-control">
-								</div>
-								
-								<div style="width: 10%;float:left;margin:0 0 0 3%;" class="form-group">
-								<label>N&uacute;mero</label><input type="text" id="numero" name="numero" class="form-control">
-								</div>					
-					
-								<div style="width: 50%;clear:left;float:left;margin:2% 0 0 18%;" class="form-group">
-            				<label>Chofer</label>
-            				
-              				<input type="text" id="listaChoferes" name="listaChoferes" class="form-control">
-            				
-          					</div>
-          
-          					<div style="width: 10%;float:left;margin:2% 0 0 3%;" class="form-group">
-								<label>M&oacute;vil</label><input type="text" id="movil" name="movil" class="form-control">
-								</div>
+                            <!--Fila donde va el switch-->                         
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <input type="checkbox" checked id="tipo" name="tipo" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                    
+                                </div>
+                                <div class="col-md-2">
+                                    
+                                </div>
+                                <div class="col-md-1">
+                                </div>
+                            </div>
+
+                            <!--Fila donde va la calle, lon, lat, y lbel con la info-->
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label>Dirección</label><input type="text" id="calle" onKeydown="Javascript: if(event.keyCode==16)EnviarPasaje.buscarCoordenadas();" placeholder="Calle Nro" name="calle" class="form-control">
+                                        <br><label id="lbl-info-direccion" style="color:#2E64FE;"></label><br>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                    <br><label>Lat: </label><label style="color:#2E64FE;" id="lbl-lat"></label><br>
+                                    <label>Lon: </label><label style="color:#2E64FE;" id="lbl-lon"></label>
+                                </div>
+                                </div>
+                                <div class="col-md-1">
+                                </div>
+                        
+                            </div>
+
+                            <!--Fila donde va el chofer, movil, cliente-->
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Chofer</label>                    
+                                        <input type="text" id="listaChoferes" name="listaChoferes" class="form-control">                  
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>M&oacute;vil</label><input style="width: 45px" type="text" readOnly id="movil" name="movil" class="form-control">
+                                    </div>
+                                </div>
+                               
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label>Cliente</label><input type="text" id="cliente" name="cliente" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                </div>
+                            </div>
+
+                            
+
 			
-          					<div style="width: 50%;float:left;margin:2% 0 0 18%;" class="form-group">
-								<label>Cliente</label><input type="text" id="cliente" name="cliente" class="form-control">
-								</div>
 
 										
 						</form>
+                        <!--Fila donde va el boton enviar-->
+                            <div class="row">
+                                <div class="col-md-1">
+                                </div>
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-2">
+                                    
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="btn-toolbar list-toolbar">
+                                        <button id="btnAsignar" name="btnAsignar" class="btn btn-primary" style="float: right; width: 100px;">Asignar</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                </div>
+                            </div>
 
-					<div style="clear:left;text-align:center;">
-
-					<button style="margin:2% 0 0 0;" id="btnAsignar" class="btn btn-primary"> Asignar</button>
-					</div>
 						
 			            </div>
 			            
 			        </div>
+                </div>
 			        
     <div  style="margin: 2% auto; width: 90%;">
 
@@ -220,12 +282,61 @@
                          </div>
                 </div>
         </div>
-</div>    			
+</div>    	
+
+<script type="text/javascript">
+    //Funciones de la notificacion
+        // "op" puede estar valuada en "error", "info" o "success"
+        function notificacion(op,msg,time){
+            if(time == undefined)
+                time = 8000;
+            var n = noty({text:msg,maxVisible: 1,type:op,killer:true,timeout:time,layout: 'top'});
+
+        }
+
+
+        //Funciones del blockUI
+        function blockUI(el, centerY) {
+            var el = jQuery(el); 
+            el.block({
+                    message: '<img src="../recursos/imagenes/cargando4.gif" align=""/><br><h3><font color="#454545"><b>Cargado...</font></h3>',
+                    centerY: centerY != undefined ? centerY : true,
+                    css: {
+                        top: '30%',
+                        border: 'none',
+                        padding: '5px',
+                        backgroundColor: '#FFF',
+                        opacity: 0.80
+                    },
+                    overlayCSS: {
+                        backgroundColor: '#000',
+                        opacity: 0.25,
+                        cursor: 'wait'
+                    }
+                });
+        }
+        function unblockUI(el) {          
+            jQuery(el).unblock({
+                    onUnblock: function () {
+                        jQuery(el).removeAttr("style");
+                    }
+                });
+        }
+
+</script>		
     			
 <script type="text/javascript">
 	jQuery(document).ready(function() {	
- 				var choferesConectados;			
-            
+ 				var choferesConectados;		
+                var latDireccion;
+                var lonDireccion;
+                var direccionCalle="";
+                var direccionNumero="";	
+                $("#tipo").bootstrapSwitch('onText', 'Manual');
+                $("#tipo").bootstrapSwitch('offText', 'Automático');
+                $("#tipo").bootstrapSwitch('state', false, true);
+                $("#tipo").focus();
+                
 				EnviarPasaje.init();
 				CargarPasajesEnCurso.init();
 				

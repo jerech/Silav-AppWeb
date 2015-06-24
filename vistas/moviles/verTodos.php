@@ -8,7 +8,7 @@
 <html lang="en">
 	<head>
 		<script type="text/javascript" src="moviles/mostrarTabla.js"></script>
-		<script type="text/javascript" src="../recursos/plugins/lib/jquery.dataTables.js"></script>
+		
 	</head>
 	<body>   
     
@@ -66,8 +66,8 @@ function eliminarRegistro() {
   <div class="btn-group">
   </div>
 </div>   
-
-<table id="tabla" class="table">
+<div id="div-tabla">
+<table id="tabla" class="dataTable display">
   <thead>
     <tr>
       <th>#</th>
@@ -75,7 +75,7 @@ function eliminarRegistro() {
       <th>Patente</th>
       <th>Modelo</th>
       <th>Marca</th>
-      <th style="width: 3.5em;"></th>
+      <th style="width: 4.5em;"></th>
     </tr>
   </thead>
   <tbody>
@@ -83,15 +83,7 @@ function eliminarRegistro() {
   </tbody>
 </table>
 
-<ul class="pagination">
-  <li><a href="#">&laquo;</a></li>
-  <li><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-  <li><a href="#">&raquo;</a></li>
-</ul>
+</div>
 
 <div class="modal small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

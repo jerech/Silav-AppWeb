@@ -2,6 +2,9 @@ var map, zoom=15;
 	//choferesConectados: array de objetos choferes que corresponde a los choferes que aparecen en la pagina web
 	//nuevosChoferes: array de objetos choferes que corresponde a los datos de choferes leidos de la base de datos	
 	var choferesConectados, nuevosChoferes;
+	var urlDirImagenes = '../Geolocalizacion/img/';
+
+
 	function iniciar()
 	{
 		var temporizador=setInterval(function(){
@@ -55,23 +58,25 @@ var datosChoferes = t;
 }	
 	
 	function cargarChoferesConectados(datosChoferes){
-		var nombre_latitud_longitud, nombreChofer, ubicacionLatitud, ubicacionLongitud;
+		var nombre_latitud_longitud_estado, nombreChofer, ubicacionLatitud, ubicacionLongitud, estado;
 		choferesConectados = new Array();
 		for (i=0 ; i<datosChoferes.length ; i++) {
-			nombre_latitud_longitud = datosChoferes[i].toString().split("_");
+			nombre_latitud_longitud_estado = datosChoferes[i].toString().split("_");
 			//separar los datos
-			nombreChofer = nombre_latitud_longitud[0];
-			ubicacionLatitud = nombre_latitud_longitud[1];
-			ubicacionLongitud = nombre_latitud_longitud[2];
-			choferesConectados[i] = new Chofer(nombreChofer, ubicacionLatitud, ubicacionLongitud);
+			nombreChofer = nombre_latitud_longitud_estado[0];
+			ubicacionLatitud = nombre_latitud_longitud_estado[1];
+			ubicacionLongitud = nombre_latitud_longitud_estado[2];
+			estado = nombre_latitud_longitud_estado[3];
+			choferesConectados[i] = new Chofer(nombreChofer, ubicacionLatitud, ubicacionLongitud, estado);
 		}		
 	}
 
 	//clase Chofer
-   function Chofer(nombreChofer, ubicacionLatitud, ubicacionLongitud) {
+   function Chofer(nombreChofer, ubicacionLatitud, ubicacionLongitud, estado) {
    	this.nombre = nombreChofer;
    	this.latitud = ubicacionLatitud;
    	this.longitud = ubicacionLongitud;
+   	this.estado = estado;
    	this.marcador = null;
    	this.lonLatTransformada = null;
    	this.popup = null;
@@ -83,7 +88,17 @@ var datosChoferes = t;
 	}
 
 	function crearMarcador(chofer) {
-		chofer.marcador = new OpenLayers.Marker(chofer.lonLatTransformada, new OpenLayers.Icon('http://silav.esy.es/Geolocalizacion/img/marker.png',size,offset));
+		if(chofer.estado == "LIBRE"){
+			chofer.marcador = new OpenLayers.Marker(chofer.lonLatTransformada, new OpenLayers.Icon(urlDirImagenes+'blue2.png',size,offset));
+		}
+		if(chofer.estado == "OCUPADO"){
+			chofer.marcador = new OpenLayers.Marker(chofer.lonLatTransformada, new OpenLayers.Icon(urlDirImagenes+'red-pin.png',size,offset));
+		}
+		if(chofer.estado == "INACTIVO"){
+			chofer.marcador = new OpenLayers.Marker(chofer.lonLatTransformada, new OpenLayers.Icon(urlDirImagenes+'blue-pin.png',size,offset));
+		}
+
+		
       chofer.popup = new OpenLayers.Popup(chofer.nombre,
                         chofer.lonLatTransformada,
                         new OpenLayers.Size(145,52),
@@ -96,15 +111,16 @@ var datosChoferes = t;
 	}
 
 	function cargarNuevosChoferes(datosChoferes){
-		var nombre_latitud_longitud, nombreChofer, ubicacionLatitud, ubicacionLongitud;
+		var nombre_latitud_longitud_estado, nombreChofer, ubicacionLatitud, ubicacionLongitud, estado;
 		nuevosChoferes = new Array();
 		for (i=0 ; i<datosChoferes.length ; i++) {
-			nombre_latitud_longitud = datosChoferes[i].toString().split("_");
+			nombre_latitud_longitud_estado = datosChoferes[i].toString().split("_");
 			//separar los datos
-			nombreChofer = nombre_latitud_longitud[0];
-			ubicacionLatitud = nombre_latitud_longitud[1];
-			ubicacionLongitud = nombre_latitud_longitud[2];
-			nuevosChoferes[i] = new Chofer(nombreChofer, ubicacionLatitud, ubicacionLongitud);
+			nombreChofer = nombre_latitud_longitud_estado[0];
+			ubicacionLatitud = nombre_latitud_longitud_estado[1];
+			ubicacionLongitud = nombre_latitud_longitud_estado[2];
+			estado = nombre_latitud_longitud_estado[3];
+			nuevosChoferes[i] = new Chofer(nombreChofer, ubicacionLatitud, ubicacionLongitud, estado);
 		}
 	}	
 	
@@ -131,7 +147,7 @@ var datosChoferes = t;
         var initLonLat = new OpenLayers.LonLat(-62.086, -31.430).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
         map.setCenter (initLonLat, zoom);
 		
-		size = new OpenLayers.Size(21,25);
+		size = new OpenLayers.Size(30,30);
       offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
 				
 	}
@@ -186,14 +202,22 @@ var datosChoferes = t;
 		
 		for (i=0 ; i<choferesConectados.length ; i++) {
 			nuevoPunto = map.getLayerPxFromViewPortPx(map.getPixelFromLonLat(new OpenLayers.LonLat(choferesConectados[i].longitud, choferesConectados[i].latitud).transform(map.displayProjection, map.projection)));
+			if(choferesConectados[i].estado == "LIBRE"){
+			 	choferesConectados[i].marcador.setUrl(urlDirImagenes+'blue2.png');
+			
+			}
+			if(choferesConectados[i].estado == "OCUPADO"){
+				choferesConectados[i].marcador.setUrl(urlDirImagenes+'red-pin.png');	
+				
+			}
+			if(choferesConectados[i].estado == "INACTIVO"){
+				choferesConectados[i].marcador.setUrl(urlDirImagenes+'blue-pin.png');
+				
+			}
 			choferesConectados[i].marcador.moveTo(nuevoPunto);
+			
 			choferesConectados[i].popup.moveTo(nuevoPunto);
 			choferesConectados[i].popup.setContentHTML("<font size=-2>"+choferesConectados[i].nombre+"<br>Lon: "+Math.round(choferesConectados[i].longitud * 10000) / 10000+", Lat: "+Math.round(choferesConectados[i].latitud * 10000) / 10000);
 		}		
 		
 	}
-	
-	window.onbeforeunload = function()
-{
-return "";
-}

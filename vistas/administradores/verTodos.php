@@ -48,7 +48,7 @@
 
 	<div class="content">
 		<div class="header">
-		    <h1 class="page-title">Administre los Administradores desde aquí</h1>
+		    <h1 class="page-title">Lista de Administradores</h1>
 		    <ul class="breadcrumb">
 		        <li>
 		            <a href="panelSitio.php?seccion=Inicio">Inicio</a>
@@ -70,7 +70,8 @@
   <div class="btn-group">
   </div>
 </div>
-<table id="tabla" class="table">
+<div id="div-tabla">
+<table id="tabla" class="dataTable display">
   <thead>
     <tr>
       <th>#</th>
@@ -85,6 +86,7 @@
     
   </tbody>
 </table>
+</div>
 
 
 

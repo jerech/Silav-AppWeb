@@ -11,10 +11,10 @@ var mostrarDatos = {
                     data: {},           
                     dataType: 'json',
                     beforeSend: function(){
-                        
+                        blockUI($("#div-tabla"), false);
                     },   
                     success: function(data) {
-								var contador = 0;
+								      var contador = 0;
                         
                         $(data.moviles).each(function(index){
                         	
@@ -22,7 +22,7 @@ var mostrarDatos = {
                            
                            var nuevaFila = "<tr>";
 		
-									nuevaFila += "<td>"+contador+"</td>";
+									nuevaFila += "<td>"+data.moviles[index].id+"</td>";
 									nuevaFila += "<td>"+data.moviles[index].numero+"</td>";
 									nuevaFila += "<td>"+data.moviles[index].patente+"</td>";
 									nuevaFila += "<td>"+data.moviles[index].modelo+"</td>";
@@ -37,16 +37,13 @@ var mostrarDatos = {
 		
 									$("#tabla").append(nuevaFila);                            
                         });
-      	            		$('#tabla').dataTable({
-											"bPaginate": false,
-												"bLengthChange": false,
-												"bFilter": true,
-												"bSort": false,
-												"bInfo": false,
-												"bAutoWidth": false });	
+      	            		initDataTable($('#tabla'));
+
+      	            		unblockUI($("#div-tabla"));
        
                     },
                     error: function(a,b,c){
+                    	unblockUI($("#div-tabla"));
                         console.log(a);
                         console.log(b);
                         console.log(c);  		

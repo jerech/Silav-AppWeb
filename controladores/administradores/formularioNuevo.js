@@ -7,6 +7,42 @@ var NuevoAdministrador = {
             urlNuevo = "administradores/nuevo.php";
             urlModificar = "administradores/modificar.php";
 
+            //Se declaran las caracteristicas del validador de formulario
+            $("#formulario-perfil").bootstrapValidator({
+                  message: 'Este valor no es valido',
+                        feedbackIcons: {
+                            valid: 'glyphicon glyphicon-ok',
+                            invalid: 'glyphicon glyphicon-remove',
+                            validating: 'glyphicon glyphicon-refresh'
+                        },
+                        submitHandler: function(validator, form, submitButton) {
+                            // Do nothing
+                        },
+                        fields: {
+                            nombre: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'El nombre es requerido'
+                                    }
+                                }
+                            },
+                            apellido: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'El apellido es requerido'
+                                    }
+                                }
+                              },
+                            usuario: {
+                                validators:{
+                                    notEmpty: {
+                                        message: 'El usuario es requerido'
+                                    }
+                                }
+                            }
+                        }
+                    });
+
             setSeccionesPadreListener = function(){
                 $(".control-label input:checkbox").click(function(e){
                     if($(this).is(':checked')){                     
@@ -81,8 +117,26 @@ var NuevoAdministrador = {
             
 
             $("#btnGuardar").click(function(){
+                    $("#formulario-perfil").data('bootstrapValidator').validate();
+                    if($("#formulario-perfil").data('bootstrapValidator').isValid() == true){
+                      guardarDatos();
+                    }
+                    
 
-                    var contrasenia = $("#contrasenia").val();
+                });
+
+            $("#btnModificar").click(function(){
+                    $("#formulario-perfil").data('bootstrapValidator').validate();
+                    if($("#formulario-perfil").data('bootstrapValidator').isValid() == true){
+                      guardarDatos();
+                    }
+
+                });
+
+
+            function guardarDatos(){
+
+                var contrasenia = $("#contrasenia").val();
                     var reContrasenia = $("#re-contrasenia").val();
 
                     var contraseniaEncriptada = hex_md5(contrasenia);
@@ -93,15 +147,23 @@ var NuevoAdministrador = {
                     $("#contrasenia").val("");
                     $("#re-contrasenia").val("");
 
+                    var url;
                     var form = $(".form").serialize();
+
+                    if(_id == 0){
+                      url = urlNuevo;
+                    }else{
+                      url = urlModificar;
+                      form += "&id="+_id;
+                    }
 
                    $.ajax({
                         type: 'post',
-                        url: urlNuevo, 
+                        url: url, 
                         data: form,           
                         dataType: 'html',
                         beforeSend: function(){
-                           
+                           blockUI($(".main-content"));
                         },   
                         success: function(data) {
                             var datos = data.split("_");
@@ -112,9 +174,12 @@ var NuevoAdministrador = {
                                 $(".form-control").val('');
                                 $(".control-group input:checkbox").prop("checked",false);
                                 $(".control").hide()
-                            }                         
+                            }  
+
+                            unblockUI($(".main-content"));                       
                         },
                         error: function(a,b,c){
+                            unblockUI($(".main-content"));
                             console.log(a);
                             console.log(b);
                             console.log(c);         
@@ -122,54 +187,7 @@ var NuevoAdministrador = {
 
 
                     });
-
-                });
-
-                $("#btnModificar").click(function(){
-                    var contrasenia = $("#contrasenia").val();
-                    var reContrasenia = $("#re-contrasenia").val();
-
-                    var contraseniaEncriptada = hex_md5(contrasenia);
-                    $("#contrasenia-encriptada").val(contraseniaEncriptada);
-                    var reContraseniaEncriptada = hex_md5(reContrasenia);
-                    $("#re-contrasenia-encriptada").val(reContraseniaEncriptada);
-
-                    $("#contrasenia").val("");
-                    $("#re-contrasenia").val("");
-
-                    var form = $(".form").serialize();
-                
-                    form += "&id="+_id;
-                    $.ajax({
-                        type: 'post',
-                        url: urlModificar, 
-                        data: form,           
-                        dataType: 'html',
-                        beforeSend: function(){
-                           
-                        },   
-                        success: function(data) {
-                            var datos = data.split("_");
-                            if(datos[0] != "OK"){
-                                notificacion("error",data);      
-                            }else{
-                                notificacion("success", "Administrador guardado correctamente");
-                                $(".form-control").val('');
-                                $(".control-group input:checkbox").prop("checked",false);
-                                $(".control").hide()
-                            }                         
-                        },
-                        error: function(a,b,c){
-                            console.log(a);
-                            console.log(b);
-                            console.log(c);         
-                        }
-
-
-                    });
-
-
-                });
+            }
             
 
 

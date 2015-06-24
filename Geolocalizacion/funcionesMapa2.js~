@@ -208,7 +208,7 @@ function updateMarkers(){
 		nuevoPunto = map.getLayerPxFromViewPortPx(map.getPixelFromLonLat(new OpenLayers.LonLat(choferesConectados[i].longitud, choferesConectados[i].latitud).transform(map.displayProjection, map.projection)));
 		if (choferesConectados[i].estado != choferesConectados[i].estadoAnterior) {
 			layerMarkers.removeMarker(choferesConectados[i].marcador);
-			choferesConectados[i].popup.destroy();
+			//choferesConectados[i].popup.destroy();
 			choferesConectados[i].crearMarcador(choferesConectados[i]);
 			
 			choferesConectados[i].estadoAnterior = choferesConectados[i].estado;
