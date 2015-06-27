@@ -26,6 +26,7 @@ var CargarDatos = {
                             $("#departamento").val(data.agencia[0].departamento);
                             $("#provincia").val(data.agencia[0].provincia);
                             $("#pais").val(data.agencia[0].pais);
+                            $("#ciudad").val(data.agencia[0].ciudad);
 
                             unblockUI($(".main-content"));                     
                         },

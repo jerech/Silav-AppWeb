@@ -159,7 +159,7 @@
                                 </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <label>Dirección</label><input type="text" id="calle" onKeydown="Javascript: if(event.keyCode==16)EnviarPasaje.buscarCoordenadas();" placeholder="Calle Nro" name="calle" class="form-control">
+                                        <label>Dirección</label><input type="text" id="calle" onKeydown="Javascript: if(event.keyCode==18)EnviarPasaje.buscarCoordenadas();" placeholder="Calle Nro" name="calle" class="form-control">
                                         <br><label id="lbl-info-direccion" style="color:#2E64FE;" class="lbl-asignacion"></label><br>
                                     </div>
                                 </div>
@@ -365,6 +365,10 @@
     			
 <script type="text/javascript">
 	jQuery(document).ready(function() {	
+                ciudadEmpresa = '<?php echo $_SESSION["sesion_ciudad"];?>';
+                departamentoEmpresa = '<?php echo $_SESSION["sesion_departamento"];?>';
+                provinciaEmpresa = '<?php echo $_SESSION["sesion_provincia"];?>';
+
  				var choferesConectados;		
                 var latDireccion;
                 var lonDireccion;

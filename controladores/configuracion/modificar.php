@@ -7,7 +7,7 @@
 
 	//Se verifica que los campos obligatorios no esten vacios
   	if(empty($_POST['nombre'])||empty($_POST['direccion']) ||empty($_POST['departamento'] ||
-          empty($_POST['pais']) ||empty($_POST['provincia']))){
+          empty($_POST['pais']) ||empty($_POST['provincia']) ||empty($_POST['ciudad']))){
   		echo "Error. Campos obligatorios vacios.";
   		exit();
   	}
@@ -24,6 +24,7 @@
     $departamento = $_POST['departamento'];
     $provincia = $_POST['provincia'];
     $direccion = $_POST['direccion'];
+    $ciudad = $_POST['ciudad'];
   
 
   	//Se realiza el update en la BD
@@ -38,7 +39,8 @@
   				    provincia='$provincia',
   				    pais='$pais',
   				    departamento='$departamento',
-              direccion='$direccion'
+              direccion='$direccion',
+              ciudad = '$ciudad'
         WHERE 
               id=$id";
 
@@ -51,6 +53,9 @@
 	$resultado = mysql_query($query, $conexion) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
 
 	if($resultado){
+    $_SESSION['sesion_ciudad'] = $ciudad;
+    $_SESSION['sesion_provincia'] = $provincia;
+    $_SESSION['sesion_departamento'] = $departamento; 
 		echo "OK"; //Con la funcion mysql_insert_id() se obtiene el id del elemento insertado
 	}
 

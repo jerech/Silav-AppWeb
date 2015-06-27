@@ -98,7 +98,7 @@ var EnviarPasaje = {
 	 },
 
    buscarCoordenadas: function(){
-      
+        
       
         array_direccion=$("#calle").val().split(" ");
         var calle = "";
@@ -113,7 +113,7 @@ var EnviarPasaje = {
         }
 
         //Armamos la query para enviar a la api nominatim
-        var query=numero+"+"+calle+",+san francisco,+departamento san justo,+cordoba&format=json&addressdetails=1";
+        var query=numero+"+"+calle+",+"+ciudadEmpresa+",+"+departamentoEmpresa+",+"+provinciaEmpresa+"&format=json&addressdetails=1";
         var url = "http://nominatim.openstreetmap.org/search?q="+query;
 
         $.ajax({

@@ -50,8 +50,15 @@ var NuevaConfiguracion = {
                             message: 'La provincia es requerida'
                         }
                     }
-                  }
+                  },
+                  ciudad: {
+                    validators: {
+                        notEmpty: {
+                            message: 'La ciudad es requerida'
+                        }
+                    }
                 }
+              }
               });
 
     $("#btnGuardar").click(function(){

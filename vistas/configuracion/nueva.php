@@ -75,12 +75,16 @@
 								<div class="form-group">
 								<label>Cuit</label><input type="text" id="cuit" name="cuit" class="form-control">
 								</div>
+
+								<div class="form-group">
+								<label>Dirección</label><span>*</span><input type="text" id="direccion" name="direccion" class="form-control">
+								</div>
 			
 
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-								<label>Dirección</label><span>*</span><input type="text" id="direccion" name="direccion" class="form-control">
+								<label>Ciudad</label><span>*</span><input type="text" id="ciudad" name="ciudad" class="form-control">
 								</div>
 
 								<div class="form-group">
