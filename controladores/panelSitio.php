@@ -9,6 +9,7 @@
 
     $seccionesURL = array(
 		'Inicio' => '../vistas/inicio.php',
+		'Configuracion' => '../vistas/configuracion/nueva.php',
       	'Administradores' => '#',
       	'Operadores'=> '#',
 		'Choferes' => '#',

@@ -18,7 +18,7 @@ var NuevoOperador = {
                         submitHandler: function(validator, form, submitButton) {
                             // Do nothing
                         },
-                        ields: {
+                        fields: {
                             nombre: {
                                 validators: {
                                     notEmpty: {

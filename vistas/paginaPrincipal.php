@@ -71,10 +71,7 @@
                 </a>
 
               <ul class="dropdown-menu">
-                <li><a href="./">Panel Admin</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Admin</li>
-                <li><a href="./">Usuarios</a></li>
+                <li><a href="panelSitio.php?seccion=Configuracion">Configuración</a></li>
                 <li class="divider"></li>
                 <li><a tabindex="-1" href="../controladores/cierreSesion.php">Salir</a></li>
               </ul>
