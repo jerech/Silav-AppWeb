@@ -17,6 +17,7 @@ function establecerConexion(){
 		if (!$bd) {
     		die ('No se puedo conectar a la Base de Datos : ' . mysql_error());
 		}else{
+			mysql_query("SET NAMES 'utf8'");
 			return $mysql;
 		}
 	}
