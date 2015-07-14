@@ -6,7 +6,7 @@
     }
 
 	//Se verifica que los campos obligatorios no esten vacios
-  	if(empty($_POST['direccionCalle'])||empty($_POST['direccionNumero']) 
+  	if(empty($_POST['direccionCalle']) 
           || empty($_POST['lon'])
           || empty($_POST['lat'])
           || empty($_POST['calle'])){

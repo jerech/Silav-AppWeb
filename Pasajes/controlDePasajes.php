@@ -2,6 +2,10 @@
     session_start(); 
 
     if(in_array('ControlDePasajes', $_SESSION['sesion_permisos'])){
+
+        header("Cache-Control: private, max-age=10800, pre-check=10800");
+        header("Pragma: private");
+        header("Expires: " . date(DATE_RFC822,strtotime("+130 day")));
 ?>
 <!doctype html>
 <html lang="en">
@@ -159,7 +163,7 @@
                                 </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <label>Dirección</label><input type="text" id="calle" onKeydown="Javascript: if(event.keyCode==18)EnviarPasaje.buscarCoordenadas();" placeholder="Calle Nro" name="calle" class="form-control">
+                                        <label>Dirección</label><input type="text" id="calle" onKeydown="Javascript: if(event.keyCode==18)EnviarPasaje.buscarCoordenadas();" placeholder="Calle Nro" name="calle" autocomplete="on" class="form-control">
                                         <br><label id="lbl-info-direccion" style="color:#2E64FE;" class="lbl-asignacion"></label><br>
                                     </div>
                                 </div>
