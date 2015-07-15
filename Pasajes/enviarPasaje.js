@@ -75,6 +75,7 @@ var EnviarPasaje = {
           $("#coordenadas").val(latDireccion+","+lonDireccion);
         }
         $('#ModalEdicionCoordenadas').modal();
+        registrarClick();
       });
       
 
@@ -189,9 +190,8 @@ var EnviarPasaje = {
    },
 
    editarCoordenadas: function(){
-      var ubicacion = $("#coordenadas").val();
-      var nuevaLat = ubicacion.split(",")[0];
-      var nuevaLon = ubicacion.split(",")[1];
+      var nuevaLat = lonlat.lat;
+      var nuevaLon = lonlat.lon;
       var direccion = $("#calle").val();
 
       if($.isNumeric(nuevaLat) && $.isNumeric(nuevaLon)){

@@ -2,10 +2,6 @@
     session_start(); 
 
     if(in_array('ControlDePasajes', $_SESSION['sesion_permisos'])){
-
-        header("Cache-Control: private, max-age=10800, pre-check=10800");
-        header("Pragma: private");
-        header("Expires: " . date(DATE_RFC822,strtotime("+130 day")));
 ?>
 <!doctype html>
 <html lang="en">
@@ -20,6 +16,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="../recursos/plugins/lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../recursos/plugins/lib/font-awesome/css/font-awesome.css">
+    <script src="http://openlayers.org/api/OpenLayers.js"></script>
 
     <script src="../recursos/plugins/lib/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="../recursos/plugins/lib/noty.js" type="text/javascript"></script>
@@ -289,7 +286,7 @@
         </div>
 </div>   
 
-<div class="modal fade" id="ModalEdicionCoordenadas">
+<!--<div class="modal fade" id="ModalEdicionCoordenadas">
         <div class="modal-dialog">
                 <div class="modal-content">
                         <div class="modal-header">
@@ -307,7 +304,27 @@
                          </div>
                 </div>
         </div>
-</div> 	
+</div> 	-->
+<!-- Seleccionar un punto en el mapa -->
+<div class="modal fade" id="ModalEdicionCoordenadas">
+        <div class="modal-dialog">
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                               <h3 class="modal-title">Edición de Coordenadas</h3>
+                        </div>
+                        
+                          <div class="modal-body" style="height: 500px; width:590px;" id="contenedorMapa">
+                            
+                          </div>
+                         <div class="modal-footer">
+                                <label id="latlon" align="left"></label>
+                              <button type="button" onclick="EnviarPasaje.editarCoordenadas()" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                         </div>
+                </div>
+        </div>
+</div>  
 
 <div class="modal fade" id="ModalSeleccionDireccion">
         <div class="modal-dialog">
@@ -325,6 +342,63 @@
                 </div>
         </div>
 </div> 
+
+<script>
+    var lonlat = "";
+        function registrarClick(){
+            if (typeof(map) === "undefined") {
+
+                initalizeMap();
+            }
+
+
+            map.events.register('click', map, handleMapClick);
+
+            function handleMapClick(e){
+               lonlat = map.getLonLatFromViewPortPx(e.xy);
+               // use lonlat
+
+               // If you are using OpenStreetMap (etc) tiles and want to convert back 
+               // to gps coords add the following line :-
+               lonlat.transform( map.projection,map.displayProjection);
+
+               // Longitude = lonlat.lon
+               // Latitude  = lonlat.lat
+               $("#latlon").html("Latitud: "+lonlat.lat.toFixed(6)+", Longitud: "+lonlat.lon.toFixed(6));
+            } 
+
+        }
+        
+
+        function initalizeMap() {
+
+            map = new OpenLayers.Map ("contenedorMapa", {
+                    controls:[
+                        new OpenLayers.Control.Navigation(),
+                        new OpenLayers.Control.PanZoomBar(),
+                        new OpenLayers.Control.LayerSwitcher(),
+                        new OpenLayers.Control.Attribution()],
+                    maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34),
+                        maxResolution: 156543.0399,
+                    numZoomLevels: 18,
+                    units: 'm',
+                    projection: new OpenLayers.Projection("EPSG:900913"),
+                    displayProjection: new OpenLayers.Projection("EPSG:4326")
+                 });
+                    
+            layerMapnik = new OpenLayers.Layer.OSM();
+           map.addLayer(layerMapnik);
+           layerMarkers = new OpenLayers.Layer.Markers("Markers");
+           map.addLayer(layerMarkers);
+                
+           var initLonLat = new OpenLayers.LonLat(-62.086, -31.430).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+           map.setCenter (initLonLat, 15);
+                
+            size = new OpenLayers.Size(30,30);
+           offset = new OpenLayers.Pixel(-(size.w/2), -size.h);     
+        }
+    
+</script>
 
 <script type="text/javascript">
     //Funciones de la notificacion
