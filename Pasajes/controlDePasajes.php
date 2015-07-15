@@ -314,7 +314,7 @@
                                <h3 class="modal-title">Edición de Coordenadas</h3>
                         </div>
                         
-                          <div class="modal-body" style="height: 500px; width:590px;" id="contenedorMapa">
+                          <div class="modal-body" style="height: 450px; width:590px;" id="contenedorMapa">
                             
                           </div>
                          <div class="modal-footer">

@@ -11,6 +11,25 @@ var EnviarPasaje = {
 			$("#btnAsignar").click(function(){
 				
 			urlNuevoPasaje = "../Pasajes/nuevo.php";
+
+      var array_calle = $("#calle").val().split(" ");
+      console.log(direccionCalle+"; "+direccionNumero);
+      if(direccionCalle==""){
+        
+        for(c=0;c<array_calle.length-1;c++){
+          direccionCalle += array_calle[c]+" ";
+        }
+        if($.isNumeric(array_calle[array_calle.length-1]) == false){
+          direccionCalle += array_calle[array_calle.length-1];
+        }else{
+          direccionNumero = $("#calle").val().split(" ")[array_calle.length-1];
+        }
+      }
+      if(direccionNumero==undefined){
+        direccionCalle = $("#calle").val();
+        direccionNumero = "";
+      }
+      
 			
 			var form = $(".form").serialize()+"&lat="+latDireccion+"&lon="+lonDireccion+"&direccionCalle="+direccionCalle+"&direccionNumero="+direccionNumero;
       if($("#movil").prop("disabled")==true){
@@ -52,6 +71,11 @@ var EnviarPasaje = {
                					    notificacion("success", "Pasaje enviado correctamente");
                   				$(".form-control").val('');
                           $(".lbl-asignacion").html('');
+
+                          direccionCalle = "";
+                          direccionNumero = "";
+                          latDireccion = "";
+                          lonDireccion = "";
                				} 
                                                      
                         },
@@ -75,6 +99,7 @@ var EnviarPasaje = {
           $("#coordenadas").val(latDireccion+","+lonDireccion);
         }
         $('#ModalEdicionCoordenadas').modal();
+        //Una vez que abrimos el modal, tenemos que registrar el evento click del mapa
         registrarClick();
       });
       
@@ -197,8 +222,6 @@ var EnviarPasaje = {
       if($.isNumeric(nuevaLat) && $.isNumeric(nuevaLon)){
         latDireccion = nuevaLat;
         lonDireccion = nuevaLon;
-        direccionCalle = direccion.split(" ")[0];
-        direccionNumero = direccion.split(" ")[1];
         $("#lbl-lat").html(latDireccion);
         $("#lbl-lon").html(lonDireccion);
 
