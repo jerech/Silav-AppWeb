@@ -176,7 +176,8 @@ var NuevoAdministrador = {
                                 $(".control").hide()
                             }  
 
-                            unblockUI($(".main-content"));                       
+                            unblockUI($(".main-content"));   
+                      
                         },
                         error: function(a,b,c){
                             unblockUI($(".main-content"));

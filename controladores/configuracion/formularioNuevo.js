@@ -1,11 +1,11 @@
-var NuevoMovil = {
+var NuevaConfiguracion = {
 
 	init: function(){
    
-   	urlNuevo = "moviles/nuevo.php";
-   	urlModificar = "moviles/modificar.php";  
+   	urlNuevo = "configuracion/nuevo.php";
+   	urlModificar = "configuracion/modificar.php";  
 
-    $("#formulario-automovil").bootstrapValidator({
+    $("#formulario-configuracion").bootstrapValidator({
       message: 'Este valor no es valido',
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
@@ -16,61 +16,75 @@ var NuevoMovil = {
                 // Do nothing
             },
             fields: {
-                numero: {
+                nombre: {
                     validators: {
                         notEmpty: {
-                            message: 'El numero es requerido'
-                        },
-                        integer: {
-                            message: 'Solo se admiten digitos'
+                            message: 'El nombre es requerido'
                         }
                     }
                 },
-                patente: {
+                direccion: {
                     validators: {
                         notEmpty: {
-                            message: 'La patente es requerida'
+                            message: 'La direccion es requerida'
                         }
                     }
                   },
-                vencseguro: {
-                    validators:{
-                        date:{
-                          format: 'DD/MM/YYYY',
-                          message: 'El formato es incorrecto'
+                pais: {
+                    validators: {
+                        notEmpty: {
+                            message: 'El pais es requerido'
+                        }
+                    }
+                  },
+                  departamento: {
+                    validators: {
+                        notEmpty: {
+                            message: 'El departamento es requerido'
+                        }
+                    }
+                  },
+                  provincia: {
+                    validators: {
+                        notEmpty: {
+                            message: 'La provincia es requerida'
+                        }
+                    }
+                  },
+                  ciudad: {
+                    validators: {
+                        notEmpty: {
+                            message: 'La ciudad es requerida'
                         }
                     }
                 }
-                }
+              }
               });
 
     $("#btnGuardar").click(function(){
-        $("#formulario-automovil").data('bootstrapValidator').validate();
-        if($("#formulario-automovil").data('bootstrapValidator').isValid() == true){
+        $("#formulario-configuracion").data('bootstrapValidator').validate();
+        if($("#formulario-configuracion").data('bootstrapValidator').isValid() == true){
           guardarDatos();
         }
 
      });
        
-    $("#btnModificar").click(function(){
+    /*$("#btnModificar").click(function(){
       $("#formulario-automovil").data('bootstrapValidator').validate();
         if($("#formulario-automovil").data('bootstrapValidator').isValid() == true){
           guardarDatos();
         }
                 
-    });
+    });*/
 
    
     function guardarDatos(){
         var url;
         var form = $(".form").serialize();
-
-        if(_id == 0){
-          url = urlNuevo;
-        }else{
-          url = urlModificar;
-          form += "&id="+_id;
-        }
+  
+        url = urlModificar;
+        form += "&id=1";//Aca va el numero de la agencia
+        
 
         $.ajax({
           type: 'post',
@@ -85,8 +99,7 @@ var NuevoMovil = {
               if(datos != "OK"){
                 notificacion("error",data);      
               }else{
-                notificacion("success", "Móvil guardado correctamente");
-                $(".form-control").val('');
+                notificacion("success", "Configuracion guardada correctamente");
              }
 
              unblockUI($(".main-content"));

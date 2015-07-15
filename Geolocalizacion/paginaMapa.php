@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="Sebastian" >
 
-	<link rel="stylesheet" href="css/estiloMapa.css"/>
+	<!--<link rel="stylesheet" href="css/estiloMapa.css"/>-->
 	<script src="http://openlayers.org/api/OpenLayers.js"></script>
 	<script type="text/javascript" src="prototype.js"></script>
 	<script type="text/javascript" src="common.js"></script>
@@ -24,10 +24,11 @@
     <link rel="stylesheet" href="../recursos/plugins/lib/font-awesome/css/font-awesome.css">
 
     <script src="../recursos/plugins/lib/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script>jQuery.noConflict();</script>
 
     <script src="../recursos/plugins/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
     <script type="text/javascript">
-        $(function() {
+        jQuery(function( $ ) {
             $(".knob").knob();
         });
     </script>
@@ -40,7 +41,7 @@
 	  var usuarioNombre = '<?php echo $_SESSION["sesion_usuario"]; ?>';
         function cerrar() {
         	
-        	$.ajax({
+        	jQuery.ajax({
                         type: 'POST',
                         url: '../controladores/usuarios/cerrarMapaActivo.php',
                         data:{
@@ -63,7 +64,7 @@
     <link rel="stylesheet" type="text/css" href="../recursos/plugins/stylesheets/premium.css">
 
 </head>
-<body class=" theme-blue" onload="iniciar()">
+<body class=" theme-blue" >
 
     <style type="text/css">
         #line-chart {
@@ -113,9 +114,16 @@
      
      </div>
 
+<script>
+	jQuery( document ).ready(function( $ ) {
+		iniciar( $ );
+	});
+</script>
 </body>
 </html>
 
 <?php
+}else{
+     header("Location: ../index.php");
 }
 ?>

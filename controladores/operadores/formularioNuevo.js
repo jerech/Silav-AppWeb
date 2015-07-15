@@ -18,7 +18,7 @@ var NuevoOperador = {
                         submitHandler: function(validator, form, submitButton) {
                             // Do nothing
                         },
-                        ields: {
+                        fields: {
                             nombre: {
                                 validators: {
                                     notEmpty: {
@@ -176,7 +176,8 @@ var NuevoOperador = {
                                 $(".control").hide()
                             }  
 
-                            unblockUI($(".main-content"));                       
+                            unblockUI($(".main-content"));   
+                                         
                         },
                         error: function(a,b,c){
                             unblockUI($(".main-content"));

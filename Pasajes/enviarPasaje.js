@@ -27,7 +27,7 @@ var EnviarPasaje = {
                         data: form,           
                         dataType: 'html',
                         beforeSend: function(xhr){
-                           if(latDireccion==undefined || lonDireccion==undefined || direccionNumero==undefined || direccionCalle==undefined){
+                           if(latDireccion==undefined || lonDireccion==undefined || direccionCalle==undefined){
                               xhr.abort();
                               var datoFaltante="";
                               switch(undefined){
@@ -37,8 +37,8 @@ var EnviarPasaje = {
                                     datoFaltante="Falta Longitud";
                                 case direccionCalle:
                                     datoFaltante="Falta Calle";
-                                case direccionNumero:
-                                    datoFaltante="Falta Número de Calle"; 
+                                //case direccionNumero:
+                                    //datoFaltante="Falta Número de Calle"; 
                               }
                               notificacion("error","Error. "+datoFaltante+" del Pasaje.");
                            } 
@@ -75,6 +75,7 @@ var EnviarPasaje = {
           $("#coordenadas").val(latDireccion+","+lonDireccion);
         }
         $('#ModalEdicionCoordenadas').modal();
+        registrarClick();
       });
       
 
@@ -98,21 +99,25 @@ var EnviarPasaje = {
 	 },
 
    buscarCoordenadas: function(){
-      
-      
+        
         array_direccion=$("#calle").val().split(" ");
         var calle = "";
-        for(var count = 0;count<array_direccion.length-1;count++){
-          calle += array_direccion[count]+" ";
+        var numero = "";
+        for(var count = 0;count<array_direccion.length;count++){
+          if(array_direccion.length-1 == count && count >0){
+             numero = array_direccion[count];
+          }else{
+            calle += array_direccion[count]+" ";
+          }
+          
         }
-        var numero = array_direccion[array_direccion.length-1];
-        if(!calle || !numero){
+        if(!calle){
           alert("Formato de direccion incorrecta.");
           return;
         }
 
         //Armamos la query para enviar a la api nominatim
-        var query=numero+"+"+calle+",+san francisco,+departamento san justo,+cordoba&format=json&addressdetails=1";
+        var query=calle+" "+numero+",+"+ciudadEmpresa+",+"+departamentoEmpresa+",+"+provinciaEmpresa+"&format=json&addressdetails=1";
         var url = "http://nominatim.openstreetmap.org/search?q="+query;
 
         $.ajax({
@@ -128,7 +133,13 @@ var EnviarPasaje = {
                             if(data.length == 1){
                               latitud = data[0].lat;
                               longitud = data[0].lon;
-                              direccionCompleta = data[0].address.road+" "+data[0].address.house_number+" - "+data[0].address.town+" - "+data[0].address.state;
+                              console.log(data[0].type);
+                              if(data[0].type == "address"){
+                                direccionCompleta = data[0].address.road+" "+data[0].address.house_number+" - "+data[0].address.town+" - "+data[0].address.state;
+                              }else{
+                                direccionCompleta = eval("data[0].address."+data[0].type) +" - "+data[0].address.road+" - "+data[0].address.town+" - "+data[0].address.state;
+                              }
+                              
 
                               $("#lbl-lat").html(latitud);
                               $("#lbl-lon").html(longitud);
@@ -179,9 +190,8 @@ var EnviarPasaje = {
    },
 
    editarCoordenadas: function(){
-      var ubicacion = $("#coordenadas").val();
-      var nuevaLat = ubicacion.split(",")[0];
-      var nuevaLon = ubicacion.split(",")[1];
+      var nuevaLat = lonlat.lat;
+      var nuevaLon = lonlat.lon;
       var direccion = $("#calle").val();
 
       if($.isNumeric(nuevaLat) && $.isNumeric(nuevaLon)){
@@ -199,6 +209,9 @@ var EnviarPasaje = {
    },
 
    setCoordenadas: function(lat,lon,road,house_number,town,state){
+      if(house_number=="undefined"){
+        house_number=undefined;
+      }
       $("#lbl-lat").html(lat);
       $("#lbl-lon").html(lon);
       $("#lbl-info-direccion").html(road+" "+house_number+" - "+town+" - "+state);

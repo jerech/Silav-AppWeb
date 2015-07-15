@@ -6,7 +6,7 @@
     }
 
 	//Se verifica que los campos obligatorios no esten vacios
-  	if(empty($_POST['direccionCalle'])||empty($_POST['direccionNumero']) 
+  	if(empty($_POST['direccionCalle']) 
           || empty($_POST['lon'])
           || empty($_POST['lat'])
           || empty($_POST['calle'])){
@@ -25,6 +25,8 @@
   	$cliente = $_POST['cliente'];
     $lat = $_POST['lat'];
     $lon = $_POST['lon'];
+
+    
   	
   	$direccion = $calle . " " . $numero;
   	$fecha = date("Y-m-d H:i:s");
@@ -52,7 +54,7 @@
 		echo "Error al conectar con la Base de Datos";
 		exit();
 	}
-
+  
 	$resultado = mysql_query($query, $conexion) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
 
 	if($resultado){

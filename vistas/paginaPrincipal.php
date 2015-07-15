@@ -60,7 +60,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="" href="panelSitio.php?seccion=Inicio"><span class="navbar-brand"><span class="fa fa-taxi"></span> SiLAV</span></a></div>
+          <a class="" href="panelSitio.php?seccion=Inicio"><span class="navbar-brand"><span class="fa fa-taxi"></span> SiLAV<?php echo ' - '.$_SESSION['sesion_nombreEmpresa'] ?></span></a></div>
 
         <div id="div-main-menu" class="navbar-collapse collapse" style="height: 1px;">
           <ul id="main-menu" class="nav navbar-nav navbar-right">
@@ -71,10 +71,7 @@
                 </a>
 
               <ul class="dropdown-menu">
-                <li><a href="./">Panel Admin</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Admin</li>
-                <li><a href="./">Usuarios</a></li>
+                <li><a href="panelSitio.php?seccion=Configuracion">Configuración</a></li>
                 <li class="divider"></li>
                 <li><a tabindex="-1" href="../controladores/cierreSesion.php">Salir</a></li>
               </ul>
@@ -161,7 +158,7 @@
             </ul></li>
             <!-- Fin seccion Moviles-->
             <?php } ?>
-            <li><a href="help.html" class="nav-header"><i class="fa fa-fw fa-question-circle"></i> Ayuda</a></li>
+            <li><a href="panelSitio.php?seccion=Ayuda" class="nav-header"><i class="fa fa-fw fa-question-circle"></i> Ayuda</a></li>
         </ul>
     </div>
 

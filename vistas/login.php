@@ -156,7 +156,7 @@
     
                             if (data !== "OK") {
 
-                                notificacion("error","Error al intentar ingresar al sistema. "+data+contrasenia);
+                                notificacion("error","Error al intentar ingresar al sistema. "+data);
                                 $("#contrasenia").val("");
                             }else{
                                 window.location.replace("../index.php");

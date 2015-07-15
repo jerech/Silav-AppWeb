@@ -9,6 +9,8 @@
 
     $seccionesURL = array(
 		'Inicio' => '../vistas/inicio.php',
+		'Configuracion' => '../vistas/configuracion/nueva.php',
+		'Ayuda' => '../vistas/ayuda/ayuda.php', //Esta seccion no necesita permisos
       	'Administradores' => '#',
       	'Operadores'=> '#',
 		'Choferes' => '#',
@@ -70,7 +72,7 @@
 
 		if(array_key_exists($seccion, $seccionesURL)){
 			
-			if(in_array($seccion, $_SESSION['sesion_permisos'])){
+			if(in_array($seccion, $_SESSION['sesion_permisos']) || $seccion == 'Ayuda'){
 				include_once $seccionesURL[$seccion];
 			
 			}else{				

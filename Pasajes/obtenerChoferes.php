@@ -8,9 +8,9 @@
   	require_once("../conexionBD.php");
   	
 	$query = "select usuario,
-						  numero_movil
-				 
-				 from ChoferesConectados"; 	
+					numero_movil
+				 from ChoferesConectados			 
+				 WHERE estado_movil = 'LIBRE'"; 	
   	
 	$coneccion = establecerConexion();
 	if(!$coneccion){
