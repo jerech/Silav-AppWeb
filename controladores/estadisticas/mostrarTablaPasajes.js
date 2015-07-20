@@ -28,7 +28,21 @@ var mostrarDatos = {
 									nuevaFila += "<td>"+data.pasajes[index].numero_movil+"</td>";
 									nuevaFila += "<td>"+data.pasajes[index].nombre_cliente+"</td>";
                   nuevaFila += "<td>"+data.pasajes[index].direccion+"</td>";
-                  nuevaFila += "<td>"+data.pasajes[index].estado+"</td>";
+
+                  switch(data.pasajes[index].estado){
+                    case 'por_asignar':
+                          nuevaFila += "<td style='background-color:#F1FF69'>"+data.pasajes[index].estado+"</td>";
+                          break;
+                    case 'asignado':
+                          nuevaFila += "<td style='background-color:#69FF69'>"+data.pasajes[index].estado+"</td>";
+                          break;
+                    case 'rechazado':
+                          nuevaFila += "<td style='background-color:#FF6969'>"+data.pasajes[index].estado+"</td>";
+                          break;
+                    default:
+                          nuevaFila += "<td>"+data.pasajes[index].estado+"</td>";
+                  }
+                  
 		
 									nuevaFila +="</tr>";
 		
