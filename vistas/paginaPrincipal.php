@@ -158,6 +158,20 @@
             </ul></li>
             <!-- Fin seccion Moviles-->
             <?php } ?>
+
+            <?php if(in_array('Estadisticas', $_SESSION['sesion_permisos'])){ ?>
+            <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".estadisticas-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-dashboard"></i> Estadísticas <i class="fa fa-collapse"></i></a></li>
+            <li><ul <?php 
+                        if($seccion=='Estadisticas'){ 
+                            echo "class='estadisticas-menu nav nav-list collapse in'";
+                        }else{
+                            echo "class='estadisticas-menu nav nav-list collapse'";
+                        } ?>
+            >
+            <li <?php if($subSeccion=='PasajesHistoricos'){echo "class='active'";}?>><a href="panelSitio.php?subSeccion=PasajesHistoricos" ><span class="fa fa-caret-right"></span>Pasajes Históricos</a></li>
+            </ul></li>
+            <!-- Fin seccion Estadisticas-->
+            <?php } ?>
             <li><a href="panelSitio.php?seccion=Ayuda" class="nav-header"><i class="fa fa-fw fa-question-circle"></i> Ayuda</a></li>
         </ul>
     </div>

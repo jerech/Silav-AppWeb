@@ -14,11 +14,12 @@
       	'Administradores' => '#',
       	'Operadores'=> '#',
 		'Choferes' => '#',
-		'Moviles' => '#');
+		'Moviles' => '#',
+		'Estadisticas' => '#');
 		
 	$subSeccionesSeccion = array(
 		'GeolocalizacionMoviles' => 'Inicio',
-		'Estadisticas' => 'Inicio',
+		'PasajesHistoricos' => 'Estadisticas',
 		'ControlDePasajes' => 'Inicio',
 
 		'NuevoAdministrador' => 'Administradores',
@@ -42,7 +43,7 @@
 		
 	$subSeccionesURL = array(		
 		'GeolocalizacionMoviles' => '#',
-		'Estadisticas' => '#',
+		'PasajesHistoricos' => '../vistas/estadisticas/verPasajesHistoricos.php',
 		'ControlDePasajes' => '#',
 		
 		'NuevoAdministrador' => '../vistas/administradores/nuevo.php',
@@ -100,7 +101,8 @@
 
 		if(array_key_exists($subSeccion, $subSeccionesURL)){
 			
-			if(in_array($subSeccion, $_SESSION['sesion_permisos'])){
+			if(in_array($subSeccion, $_SESSION['sesion_permisos'])
+				|| $subSeccion == "PasajesHistoricos"){
 				include_once $subSeccionesURL[$subSeccion];
 			
 			}else{				
