@@ -4,10 +4,11 @@
 	if(!$_SESSION['sesion_reg']){
         exit();
     }
+    $idAgencia = $_SESSION['sesion_idAgencia'];
 
 	require_once("../../conexionBD.php");
 	$id = $_POST['id'];
-	$query = "select count(*) as cantidad from Moviles where id=$id";
+	$query = "select count(*) as cantidad from Moviles where id=$id and id_agencia=$idAgencia";
 
 	$conexion = establecerConexion();
 	if(!$conexion){

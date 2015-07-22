@@ -19,7 +19,8 @@
 						u.id,
 						u.usuario,
 						u.nombre,
-						u.tipo
+						u.tipo,
+						u.id_agencia
 					FROM
 						Usuarios as u
 					WHERE
@@ -38,6 +39,7 @@
 				$nombre = $array['nombre'];
 				$idUsuario = $array['id'];
 				$tipo = $array['tipo'];
+				$idAgencia = $array['id_agencia'];
 
 				//Se buscan los permisos del usuario
 				$query2 = "SELECT
@@ -57,7 +59,7 @@
 					}
 
 					//Se busca la ciudad, departamento, provincia de la empresa
-					$query3 = "select ciudad, departamento, provincia, nombre from Agencias where id=1";
+					$query3 = "select ciudad, departamento, provincia, nombre from Agencias where id=$idAgencia";
 					$resultado3 = mysql_query($query3);
 					$array = mysql_fetch_array($resultado3, MYSQL_ASSOC);
 					$ciudad = $array['ciudad'];
@@ -73,6 +75,7 @@
                 	$_SESSION['sesion_idUsuario'] = $idUsuario;
                 	$_SESSION['sesion_tipoUsuario'] = $tipo;
                		$_SESSION['sesion_permisos'] = $permisos;
+               		$_SESSION['sesion_idAgencia'] = $idAgencia;
                		$_SESSION['sesion_ciudad'] = $ciudad;
                		$_SESSION['sesion_departamento'] = $departamento;
                		$_SESSION['sesion_provincia'] = $provincia;

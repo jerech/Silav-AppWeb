@@ -4,12 +4,13 @@
 	if(!$_SESSION['sesion_reg']){
         exit();
     }
+    $idAgencia = $_SESSION['sesion_idAgencia'];
 
 	require_once("../../conexionBD.php");
 
-	$query1 = "select count(*) as cantidad from ChoferesConectados";
-	$query2 = "select count(*) as cantidad from Choferes";
-	$query3 = "select count(*) as cantidad from PasajesEnCurso";
+	$query1 = "select count(*) as cantidad from ChoferesConectados where id_agencia=$idAgencia";
+	$query2 = "select count(*) as cantidad from Choferes where id_agencia=$idAgencia";
+	$query3 = "select count(*) as cantidad from PasajesEnCurso where id_agencia=$idAgencia";
 	
 	$conexion = establecerConexion();
 	if(!$conexion){

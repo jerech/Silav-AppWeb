@@ -5,6 +5,8 @@
         exit();
     }
 
+    $idAgencia = $_SESSION['sesion_idAgencia'];
+
 	//Se verifica que los campos obligatorios no esten vacios
   	if(empty($_POST['contrasenia-encriptada'])||empty($_POST['nombre'])||empty($_POST['apellido']) ||empty($_POST['usuario'])){
   		
@@ -38,8 +40,6 @@
   	}else{
   		$habilitado=0;
   	}
-	
-	$id_agencia = 0; //CAMBIAR POR VALOR REAL!!
   	
   	//Se realiza el insert en la BD
   	$query = "
@@ -52,7 +52,8 @@
   				venc_licencia,
   				habilitado,
   				sexo,
-  				id_agencia)
+  				id_agencia,
+          activo)
   			values(
   				'$nombre',
   				'$apellido',
@@ -62,7 +63,8 @@
   				'$venc_licencia',
   				'$habilitado',
   				'$sexo',
-  				'$id_agencia')";
+  				'$idAgencia',
+          1)";
 
 	$conexion = establecerConexion();
 	if(!$conexion){
