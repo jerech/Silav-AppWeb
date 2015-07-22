@@ -5,7 +5,12 @@ header( "Last-Modified: " . gmdate( "D, d M Y H:i:s" ) . " GMT" );
 header( "Cache-Control: no-cache, must-revalidate" ); 
 header( "Pragma: no-cache" );
 
-include '../conexionBD.php';
+session_start();
+  if(!$_SESSION['sesion_reg']){
+        exit();
+    }
+
+require_once("../conexionBD.php");
 
 $idAgencia = $_SESSION['sesion_idAgencia'];
 
