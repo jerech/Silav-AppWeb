@@ -4,13 +4,14 @@
 	if(!$_SESSION['sesion_reg']){
         exit();
     }
-
+    $idAgencia = $_SESSION['sesion_idAgencia'];
+    
   	require_once("../conexionBD.php");
   	
 	$query = "select usuario,
 					numero_movil
 				 from ChoferesConectados			 
-				 WHERE estado_movil = 'LIBRE'"; 	
+				 WHERE estado_movil = 'LIBRE' and id_agencia=$idAgencia"; 	
   	
 	$coneccion = establecerConexion();
 	if(!$coneccion){

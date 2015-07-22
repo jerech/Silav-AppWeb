@@ -4,10 +4,11 @@
 	if(!$_SESSION['sesion_reg']){
         exit();
     }
+    $idAgencia = $_SESSION['sesion_idAgencia'];
 
   	require_once("../../conexionBD.php");
   	
-	$query = "select * from Pasajes";  	
+	$query = "select * from Pasajes where id_agencia=$idAgencia";  	
   	
 	$coneccion = establecerConexion();
 	if(!$coneccion){

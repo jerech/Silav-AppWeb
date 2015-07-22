@@ -4,9 +4,10 @@
 	if(!$_SESSION['sesion_reg']){
         exit();
     }
+    $idAgencia = $_SESSION['sesion_idAgencia'];
 
 	require_once("../../conexionBD.php");
-	$query = "select * from Usuarios where tipo='admin' and activo=1";
+	$query = "select * from Usuarios where tipo='admin' and activo=1 and id_agencia=$idAgencia";
 
 	$conexion = establecerConexion();
 	if(!$conexion){

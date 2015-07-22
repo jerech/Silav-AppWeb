@@ -5,6 +5,8 @@
         exit();
     }
 
+    $idAgencia = $_SESSION['sesion_idAgencia'];
+
 	//Se verifica que los campos obligatorios no esten vacios
   	if(empty($_POST['numero'])||empty($_POST['patente'])){
   		echo "Error. Campos obligatorios vacios.";
@@ -40,7 +42,9 @@
   				modelo,
   				vencseguro,
   				aa,
-  				gnc)
+  				gnc,
+          id_agencia,
+          activo)
   			values(
   				'$patente',
   				'$numero',
@@ -48,7 +52,9 @@
   				'$modelo',
   				'$vencseguro',
   				'$aa',
-  				'$gnc')";
+  				'$gnc',
+          $idAgencia,
+          1)";
 
 	$coneccion = establecerConexion();
 	if(!$coneccion){

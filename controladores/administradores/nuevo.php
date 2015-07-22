@@ -5,6 +5,7 @@
         exit();
     }
 
+    $idAgencia = $_SESSION['sesion_idAgencia'];
 	//Se verifica que los campos obligatorios no esten vacios
   	if(empty($_POST['contrasenia-encriptada'])||empty($_POST['nombre'])||empty($_POST['apellido']) ||empty($_POST['usuario'])){
   		echo "Error. Campos obligatorios vacios.";
@@ -46,7 +47,9 @@
   				direccion,
   				tipo,
   				email,
-  				habilitado)
+  				habilitado, 
+          activo,
+          id_agencia)
   			values(
   				'$nombre',
   				'$apellido',
@@ -56,7 +59,9 @@
   				'$direccion',
   				'$tipo',
   				'$email',
-  				'$habilitado')";
+  				'$habilitado',
+          1,
+          $idAgencia)";
 
 	$conexion = establecerConexion();
 	if(!$conexion){

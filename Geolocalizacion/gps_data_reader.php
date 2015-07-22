@@ -7,10 +7,12 @@ header( "Pragma: no-cache" );
 
 include '../conexionBD.php';
 
+$idAgencia = $_SESSION['sesion_idAgencia'];
+
 $conexion = establecerConexion();
 
 $registros=mysql_query("select usuario, ubicacion_lat, ubicacion_lon, estado_movil
-                       from ChoferesConectados", $conexion) or
+                       from ChoferesConectados where id_agencia=$idAgencia", $conexion) or
   die("Problemas en el select:".mysql_error());
 
 while ($reg=mysql_fetch_array($registros))

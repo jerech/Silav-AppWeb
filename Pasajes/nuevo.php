@@ -5,6 +5,8 @@
         exit();
     }
 
+    $idAgencia = $_SESSION['sesion_idAgencia'];
+
 	//Se verifica que los campos obligatorios no esten vacios
   	if(empty($_POST['direccionCalle']) 
           || empty($_POST['lon'])
@@ -39,7 +41,8 @@
   				nombreCliente,
   				numeroMovil,
           latDireccion,
-          lonDireccion)
+          lonDireccion,
+          id_agencia)
   			values(
   				'$direccion',
   				'$fecha',
@@ -47,7 +50,8 @@
   				'$cliente',
   				'$movil',
           $lat,
-          $lon)";
+          $lon,
+          $idAgencia)";
 
 	$conexion = establecerConexion();
 	if(!$conexion){

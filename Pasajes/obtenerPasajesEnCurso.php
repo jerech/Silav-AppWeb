@@ -4,10 +4,11 @@
 	if(!$_SESSION['sesion_reg']){
         exit();
     }
+    $idAgencia = $_SESSION['sesion_idAgencia'];
 
   	require_once("../conexionBD.php");
   	
-	$query = "select * from PasajesEnCurso ORDER BY id DESC LIMIT 30"; 	
+	$query = "select * from PasajesEnCurso where id_agencia=$idAgencia ORDER BY id DESC LIMIT 30"; 	
   	
 	$coneccion = establecerConexion();
 	if(!$coneccion){
