@@ -97,11 +97,11 @@ function crearMarcador(chofer) {
 		}
 		else {
 			//chofer.estado == "INACTIVO"
-			chofer.marcador = new OpenLayers.Marker(chofer.lonLatTransformada, new OpenLayers.Icon(urlDirImagenes+'blue-marker.png',size,offset));	
+			chofer.marcador = new OpenLayers.Marker(chofer.lonLatTransformada, new OpenLayers.Icon(urlDirImagenes+'gray-marker.png',size,offset));	
 		}
 	}
-   chofer.popup = new OpenLayers.Popup(chofer.nombre, chofer.lonLatTransformada, new OpenLayers.Size(70,30),
-                        "<font size=-2>"+chofer.nombre);
+   chofer.popup = new OpenLayers.Popup(chofer.nombre, chofer.lonLatTransformada, new OpenLayers.Size(75,60),
+                        "<div><p><b>"+chofer.nombre+"</b><br><b>"+chofer.estado+"</b></p></div>");
    map.addPopup(chofer.popup);
    chofer.popup.hide();
 	chofer.popup.opacity=0.5;
