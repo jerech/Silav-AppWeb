@@ -1,4 +1,4 @@
-var map, zoom=15;
+var map, zoom=5, lonMapa=-60, latMapa=-40;
 
 //choferesConectados: array de objetos choferes que corresponde a los choferes que aparecen en la pagina web
 //nuevosChoferes: array de objetos choferes que corresponde a los datos de choferes leidos de la base de datos	
@@ -6,12 +6,35 @@ var choferesConectados, nuevosChoferes;
 var urlDirImagenes = '../Geolocalizacion/img/';
 
 function iniciar( $ ) {
+
+	if (navigator.geolocation){
+		navigator.geolocation.getCurrentPosition(funcExitoLocalizacion, funcErrorLocalizacion, {
+			maximumAge: 75000,
+			timeout: 4000
+		});
+	}else{
+		alert("No hay soporte para geolocalizacion.");
+	}
 		
 	var temporizador=setInterval(function() {
 			var post = $.post("gps_data_reader.php", '', siRespuesta, 'json');	
 	},2000);
 }
 	
+function funcExitoLocalizacion(objPosition){
+	console.log(objPosition);
+	zoom = 15;
+	lonMapa = objPosition.coords.longitude;
+	latMapa = objPosition.coords.latitude;
+	return;
+}
+
+function funcErrorLocalizacion(objPositionError){
+
+	console.log(objPositionError);
+	return;
+}
+
 function siRespuesta(t) {
  
 	var datosChoferes = t;
@@ -146,7 +169,7 @@ function initalizeMap() {
    layerMarkers = new OpenLayers.Layer.Markers("Markers");
    map.addLayer(layerMarkers);
 		
-   var initLonLat = new OpenLayers.LonLat(-62.086, -31.430).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+   var initLonLat = new OpenLayers.LonLat(lonMapa, latMapa).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
    map.setCenter (initLonLat, zoom);
 		
 	size = new OpenLayers.Size(30,30);
