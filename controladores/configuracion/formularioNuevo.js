@@ -83,8 +83,6 @@ var NuevaConfiguracion = {
         var form = $(".form").serialize();
   
         url = urlModificar;
-        form += "&id=1";//Aca va el numero de la agencia
-        
 
         $.ajax({
           type: 'post',

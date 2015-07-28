@@ -5,6 +5,8 @@
         exit();
     }
 
+    $idAgencia = $_SESSION['sesion_idAgencia'];
+
 	//Se verifica que los campos obligatorios no esten vacios
   	if(empty($_POST['nombre'])||empty($_POST['direccion']) ||empty($_POST['departamento'] ||
           empty($_POST['pais']) ||empty($_POST['provincia']) ||empty($_POST['ciudad']))){
@@ -15,7 +17,6 @@
   	require_once("../../conexionBD.php");
 
   	//Se obtienen los datos a guardar
-  	$id = $_POST['id'];
   	$nombre = $_POST['nombre'];
   	$email = $_POST['patente'];
     $telefono = $_POST['telefono'];
@@ -42,7 +43,7 @@
               direccion='$direccion',
               ciudad = '$ciudad'
         WHERE 
-              id=$id";
+              id=$idAgencia";
 
 	$conexion = establecerConexion();
 	if(!$conexion){
@@ -56,7 +57,7 @@
     $_SESSION['sesion_ciudad'] = $ciudad;
     $_SESSION['sesion_provincia'] = $provincia;
     $_SESSION['sesion_departamento'] = $departamento; 
-		echo "OK"; //Con la funcion mysql_insert_id() se obtiene el id del elemento insertado
+		echo "OK_".mysql_insert_id(); //Con la funcion mysql_insert_id() se obtiene el id del elemento insertado
 	}
 
 	mysql_close($conexion);
