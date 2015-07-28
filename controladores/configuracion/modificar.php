@@ -9,7 +9,7 @@
 
 	//Se verifica que los campos obligatorios no esten vacios
   	if(empty($_POST['nombre'])||empty($_POST['direccion']) ||empty($_POST['departamento'] ||
-          empty($_POST['pais']) ||empty($_POST['provincia']) ||empty($_POST['ciudad']))){
+          empty($_POST['pais']) ||empty($_POST['provincia']) ||empty($_POST['ciudad'])){
   		echo "Error. Campos obligatorios vacios.";
   		exit();
   	}
