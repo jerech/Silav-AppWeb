@@ -64,12 +64,16 @@ function siRespuesta(t) {
 			initalizeMap();
 		}
 		else {
-			if (choferesConectados.length == 1) {
-				layerMarkers.removeMarker(choferesConectados[0].marcador);
-				choferesConectados[0].popup.destroy();
-				choferesConectados.splice(0, 1);
+			if(typeof(choferesConectados) != "undefined") {
+				if (choferesConectados.length == 1) {
+					layerMarkers.removeMarker(choferesConectados[0].marcador);
+					choferesConectados[0].popup.destroy();
+					choferesConectados.splice(0, 1);
+				}
 			}
-					
+			else {
+				
+			}					
 		}
 	}
 }	
@@ -123,7 +127,7 @@ function crearMarcador(chofer) {
 			chofer.marcador = new OpenLayers.Marker(chofer.lonLatTransformada, new OpenLayers.Icon(urlDirImagenes+'gray-marker.png',size,offset));	
 		}
 	}
-   chofer.popup = new OpenLayers.Popup(chofer.nombre, chofer.lonLatTransformada, new OpenLayers.Size(75,60),
+   chofer.popup = new OpenLayers.Popup(chofer.nombre, chofer.lonLatTransformada, new OpenLayers.Size(85,60),
                         "<div><p><b>"+chofer.nombre+"</b><br><b>"+chofer.estado+"</b></p></div>");
    map.addPopup(chofer.popup);
    chofer.popup.hide();

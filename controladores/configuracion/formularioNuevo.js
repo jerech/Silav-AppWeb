@@ -83,8 +83,6 @@ var NuevaConfiguracion = {
         var form = $(".form").serialize();
   
         url = urlModificar;
-        form += "&id=1";//Aca va el numero de la agencia
-        
 
         $.ajax({
           type: 'post',
@@ -95,8 +93,8 @@ var NuevaConfiguracion = {
               blockUI($(".main-content")); 
           },   
           success: function(data) {
-              var datos = data;
-              if(datos != "OK"){
+              var datos = data.split("_");
+              if(datos[0] != "OK"){
                 notificacion("error",data);      
               }else{
                 notificacion("success", "Configuracion guardada correctamente");
