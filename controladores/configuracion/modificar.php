@@ -8,8 +8,8 @@
     $idAgencia = $_SESSION['sesion_idAgencia'];
 
 	//Se verifica que los campos obligatorios no esten vacios
-  	if(empty($_POST['nombre'])||empty($_POST['direccion']) ||empty($_POST['departamento'] ||
-          empty($_POST['pais']) ||empty($_POST['provincia']) ||empty($_POST['ciudad'])){
+  	if(empty($_POST['nombre'])||empty($_POST['direccion']) ||empty($_POST['departamento']) ||
+          empty($_POST['pais']) ||empty($_POST['provincia']) || empty($_POST['ciudad'])){
   		echo "Error. Campos obligatorios vacios.";
   		exit();
   	}
@@ -18,7 +18,7 @@
 
   	//Se obtienen los datos a guardar
   	$nombre = $_POST['nombre'];
-  	$email = $_POST['patente'];
+  	$email = $_POST['email'];
     $telefono = $_POST['telefono'];
     $cuit = $_POST['cuit'];
     $pais = $_POST['pais'];
@@ -57,7 +57,7 @@
     $_SESSION['sesion_ciudad'] = $ciudad;
     $_SESSION['sesion_provincia'] = $provincia;
     $_SESSION['sesion_departamento'] = $departamento; 
-		echo "OK_".mysql_insert_id(); //Con la funcion mysql_insert_id() se obtiene el id del elemento insertado
+		echo "OK"; //Con la funcion mysql_insert_id() se obtiene el id del elemento insertado
 	}
 
 	mysql_close($conexion);
