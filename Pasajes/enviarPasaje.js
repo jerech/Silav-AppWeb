@@ -36,8 +36,13 @@ var EnviarPasaje = {
           form += "&movil="; 
       }
       if($("#listaChoferes").prop("disabled")==true){
-        form += "&listaChoferes=";
+      	form += "&listaChoferes=";
+      	form += "&asignacionAutomatica=1";
       }
+      else {
+      	form += "&asignacionAutomatica=0";	
+      }
+
       console.log(form);
 
 		$.ajax({

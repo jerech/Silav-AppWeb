@@ -25,14 +25,14 @@
   	$chofer = $_POST['listaChoferes'];
   	$movil = $_POST['movil'];
   	$cliente = $_POST['cliente'];
-    $lat = $_POST['lat'];
-    $lon = $_POST['lon'];
-
+   $lat = $_POST['lat'];
+   $lon = $_POST['lon'];
+  	$asignacionAutomatica = $_POST['asignacionAutomatica'];
     
-  	
   	$direccion = $calle . " " . $numero;
   	$fecha = date("Y-m-d H:i:s");
   	//Se realiza el insert en la BD
+
   	$query = "
   			insert into PasajesEnCurso(
   				direccion,
@@ -42,7 +42,8 @@
   				numeroMovil,
           latDireccion,
           lonDireccion,
-          id_agencia)
+          id_agencia,
+          asignacionAutomatica)
   			values(
   				'$direccion',
   				'$fecha',
@@ -51,7 +52,8 @@
   				'$movil',
           $lat,
           $lon,
-          $idAgencia)";
+          $idAgencia,
+          $asignacionAutomatica)";
 
 	$conexion = establecerConexion();
 	if(!$conexion){
