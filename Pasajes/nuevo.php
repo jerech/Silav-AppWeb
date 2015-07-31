@@ -16,6 +16,10 @@
   		echo "Error. Campos obligatorios vacios.";
   		exit();
   	}
+  	elseif(empty($_POST['listaChoferes']) && $_POST['asignacionAutomatica']==0) {
+  		echo "Error. Campos obligatorios vacios.";
+  		exit();
+  	}
 
   	require_once("../conexionBD.php");
 
