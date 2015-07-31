@@ -9,8 +9,8 @@ function iniciar( $ ) {
 
 	if (navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(funcExitoLocalizacion, funcErrorLocalizacion, {
-			maximumAge: 75000,
-			timeout: 4000
+			//maximumAge: 75000,
+			timeout: 10000
 		});
 	}else{
 		alert("No hay soporte para geolocalizacion.");
@@ -72,7 +72,7 @@ function siRespuesta(t) {
 				}
 			}
 			else {
-				alert("indefinido");	
+				
 			}					
 		}
 	}

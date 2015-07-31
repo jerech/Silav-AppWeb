@@ -25,7 +25,8 @@
 						Usuarios as u
 					WHERE
 						u.usuario = '$usuarioLogin' AND
-						u.contrasenia = '$contraseniaLogin'";
+						u.contrasenia = '$contraseniaLogin' AND
+						u.activo = 1";
 
 		$coneccion = establecerConexion();
 
