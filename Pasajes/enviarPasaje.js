@@ -6,7 +6,7 @@ var EnviarPasaje = {
     latDireccion="";
     lonDireccion="";
     direccionCalle="";
-    direccionNumero=""; 
+    direccionNumero="";
 			
 			$("#btnAsignar").click(function(){
 				
@@ -36,8 +36,13 @@ var EnviarPasaje = {
           form += "&movil="; 
       }
       if($("#listaChoferes").prop("disabled")==true){
-        form += "&listaChoferes=";
+      	form += "&listaChoferes=";
+      	form += "&asignacionAutomatica=1";
       }
+      else {
+      	form += "&asignacionAutomatica=0";	
+      }
+alert(form);
       console.log(form);
 
 		$.ajax({
@@ -60,7 +65,7 @@ var EnviarPasaje = {
                                     //datoFaltante="Falta Número de Calle"; 
                               }
                               notificacion("error","Error. "+datoFaltante+" del Pasaje.");
-                           } 
+                           }
                         },   
                         success: function(data) {
 									var datos = data.split("_");

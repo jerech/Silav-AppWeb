@@ -5,8 +5,14 @@
         exit();
     }
 
+    $idAgencia = $_SESSION['sesion_idAgencia'];
+
 	//Se verifica que los campos obligatorios no esten vacios
-  	if(empty($_POST['calle'])||empty($_POST['numero'])){
+  	if(empty($_POST['direccionCalle']) 
+          || empty($_POST['lon'])
+          || empty($_POST['lat'])
+          || empty($_POST['listaChoferes'])
+          || empty($_POST['calle'])){
   
   		echo "Error. Campos obligatorios vacios.";
   		exit();
@@ -15,35 +21,47 @@
   	require_once("../conexionBD.php");
 
   	//Se obtienen los datos a guardar
-  	$calle = $_POST['calle'];
-  	$numero = $_POST['numero'];
+  	$calle = $_POST['direccionCalle'];
+  	$numero = $_POST['direccionNumero'];
   	$chofer = $_POST['listaChoferes'];
   	$movil = $_POST['movil'];
   	$cliente = $_POST['cliente'];
-  	
+   $lat = $_POST['lat'];
+   $lon = $_POST['lon'];
+  	$asignacionAutomatica = $_POST['asignacionAutomatica'];
+    
   	$direccion = $calle . " " . $numero;
   	$fecha = date("Y-m-d H:i:s");
   	//Se realiza el insert en la BD
+
   	$query = "
   			insert into PasajesEnCurso(
   				direccion,
   				fecha,
   				usuarioChofer,
   				nombreCliente,
-  				numeroMovil)
+  				numeroMovil,
+          latDireccion,
+          lonDireccion,
+          id_agencia,
+          asignacionAutomatica)
   			values(
   				'$direccion',
   				'$fecha',
   				'$chofer',
   				'$cliente',
-  				'$movil')";
+  				'$movil',
+          $lat,
+          $lon,
+          $idAgencia,
+          $asignacionAutomatica)";
 
 	$conexion = establecerConexion();
 	if(!$conexion){
 		echo "Error al conectar con la Base de Datos";
 		exit();
 	}
-
+  
 	$resultado = mysql_query($query, $conexion) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
 
 	if($resultado){

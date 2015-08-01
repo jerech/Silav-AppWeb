@@ -1,23 +1,40 @@
-var map, zoom=15;
-<<<<<<< HEAD
+var map, zoom=5, lonMapa=-60, latMapa=-40;
+
 //choferesConectados: array de objetos choferes que corresponde a los choferes que aparecen en la pagina web
 //nuevosChoferes: array de objetos choferes que corresponde a los datos de choferes leidos de la base de datos	
 var choferesConectados, nuevosChoferes;
 var urlDirImagenes = '../Geolocalizacion/img/';
-=======
-	//choferesConectados: array de objetos choferes que corresponde a los choferes que aparecen en la pagina web
-	//nuevosChoferes: array de objetos choferes que corresponde a los datos de choferes leidos de la base de datos	
-	var choferesConectados, nuevosChoferes;
-	var urlDirImagenes = 'http://'+window.location.host+'/app/Geolocalizacion/img/';
->>>>>>> 19b16e6184e96dda18006742d3b0f6ff4ff090c0
 
 function iniciar( $ ) {
+
+	if (navigator.geolocation){
+		navigator.geolocation.getCurrentPosition(funcExitoLocalizacion, funcErrorLocalizacion, {
+			//maximumAge: 75000,
+			timeout: 10000
+		});
+	}else{
+		alert("No hay soporte para geolocalizacion.");
+	}
 		
 	var temporizador=setInterval(function() {
 			var post = $.post("gps_data_reader.php", '', siRespuesta, 'json');	
 	},2000);
 }
 	
+function funcExitoLocalizacion(objPosition){
+	console.log(objPosition);
+	zoom = 15;
+	lonMapa = objPosition.coords.longitude;
+	latMapa = objPosition.coords.latitude;
+	return;
+}
+
+function funcErrorLocalizacion(objPositionError){
+
+	console.log(objPositionError);
+	return;
+}
+
 function siRespuesta(t) {
  
 	var datosChoferes = t;
@@ -47,12 +64,16 @@ function siRespuesta(t) {
 			initalizeMap();
 		}
 		else {
-			if (choferesConectados.length == 1) {
-				layerMarkers.removeMarker(choferesConectados[0].marcador);
-				choferesConectados[0].popup.destroy();
-				choferesConectados.splice(0, 1);
+			if(typeof(choferesConectados) != "undefined") {
+				if (choferesConectados.length == 1) {
+					layerMarkers.removeMarker(choferesConectados[0].marcador);
+					choferesConectados[0].popup.destroy();
+					choferesConectados.splice(0, 1);
+				}
 			}
-					
+			else {
+				
+			}					
 		}
 	}
 }	
@@ -103,11 +124,11 @@ function crearMarcador(chofer) {
 		}
 		else {
 			//chofer.estado == "INACTIVO"
-			chofer.marcador = new OpenLayers.Marker(chofer.lonLatTransformada, new OpenLayers.Icon(urlDirImagenes+'blue-marker.png',size,offset));	
+			chofer.marcador = new OpenLayers.Marker(chofer.lonLatTransformada, new OpenLayers.Icon(urlDirImagenes+'gray-marker.png',size,offset));	
 		}
 	}
-   chofer.popup = new OpenLayers.Popup(chofer.nombre, chofer.lonLatTransformada, new OpenLayers.Size(70,30),
-                        "<font size=-2>"+chofer.nombre);
+   chofer.popup = new OpenLayers.Popup(chofer.nombre, chofer.lonLatTransformada, new OpenLayers.Size(85,60),
+                        "<div><p><b>"+chofer.nombre+"</b><br><b>"+chofer.estado+"</b></p></div>");
    map.addPopup(chofer.popup);
    chofer.popup.hide();
 	chofer.popup.opacity=0.5;
@@ -152,7 +173,7 @@ function initalizeMap() {
    layerMarkers = new OpenLayers.Layer.Markers("Markers");
    map.addLayer(layerMarkers);
 		
-   var initLonLat = new OpenLayers.LonLat(-62.086, -31.430).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+   var initLonLat = new OpenLayers.LonLat(lonMapa, latMapa).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
    map.setCenter (initLonLat, zoom);
 		
 	size = new OpenLayers.Size(30,30);
