@@ -42,7 +42,7 @@ var EnviarPasaje = {
       else {
       	form += "&asignacionAutomatica=0";	
       }
-alert(form);
+
       console.log(form);
 
 		$.ajax({

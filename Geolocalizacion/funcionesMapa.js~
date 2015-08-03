@@ -9,7 +9,7 @@ function iniciar( $ ) {
 
 	if (navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(funcExitoLocalizacion, funcErrorLocalizacion, {
-			//maximumAge: 75000,
+			maximumAge: 75000,
 			timeout: 10000
 		});
 	}else{

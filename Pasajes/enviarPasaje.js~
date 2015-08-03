@@ -6,7 +6,7 @@ var EnviarPasaje = {
     latDireccion="";
     lonDireccion="";
     direccionCalle="";
-    direccionNumero=""; 
+    direccionNumero="";
 			
 			$("#btnAsignar").click(function(){
 				
@@ -65,7 +65,7 @@ alert(form);
                                     //datoFaltante="Falta Número de Calle"; 
                               }
                               notificacion("error","Error. "+datoFaltante+" del Pasaje.");
-                           } 
+                           }
                         },   
                         success: function(data) {
 									var datos = data.split("_");
