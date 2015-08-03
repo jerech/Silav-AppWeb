@@ -5,9 +5,11 @@
         exit();
     }
 
+    $idAgencia = $_SESSION['sesion_idAgencia'];
+
 	//Se verifica que los campos obligatorios no esten vacios
-  	if(empty($_POST['nombre'])||empty($_POST['direccion']) ||empty($_POST['departamento'] ||
-          empty($_POST['pais']) ||empty($_POST['provincia']) ||empty($_POST['ciudad']))){
+  	if(empty($_POST['nombre'])||empty($_POST['direccion']) ||empty($_POST['departamento']) ||
+          empty($_POST['pais']) ||empty($_POST['provincia']) || empty($_POST['ciudad'])){
   		echo "Error. Campos obligatorios vacios.";
   		exit();
   	}
@@ -15,9 +17,8 @@
   	require_once("../../conexionBD.php");
 
   	//Se obtienen los datos a guardar
-  	$id = $_POST['id'];
   	$nombre = $_POST['nombre'];
-  	$email = $_POST['patente'];
+  	$email = $_POST['email'];
     $telefono = $_POST['telefono'];
     $cuit = $_POST['cuit'];
     $pais = $_POST['pais'];
@@ -42,7 +43,7 @@
               direccion='$direccion',
               ciudad = '$ciudad'
         WHERE 
-              id=$id";
+              id=$idAgencia";
 
 	$conexion = establecerConexion();
 	if(!$conexion){
