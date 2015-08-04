@@ -42,6 +42,9 @@ var EnviarPasaje = {
       else {
       	form += "&asignacionAutomatica=0";	
       }
+      
+		var fechaDePedido = $("#fechaYHora").val()+":00";
+		form += "&fechaDePedido="+fechaDePedido;
 
       console.log(form);
 
@@ -101,7 +104,9 @@ var EnviarPasaje = {
           $("#coordenadas").val("");
           
         }else{
-          $("#coordenadas").val(latDireccion+","+lonDireccion);
+        	 var latitud = latDireccion.toFixed(6);
+        	 var longitud = lonDireccion.toFixed(6);
+          $("#coordenadas").val(latitud+","+longitud);
         }
         $('#ModalEdicionCoordenadas').modal();
         //Una vez que abrimos el modal, tenemos que registrar el evento click del mapa
@@ -171,8 +176,9 @@ var EnviarPasaje = {
                               }
                               
 
-                              $("#lbl-lat").html(latitud);
-                              $("#lbl-lon").html(longitud);
+                              //$("#lbl-lat").html(latitud);
+                              //$("#lbl-lon").html(longitud);fechaValida
+                              $("#coordenadas").val(latitud+","+longitud);
                               $("#lbl-info-direccion").html(direccionCompleta);
 
                               latDireccion = data[0].lat;
@@ -227,9 +233,11 @@ var EnviarPasaje = {
       if($.isNumeric(nuevaLat) && $.isNumeric(nuevaLon)){
         latDireccion = nuevaLat;
         lonDireccion = nuevaLon;
-        $("#lbl-lat").html(latDireccion);
-        $("#lbl-lon").html(lonDireccion);
-
+        var latitud = latDireccion.toFixed(6);
+        var longitud = lonDireccion.toFixed(6);
+        //$("#lbl-lat").html(latDireccion);
+        //$("#lbl-lon").html(lonDireccion);
+		  $("#coordenadas").val(latitud+","+longitud);
 
       }
       
@@ -240,8 +248,9 @@ var EnviarPasaje = {
       if(house_number=="undefined"){
         house_number=undefined;
       }
-      $("#lbl-lat").html(lat);
-      $("#lbl-lon").html(lon);
+      //$("#lbl-lat").html(lat);
+      //$("#lbl-lon").html(lon);
+      $("#coordenadas").val(lat+","+lon);
       $("#lbl-info-direccion").html(road+" "+house_number+" - "+town+" - "+state);
 
       latDireccion = lat;
@@ -252,7 +261,4 @@ var EnviarPasaje = {
       $("#ModalSeleccionDireccion").modal('hide');
 
    }
-
- 
-  
 }

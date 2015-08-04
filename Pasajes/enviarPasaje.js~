@@ -42,7 +42,18 @@ var EnviarPasaje = {
       else {
       	form += "&asignacionAutomatica=0";	
       }
-alert(form);
+      
+      var fechaDePedido;
+		if (EnviarPasaje.fechaValida($("#fechaYHora").val()) == true) {
+			fechaDePedido = $("#fechaYHora").val();
+		}
+		else {
+			fechaDePedido = "";
+		}
+		fechaDePedido = $("#fechaYHora").val()+":00";
+		alert(fechaDePedido);
+		form += "&fechaDePedido="+fechaDePedido;
+
       console.log(form);
 
 		$.ajax({
@@ -101,7 +112,9 @@ alert(form);
           $("#coordenadas").val("");
           
         }else{
-          $("#coordenadas").val(latDireccion+","+lonDireccion);
+        	 var latitud = latDireccion.toFixed(6);
+        	 var longitud = lonDireccion.toFixed(6);
+          $("#coordenadas").val(latitud+","+longitud);
         }
         $('#ModalEdicionCoordenadas').modal();
         //Una vez que abrimos el modal, tenemos que registrar el evento click del mapa
@@ -171,8 +184,9 @@ alert(form);
                               }
                               
 
-                              $("#lbl-lat").html(latitud);
-                              $("#lbl-lon").html(longitud);
+                              //$("#lbl-lat").html(latitud);
+                              //$("#lbl-lon").html(longitud);fechaValida
+                              $("#coordenadas").val(latitud+","+longitud);
                               $("#lbl-info-direccion").html(direccionCompleta);
 
                               latDireccion = data[0].lat;
@@ -227,9 +241,11 @@ alert(form);
       if($.isNumeric(nuevaLat) && $.isNumeric(nuevaLon)){
         latDireccion = nuevaLat;
         lonDireccion = nuevaLon;
-        $("#lbl-lat").html(latDireccion);
-        $("#lbl-lon").html(lonDireccion);
-
+        var latitud = latDireccion.toFixed(6);
+        var longitud = lonDireccion.toFixed(6);
+        //$("#lbl-lat").html(latDireccion);
+        //$("#lbl-lon").html(lonDireccion);
+		  $("#coordenadas").val(latitud+","+longitud);
 
       }
       
@@ -240,8 +256,9 @@ alert(form);
       if(house_number=="undefined"){
         house_number=undefined;
       }
-      $("#lbl-lat").html(lat);
-      $("#lbl-lon").html(lon);
+      //$("#lbl-lat").html(lat);
+      //$("#lbl-lon").html(lon);
+      $("#coordenadas").val(lat+","+lon);
       $("#lbl-info-direccion").html(road+" "+house_number+" - "+town+" - "+state);
 
       latDireccion = lat;
@@ -251,8 +268,49 @@ alert(form);
 
       $("#ModalSeleccionDireccion").modal('hide');
 
-   }
-
- 
-  
+   },
+	
+ 	fechaValida: function (fecha) {
+  		var fechaYHora = fecha.split(" ");
+  		if (fechaYHora.length == 2) {
+  			var fecha = fechaYHora[0];
+  			var hora = fechaYHora[1];
+  			var separarFecha = fecha.split("-");
+  			if (separarFecha.length == 3) {
+  				var anio = separarFecha[0];
+  				var mes = separarFecha[1];
+  				var dia = separarFecha[2];
+  				if (!isNaN(anio) && !isNaN(mes) && !isNaN(dia)) {
+  					var separarHora = hora.split(":");
+  					if (separarHora.length == 2) {
+  						var horas = separarHora[0];
+  						var minutos = separarHora[1];
+  						if (!isNaN(horas) && !isNaN(minutos)) {
+  							return true;
+  						}
+  						else {
+  							//fecha no valida
+  							return false;
+  						}
+  					}
+  					else {
+  						//fecha no valida
+  						return false;
+  					}
+  				}
+  				else {
+  					//fecha no valida
+  					return false;
+  				}
+  			}
+  			else {
+  				//fecha no valida
+  				return false;
+  			}
+  		}
+  		else {
+  			//fecha no valida
+  			return false;
+  		}
+  	}
 }

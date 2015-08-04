@@ -19,11 +19,11 @@ if (typeof(ventanaGeolocalizacion) === "undefined") {
     $("#btnControlDePasajes").click(function(){
     	
     	if (typeof(ventanaControlDePasajes) === "undefined") {
-    		ventanaControlDePasajes = window.open("../Pasajes/controlDePasajes.php","_blank");
+    		ventanaControlDePasajes = window.open("../Pasajes/controlDePasajesModificado.php","_blank");
     	}
     	else {
 			if(ventanaControlDePasajes.closed){
-				ventanaControlDePasajes = window.open("../Pasajes/controlDePasajes.php","_blank");
+				ventanaControlDePasajes = window.open("../Pasajes/controlDePasajesModificado.php","_blank");
 			}
 			else{
 				notificacion("error","Error al intentar ingresar al Control de Pasajes. ");
@@ -45,9 +45,7 @@ var MostrarInformacionResumen = {
                         },
                         dataType: 'html',
                         success: function(data){
-                        	alert(data.toString());
                         	var divisionPorComillas = data.toString().split("\""); //separa por comillas
-                        	alert(divisionPorComillas);
                         	var datos = divisionPorComillas[1];
                         	var divisionPorGuion = datos.toString().split("_"); //separa por guion
 									var conectados = divisionPorGuion[0];

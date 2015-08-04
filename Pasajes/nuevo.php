@@ -21,6 +21,11 @@
   		exit();
   	}
 
+	if(validateMysqlDate($_POST['fechaDePedido']) == false) {
+		echo "Error. Fecha Incorrecta.";
+		exit();
+	}
+	
   	require_once("../conexionBD.php");
 
   	//Se obtienen los datos a guardar
@@ -32,7 +37,7 @@
    $lat = $_POST['lat'];
    $lon = $_POST['lon'];
   	$asignacionAutomatica = $_POST['asignacionAutomatica'];
-    
+   $fechaDePedido = $_POST['fechaDePedido'];
   	$direccion = $calle . " " . $numero;
   	$fecha = date("Y-m-d H:i:s");
   	//Se realiza el insert en la BD
@@ -47,7 +52,8 @@
           latDireccion,
           lonDireccion,
           id_agencia,
-          asignacionAutomatica)
+          asignacionAutomatica,
+          fechaDePedido)
   			values(
   				'$direccion',
   				'$fecha',
@@ -57,7 +63,8 @@
           $lat,
           $lon,
           $idAgencia,
-          $asignacionAutomatica)";
+          $asignacionAutomatica,
+          '$fechaDePedido')";
 
 	$conexion = establecerConexion();
 	if(!$conexion){
@@ -73,4 +80,12 @@
 
 	mysql_close($conexion);
 	
+	function validateMysqlDate( $date ){ 
+   	if (preg_match("/^(\d{4})-(\d{2})-(\d{2}) ([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$/", $date, $matches)) { 
+        if (checkdate($matches[2], $matches[3], $matches[1])) { 
+            return true; 
+        } 
+    	} 
+    	return false; 
+	} 
 ?>
