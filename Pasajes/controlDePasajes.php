@@ -174,7 +174,7 @@
                                 <div class="col-md-5">
                                     <div class="form-group">
                                     <label>Coordenadas</label><input type="text" id="coordenadas" name="coordenadas" class="form-control" placeholder="Latitud,Longitud" readOnly>
-                                    <label><a id="abrirModalEdicionCoordenadas" href="javascript:;">Editar</a></label>
+                                    <label><a id="abrirModalEdicionCoordenadas" >Editar</a></label>
                                 </div>
                                 </div>
                                 <div class="col-md-2">
@@ -346,14 +346,13 @@
         </div>
 </div> 
 
-<script>
+<!--<script>
     var lonlat = "";
         function registrarClick(){
             if (typeof(map) === "undefined") {
 
                 initalizeMap();
             }
-
 
             map.events.register('click', map, handleMapClick);
 
@@ -402,7 +401,7 @@
            offset = new OpenLayers.Pixel(-(size.w/2), -size.h);     
         }
     
-</script>
+</script>-->
 
 <script type="text/javascript">
     //Funciones de la notificacion
