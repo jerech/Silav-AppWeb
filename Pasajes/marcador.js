@@ -49,7 +49,7 @@ function handleMapClick(e){
    lonlat.transform( map.projection,map.displayProjection);
    // Longitude = lonlat.lon
    // Latitude  = lonlat.lat
-   coordenadasMarcador = lonlat.lat.toFixed(6) + ", " + lonlat.lon.toFixed(6);
+   coordenadasMarcador = lonlat.lat + ", " + lonlat.lon;
    if (typeof(marcador) === "undefined") {
    	crearMarcador(lonlat.lon, lonlat.lat);
    }
