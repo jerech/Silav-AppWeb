@@ -3,6 +3,7 @@ var map, zoom=5, lonMapa=-60, latMapa=-40;
 //choferesConectados: array de objetos choferes que corresponde a los choferes que aparecen en la pagina web
 //nuevosChoferes: array de objetos choferes que corresponde a los datos de choferes leidos de la base de datos	
 var choferesConectados, nuevosChoferes;
+var pasajesEnCurso, nuevosPasajes;
 var urlDirImagenes = '../Geolocalizacion/img/';
 
 function iniciar( $ ) {
@@ -10,14 +11,15 @@ function iniciar( $ ) {
 	if (navigator.geolocation){
 		navigator.geolocation.getCurrentPosition(funcExitoLocalizacion, funcErrorLocalizacion, {
 			maximumAge: 75000,
-			timeout: 10000
+			timeout: 4000
 		});
 	}else{
 		alert("No hay soporte para geolocalizacion.");
 	}
 		
 	var temporizador=setInterval(function() {
-			var post = $.post("gps_data_reader.php", '', siRespuesta, 'json');	
+			var post = $.post("gps_data_reader.php", '', siRespuesta, 'json');
+			var postPasajes = $.post("obtenerPasajes.php", '', siRespuestaPasajes, 'json');	
 	},2000);
 }
 	
@@ -244,4 +246,154 @@ function updateMarkers(){
 		choferesConectados[i].marcador.moveTo(nuevoPunto);
 		choferesConectados[i].popup.moveTo(nuevoPunto);
 	}		
+}
+/*
+ * Funciones para mostrar los pasajes en curso
+ */
+ function siRespuestaPasajes(t) {
+ 
+ 	var datosPasajes = t;
+	if (datosPasajes != null) {
+		if (typeof(map) === "undefined") {
+			initalizeMap();
+		}
+		if(typeof(pasajesEnCurso) === "undefined") {
+			cargarPasajesEnCurso(datosPasajes);
+			for (i=0 ; i<pasajesEnCurso.length ; i++) {
+				pasajesEnCurso[i].transformarLonLatPasaje(pasajesEnCurso[i], pasajesEnCurso[i].latitud, pasajesEnCurso[i].longitud);
+				pasajesEnCurso[i].crearMarcadorPasaje(pasajesEnCurso[i]);
+			}
+		}
+		else {
+									
+		}	
+		cargarNuevosPasajes(datosPasajes);		
+		for (i=0 ; i<nuevosPasajes.length ; i++) {
+			nuevosPasajes[i].transformarLonLatPasaje(nuevosPasajes[i], nuevosPasajes[i].latitud, nuevosPasajes[i].longitud);
+		}			
+		actualizarPasajes();
+		actualizarMarcadoresPasajes();
+	}
+	else {
+		if (typeof(map) === "undefined") {
+			initalizeMap();
+		}
+		else {
+			if(typeof(pasajesEnCurso) != "undefined") {
+				if (pasajesEnCurso.length == 1) {
+					layerMarkers.removeMarker(pasajesEnCurso[0].marcador);
+					pasajesEnCurso[0].popup.destroy();
+					pasajesEnCurso.splice(0, 1);
+				}
+			}
+			else {
+				
+			}					
+		}
+	}
+ }
+ 
+ function cargarPasajesEnCurso(datosPasajes) {
+ 
+ 	var direccion_latitud_longitud, direccion, latitud, longitud;
+	pasajesEnCurso = new Array();
+	for (i=0 ; i<datosPasajes.length ; i++) {
+		direccion_latitud_longitud = datosPasajes[i].toString().split("_");
+		//separar los datos
+		direccion = direccion_latitud_longitud[0];
+		latitud = direccion_latitud_longitud[1];
+		longitud = direccion_latitud_longitud[2];
+		pasajesEnCurso[i] = new Pasaje(direccion, latitud, longitud);
+	}
+ }
+ 
+ //clase Pasaje
+function Pasaje(direccion, latitud, longitud) {
+	this.direccion = direccion;
+   this.latitud = latitud;
+   this.longitud = longitud;
+   this.marcador = null;
+   this.lonLatTransformada = null;
+   this.popup = null;
+   this.transformarLonLatPasaje = transformarLonLatPasaje;
+   this.crearMarcadorPasaje = crearMarcadorPasaje;
+}
+
+function transformarLonLatPasaje(pasaje, latitud, longitud){
+	
+	pasaje.lonLatTransformada = new OpenLayers.LonLat(longitud, latitud).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+}
+
+function crearMarcadorPasaje(pasaje) {
+		
+	pasaje.marcador = new OpenLayers.Marker(pasaje.lonLatTransformada, new OpenLayers.Icon(urlDirImagenes+'home-marker.png',size,offset));
+
+   pasaje.popup = new OpenLayers.Popup(pasaje.direccion, pasaje.lonLatTransformada, new OpenLayers.Size(85,60),
+                        "<div><p><b>"+pasaje.direccion+"</b></p></div>");
+   map.addPopup(pasaje.popup);
+   pasaje.popup.hide();
+	pasaje.popup.opacity=0.5;
+	pasaje.marcador.events.register('mouseover', pasaje.marcador, function (evt) { pasaje.popup.toggle();OpenLayers.Event.stop (evt); } );
+	layerMarkers.addMarker(pasaje.marcador);
+}
+
+function cargarNuevosPasajes(datosPasajes){
+
+	var direccion_latitud_longitud, direccion, latitud, longitud;
+	nuevosPasajes = new Array();
+	for (i=0 ; i<datosPasajes.length ; i++) {
+		direccion_latitud_longitud = datosPasajes[i].toString().split("_");
+		//separar los datos
+		direccion = direccion_latitud_longitud[0];
+		latitud = direccion_latitud_longitud[1];
+		longitud = direccion_latitud_longitud[2];
+		nuevosPasajes[i] = new Pasaje(direccion, latitud, longitud);
+	}
+}
+
+function actualizarPasajes() {
+	
+	var pasajeEncontrado = false;
+	var viejosPasajes = new Array;
+	var contador = 0;
+	
+	for (i=0 ; i<pasajesEnCurso.length ; i++) {
+		for (j=0 ; j<nuevosPasajes.length ; j++) {
+			if (pasajesEnCurso[i].direccion == nuevosPasajes[j].direccion) {
+				pasajeEncontrado = true;
+				viejosPasajes[contador] = nuevosPasajes[j];
+				contador = contador + 1;
+			}
+		}
+		if (pasajeEncontrado == false) {
+			layerMarkers.removeMarker(pasajesEnCurso[i].marcador);
+			pasajesEnCurso[i].popup.destroy();
+			pasajesEnCurso.splice(i, 1);
+			i = i - 1;
+		}
+		else {
+			pasajeEncontrado = false;
+		}
+	}
+	if (nuevosPasajes.length != viejosPasajes.length) {
+		pasajeEncontrado = false;
+		for (i=0 ; i<nuevosPasajes.length ; i++) {
+			for (j=0 ; j<viejosPasajes.length ; j++) {
+				if (nuevosPasajes[i].direccion == viejosPasajes[j].direccion) {
+					pasajeEncontrado = true;
+				}
+			}
+			if (pasajeEncontrado == false) {
+				pasajesEnCurso[pasajesEnCurso.length] = new Pasaje(nuevosPasajes[i].direccion, nuevosPasajes[i].latitud, nuevosPasajes[i].longitud);
+				pasajesEnCurso[pasajesEnCurso.length - 1].transformarLonLatPasaje(pasajesEnCurso[pasajesEnCurso.length - 1], pasajesEnCurso[pasajesEnCurso.length - 1].latitud, pasajesEnCurso[pasajesEnCurso.length - 1].longitud);
+				pasajesEnCurso[pasajesEnCurso.length - 1].crearMarcadorPasaje(pasajesEnCurso[pasajesEnCurso.length - 1]);
+			}
+			else {
+				pasajeEncontrado = false;
+			}
+		}
+	}
+}
+
+function actualizarMarcadoresPasajes() {
 }

@@ -1,3 +1,5 @@
+var lonlat = "";
+
 var EnviarPasaje = {
 
 
@@ -29,7 +31,16 @@ var EnviarPasaje = {
         direccionCalle = $("#calle").val();
         direccionNumero = "";
       }
-      
+      if ($("#coordenadas").val() != "") {
+      	array_coordenadas = 	$("#coordenadas").val().split(",");
+      	latDireccion = array_coordenadas[0];
+      	lonDir = array_coordenadas[1].split(" ");
+      	lonDireccion = lonDir[1];
+      	alert("latitud:"+latDireccion+"//longitud:"+lonDireccion);
+      }
+      else {
+      	
+      }
 			
 			var form = $(".form").serialize()+"&lat="+latDireccion+"&lon="+lonDireccion+"&direccionCalle="+direccionCalle+"&direccionNumero="+direccionNumero;
       if($("#movil").prop("disabled")==true){
@@ -43,15 +54,7 @@ var EnviarPasaje = {
       	form += "&asignacionAutomatica=0";	
       }
       
-      var fechaDePedido;
-		if (EnviarPasaje.fechaValida($("#fechaYHora").val()) == true) {
-			fechaDePedido = $("#fechaYHora").val();
-		}
-		else {
-			fechaDePedido = "";
-		}
-		fechaDePedido = $("#fechaYHora").val()+":00";
-		alert(fechaDePedido);
+		var fechaDePedido = $("#fechaYHora").val()+":00";
 		form += "&fechaDePedido="+fechaDePedido;
 
       console.log(form);
@@ -107,8 +110,9 @@ var EnviarPasaje = {
 			});
 
       $("#abrirModalEdicionCoordenadas").click(function(){
+window.open("marcador.php","","width=600,height=500,left=50,top=50,toolbar=yes");
 
-        if (latDireccion == "" && lonDireccion == ""){
+        /*if (latDireccion == "" && lonDireccion == ""){
           $("#coordenadas").val("");
           
         }else{
@@ -117,10 +121,9 @@ var EnviarPasaje = {
           $("#coordenadas").val(latitud+","+longitud);
         }
         $('#ModalEdicionCoordenadas').modal();
-        //Una vez que abrimos el modal, tenemos que registrar el evento click del mapa
-        registrarClick();
+        Mapa.iniciar();
+        //window.open("marcador.php");*/
       });
-      
 
       $('#tipo').on('switchChange.bootstrapSwitch', function(event, state) {
                         //Si state en true, la asigancion es manual, si es false es automatica
@@ -185,8 +188,8 @@ var EnviarPasaje = {
                               
 
                               //$("#lbl-lat").html(latitud);
-                              //$("#lbl-lon").html(longitud);fechaValida
-                              $("#coordenadas").val(latitud+","+longitud);
+                              //$("#lbl-lon").html(longitud);
+                              $("#coordenadas").val(latitud+", "+longitud);
                               $("#lbl-info-direccion").html(direccionCompleta);
 
                               latDireccion = data[0].lat;
@@ -245,7 +248,7 @@ var EnviarPasaje = {
         var longitud = lonDireccion.toFixed(6);
         //$("#lbl-lat").html(latDireccion);
         //$("#lbl-lon").html(lonDireccion);
-		  $("#coordenadas").val(latitud+","+longitud);
+		  $("#coordenadas").val(latitud+", "+longitud);
 
       }
       
@@ -258,7 +261,7 @@ var EnviarPasaje = {
       }
       //$("#lbl-lat").html(lat);
       //$("#lbl-lon").html(lon);
-      $("#coordenadas").val(lat+","+lon);
+      $("#coordenadas").val(lat+", "+lon);
       $("#lbl-info-direccion").html(road+" "+house_number+" - "+town+" - "+state);
 
       latDireccion = lat;
@@ -268,49 +271,64 @@ var EnviarPasaje = {
 
       $("#ModalSeleccionDireccion").modal('hide');
 
-   },
+   }
+}
+
+var map, marcador, zoom = 15, lonMapa=-62.0851, latMapa=-31.4304;
+var urlIcon = "http://93.188.167.207/app/Geolocalizacion/img/blue-marker.png";
+
+var Mapa = {
 	
- 	fechaValida: function (fecha) {
-  		var fechaYHora = fecha.split(" ");
-  		if (fechaYHora.length == 2) {
-  			var fecha = fechaYHora[0];
-  			var hora = fechaYHora[1];
-  			var separarFecha = fecha.split("-");
-  			if (separarFecha.length == 3) {
-  				var anio = separarFecha[0];
-  				var mes = separarFecha[1];
-  				var dia = separarFecha[2];
-  				if (!isNaN(anio) && !isNaN(mes) && !isNaN(dia)) {
-  					var separarHora = hora.split(":");
-  					if (separarHora.length == 2) {
-  						var horas = separarHora[0];
-  						var minutos = separarHora[1];
-  						if (!isNaN(horas) && !isNaN(minutos)) {
-  							return true;
-  						}
-  						else {
-  							//fecha no valida
-  							return false;
-  						}
-  					}
-  					else {
-  						//fecha no valida
-  						return false;
-  					}
-  				}
-  				else {
-  					//fecha no valida
-  					return false;
-  				}
-  			}
-  			else {
-  				//fecha no valida
-  				return false;
-  			}
-  		}
-  		else {
-  			//fecha no valida
-  			return false;
-  		}
-  	}
+	iniciar: function () {
+		if (typeof(map) === "undefined") {
+			Mapa.crearBase();	
+		}
+	},
+	
+	crearBase: function () {
+		//Creacion del mapa
+		map = new OpenLayers.Map ("contenedorMapa", {
+            	maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34),
+            	maxResolution: 156543.0399,
+            	numZoomLevels: 18,
+            	units: 'm',
+            	projection: new OpenLayers.Projection("EPSG:900913"),
+            	displayProjection: new OpenLayers.Projection("EPSG:4326")
+          	});
+		//Creacion de capas
+		capa = new OpenLayers.Layer.OSM("Capa OSM");
+		markers = new OpenLayers.Layer.Markers("Marcadores");
+		//Adicion de capas al mapa
+		map.addLayer(capa);
+		map.addLayer(markers);
+		//Centro el mapa en la posicion dada
+		var initLonLat = new OpenLayers.LonLat(lonMapa, latMapa).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+   	map.setCenter (initLonLat, zoom);	
+	
+		size = new OpenLayers.Size(30,30);
+   	offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
+	
+		map.events.register('click', map, Mapa.handleMapClick);
+	},
+	
+	crearMarcador: function (longitudMapa, latitudMapa) {
+		var lonLatTransformada = new OpenLayers.LonLat(longitudMapa, latitudMapa).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+		marcador = new OpenLayers.Marker(lonLatTransformada, new OpenLayers.Icon(urlIcon,size,offset));
+		markers.addMarker(marcador);
+	},
+	
+	handleMapClick: function (e) {
+		lonlat = map.getLonLatFromViewPortPx(e.xy);
+   	lonlat.transform( map.projection,map.displayProjection);
+   	$("#latlon").html("Latitud: "+lonlat.lat.toFixed(6)+", Longitud: "+lonlat.lon.toFixed(6));
+   	// Longitude = lonlat.lon
+   	// Latitude  = lonlat.lat
+   	if (typeof(marcador) === "undefined") {
+   		Mapa.crearMarcador(lonlat.lon, lonlat.lat);
+   	}
+   	else {
+   		markers.removeMarker(marcador);
+   		Mapa.crearMarcador(lonlat.lon, lonlat.lat);
+   	}
+	}
 }
