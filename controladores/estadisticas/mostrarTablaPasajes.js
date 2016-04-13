@@ -46,7 +46,7 @@ var mostrarDatos = {
 		
 									nuevaFila +="</tr>";
 		
-									$("#tabla").append(nuevaFila);                            
+									$("#tBody").append(nuevaFila);                            
                         });
       	            		initDataTable($('#tabla'));
 

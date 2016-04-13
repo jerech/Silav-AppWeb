@@ -10,13 +10,13 @@
   	
 	$query = "select * from Pasajes where id_agencia=$idAgencia";  	
   	
-	$coneccion = establecerConexion();
-	if(!$coneccion){
+	$conexion = establecerConexion();
+	if(!$conexion){
 		echo "Error al conectar con la Base de Datos";
 		exit();
 	}
 
-	$resultado = mysql_query($query, $coneccion) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
+	$resultado = mysql_query($query, $conexion) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
 
 	$datos = array();
     while ($array = mysql_fetch_array($resultado, MYSQL_ASSOC)) {
@@ -27,5 +27,5 @@
     	exit();
     }
 
-	mysql_close($coneccion);
+	mysql_close($conexion);
 ?>

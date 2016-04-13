@@ -27,5 +27,5 @@
     	exit();
     }
 
-	mysql_close($coneccion);
+	mysql_close($conexion);
 ?>
