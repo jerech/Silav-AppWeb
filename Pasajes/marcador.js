@@ -1,5 +1,5 @@
 var map, marcador, zoom = 15, lonMapa=-62.0851, latMapa=-31.4304;
-var urlIcon = "http://93.188.167.207/app/Geolocalizacion/img/blue-marker.png";
+var urlIcon = '../Geolocalizacion/img/blue-marker.png';
 var coordenadasMarcador = "";
 
 function iniciar() {

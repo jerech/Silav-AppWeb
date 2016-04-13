@@ -59,7 +59,7 @@
   				'$fecha',
   				'$chofer',
   				'$cliente',
-  				'$movil',
+  				$movil,
           $lat,
           $lon,
           $idAgencia,

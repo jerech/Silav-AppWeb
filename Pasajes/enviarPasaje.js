@@ -44,8 +44,10 @@ var EnviarPasaje = {
 			
 			var form = $(".form").serialize()+"&lat="+latDireccion+"&lon="+lonDireccion+"&direccionCalle="+direccionCalle+"&direccionNumero="+direccionNumero;
       if($("#movil").prop("disabled")==true){
-          form += "&movil="; 
+          form += "&movil=0"; 
       }
+
+      alert(form);
       if($("#listaChoferes").prop("disabled")==true){
       	form += "&listaChoferes=";
       	form += "&asignacionAutomatica=1";
