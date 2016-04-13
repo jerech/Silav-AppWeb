@@ -47,7 +47,6 @@ var EnviarPasaje = {
           form += "&movil=0"; 
       }
 
-      alert(form);
       if($("#listaChoferes").prop("disabled")==true){
       	form += "&listaChoferes=";
       	form += "&asignacionAutomatica=1";
@@ -59,7 +58,7 @@ var EnviarPasaje = {
 		var fechaDePedido = $("#fechaYHora").val()+":00";
 		form += "&fechaDePedido="+fechaDePedido;
 
-      console.log(form);
+    console.log(form);
 
 		$.ajax({
                         type: 'post',
