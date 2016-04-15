@@ -27,13 +27,27 @@ var CargarPasajesEnCurso = {
                         	nuevaFila += "<td>"+data.pasajes[index].nombreCliente+"</td>";
                         	nuevaFila += "<td>"+data.pasajes[index].usuarioChofer+"</td>";
                         	nuevaFila += "<td>"+data.pasajes[index].numeroMovil+"</td>";
-                        	nuevaFila += "<td id='estado_"+data.pasajes[index].id+"'>"+data.pasajes[index].estado+"</td>";
+                        	//nuevaFila += "<td id='estado_"+data.pasajes[index].id+"'>"+data.pasajes[index].estado+"</td>";
                         	
-                        	nuevaFila += "</tr>";
+                        	switch(data.pasajes[index].estado){
+                    case 'por_asignar':
+                          nuevaFila += "<td><span class='label label-info pull-center'>"+data.pasajes[index].estado+"</span></td>";
+                          break;
+                    case 'asignado':
+                          nuevaFila += "<td><span class='label label-success pull-center'>"+data.pasajes[index].estado+"</span></td>";
+                          break;
+                    case 'rechazado':
+                          nuevaFila += "<td><span class='label label-warning pull-center'>"+data.pasajes[index].estado+"</span></td>";
+                          break;
+                    default:
+                          nuevaFila += "<td>"+data.pasajes[index].estado+"</td>";
+                  }
+
+                              nuevaFila += "</tr>";
                         	
                         	$("#tablaPasajes").append(nuevaFila);
                         	
-                        	if (data.pasajes[index].estado == "por_asignar") { 
+                        	/*if (data.pasajes[index].estado == "por_asignar") { 
                         		$("#estado_"+data.pasajes[index].id).css("background-color", "#F1FF69");
                         	}
                         	else {
@@ -50,7 +64,7 @@ var CargarPasajesEnCurso = {
                         				}	
                         			}
                         		}
-                        	}
+                        	}*/
                         });
                                                      
                         },

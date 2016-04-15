@@ -103,6 +103,21 @@
 				width: 16.5%;        
         }
 
+
+       
+        .label-warning {
+            background-color: #FF6969;
+        }
+
+        .label-success {
+            background-color: #69FF69;
+        }
+
+        .label-info {
+            background-color: #FFBF00;
+        }
+   
+
     </style>
 
     <div class="navbar navbar-default" role="navigation">

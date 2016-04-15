@@ -29,7 +29,7 @@ var mostrarDatos = {
 									nuevaFila += "<td>"+data.pasajes[index].nombre_cliente+"</td>";
                   nuevaFila += "<td>"+data.pasajes[index].direccion+"</td>";
 
-                  switch(data.pasajes[index].estado){
+                  /*switch(data.pasajes[index].estado){
                     case 'por_asignar':
                           nuevaFila += "<td style='background-color:#F1FF69'>"+data.pasajes[index].estado+"</td>";
                           break;
@@ -38,6 +38,20 @@ var mostrarDatos = {
                           break;
                     case 'rechazado':
                           nuevaFila += "<td style='background-color:#FF6969'>"+data.pasajes[index].estado+"</td>";
+                          break;
+                    default:
+                          nuevaFila += "<td>"+data.pasajes[index].estado+"</td>";
+                  }*/
+
+                  switch(data.pasajes[index].estado){
+                    case 'por_asignar':
+                          nuevaFila += "<td><span class='label label-info pull-center'>"+data.pasajes[index].estado+"</span></td>";
+                          break;
+                    case 'asignado':
+                          nuevaFila += "<td><span class='label label-success pull-center'>"+data.pasajes[index].estado+"</span></td>";
+                          break;
+                    case 'rechazado':
+                          nuevaFila += "<td><span class='label label-warning pull-center'>"+data.pasajes[index].estado+"</span></td>";
                           break;
                     default:
                           nuevaFila += "<td>"+data.pasajes[index].estado+"</td>";
