@@ -106,12 +106,12 @@
 				include_once $subSeccionesURL[$subSeccion];
 			
 			}else{				
-				include_once("../vista/accesoNoAutorizado.php");
+				include_once("../vistas/accesoNoAutorizado.php");
 				die();
 			}
 			
 		}else{			
-			include_once("../vista/seccionNoEncontrada.php");
+			include_once("../vistas/seccionNoEncontrada.php");
 			die();
 		}
 		
@@ -127,12 +127,12 @@
 				include_once $seccionesURL[$seccion];
 			
 			}else{				
-				include_once("../vista/accesoNoAutorizado.php");
+				include_once("../vistas/accesoNoAutorizado.php");
 				die();
 			}
 			
 		}else{			
-			include_once("../vista/seccionNoEncontrada.php");
+			include_once("../vistas/seccionNoEncontrada.php");
 			die();
 		}
 	}

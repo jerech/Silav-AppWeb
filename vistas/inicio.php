@@ -2,6 +2,10 @@
     if(!defined('acceso')){
         exit();
     }
+
+
+    //
+    require_once("inicio/datosParaInicio.php");
 ?>
 
 <!doctype html>
@@ -11,6 +15,17 @@
 
 	</head>
 	<body>
+		<style type="text/css">
+        #line-chart {
+            height:300px;
+            width:800px;
+            margin: 0px auto;
+            margin-top: 1em;
+        }
+        .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover { 
+            color: #fff;
+        }
+    </style>
 	<div class="content">
 		<div class="header">
 
@@ -33,6 +48,40 @@
 		    </ul>
 		</div>
 		<div class="main-content">
+			<div class="panel panel-default">
+        <a href="#page-stats" class="panel-heading" data-toggle="collapse">Pasajes Hoy</a>
+        <div id="page-stats" class="panel-collapse panel-body collapse in">
+
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="knob-container">
+                                <input class="knob" data-width="200" data-min="0" data-max="<?=$arrayDatos['canPasajes'] ;?>" data-displayPrevious="true" value="<?=$arrayDatos['canPasajes'] ;?>" data-fgColor="#92A3C2" data-readOnly=true;>
+                                <h3 class="text-muted text-center">Total</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="knob-container">
+                                <input class="knob" data-width="200" data-min="0" data-max="<?=$arrayDatos['canPasajes'] ;?>" data-displayPrevious="true" value="<?=$arrayDatos['canAsignados'] ;?>" data-fgColor="#92A3C2" data-readOnly=true;>
+                                <h3 class="text-muted text-center">Asignados</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="knob-container">
+                                <input class="knob" data-width="200" data-min="0" data-max="<?=$arrayDatos['canPasajes'] ;?>" data-displayPrevious="true" value="<?=$arrayDatos['canRechazados'] ;?>" data-fgColor="#92A3C2" data-readOnly=true;>
+                                <h3 class="text-muted text-center">Rechazados</h3>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3 col-sm-6">
+                            <div class="knob-container">
+                                <input class="knob" data-width="200" data-min="0" data-max="<?=$arrayDatos['canPasajes'] ;?>" data-displayPrevious="true" value="<?=$arrayDatos['canEnEspera'] ;?>" data-fgColor="#92A3C2" data-readOnly=true;>
+                                <h3 class="text-muted text-center">En Espera</h3>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+    </div>
+			
 			<div class="row">
 				<div class="col-sm-6 col-md-6">
 			        <div class="panel panel-default">
@@ -83,8 +132,8 @@
 			        </div>
     			</div>
 			</div>
-			<div class="row">
-			</div>
+			
+			 
 		</div>
 
 		<footer>

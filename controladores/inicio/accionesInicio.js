@@ -43,11 +43,11 @@ var MostrarInformacionResumen = {
                         data:{
                             usuario: usuarioNombre
                         },
-                        dataType: 'html',
+                        dataType: 'json',
                         success: function(data){
-                        	var divisionPorComillas = data.toString().split("\""); //separa por comillas
-                        	var datos = divisionPorComillas[1];
-                        	var divisionPorGuion = datos.toString().split("_"); //separa por guion
+                            console.log(data);
+                        	
+                        	var divisionPorGuion = data[0].toString().split("_"); //separa por guion
 									var conectados = divisionPorGuion[0];
 									var choferes = divisionPorGuion[1];
 									var pasajesEnCurso = divisionPorGuion[2];
@@ -55,6 +55,12 @@ var MostrarInformacionResumen = {
 									$('#choferes').text(choferes);
 									$('#pasajes').text(pasajesEnCurso);
 									$('#conectados').text(conectados);
+
+                            if(data[1]!=false){
+                                var chofer=data[1];
+                                alert("Atencion!! Chofer "+chofer['usuario']+" ha enviado una alerta SOS.");
+                            }
+                            
                         },
                         error: function(a,b,c){
                             alert("error");        
