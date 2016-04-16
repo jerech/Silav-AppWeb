@@ -28,7 +28,7 @@
         }
     </style>
             
-    
+<div id="contenedor">
 	<div class="content">
         <div class="header">
 		    <h1 class="page-title">Lista de Pasajes</h1>
@@ -72,7 +72,7 @@
 
 <br><br><br>
 <div class="row">
-    <div class="col-sm-6 col-md-6">
+    <div class="col-sm-4 col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading no-collapse">Top 10<span class="label label-info">+10</span></div>
             <table class="table table-bordered table-striped">
@@ -108,7 +108,7 @@
             </table>
         </div>
     </div>
-    <div class="col-sm-6 col-md-6">
+    <div class="col-sm-8 col-md-8">
         <div class="panel panel-default">
             <a href="#widget1container" class="panel-heading" data-toggle="collapse">Collapsible </a>
             <div id="widget1container" class="panel-body collapse in">
@@ -121,6 +121,21 @@
         </div>
     </div>
 </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="panel panel-default">
+            <a href="#widget1container2" class="panel-heading" data-toggle="collapse">Mapa </a>
+            <div id="widget1container2" class="panel-body collapse in">
+                <div id="mapa" style="height: 450px;">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+<div>
 
 
 
@@ -133,11 +148,41 @@
             </footer>
         </div>
     </div>
-
+<script src="http://openlayers.org/api/OpenLayers.js"></script>
 	<script>
+  lonMapa=-62.0851;
+      latMapa=-31.4304;
 		jQuery(document).ready(function() {
-            
+
+      
+
+      if (navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(funcExitoLocalizacion, funcErrorLocalizacion, {
+      maximumAge: 75000,
+      timeout: 4000
+    });
+  }
+
+           urlIconBlue = "../Geolocalizacion/img/marker.png";
+           urlIconRed = "../Geolocalizacion/img/marker-red.png";
+           urlIconGreen = "../Geolocalizacion/img/marker2.png";
+           urlIconYellow = "../Geolocalizacion/img/marker3.png";
+
+           function funcExitoLocalizacion(objPosition){
+  console.log(objPosition);
+  zoom = 15;
+  lonMapa = objPosition.coords.longitude;
+  latMapa = objPosition.coords.latitude;
+  return;
+}
+
+function funcErrorLocalizacion(objPositionError){
+
+  console.log(objPositionError);
+  return;
+}
             mostrarDatos.init();
+
 
       });      
 	</script>

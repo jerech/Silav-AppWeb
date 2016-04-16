@@ -11,7 +11,7 @@ var mostrarDatos = {
                     data: {},           
                     dataType: 'json',
                     beforeSend: function(){
-                        blockUI($("#div-tabla"), false);
+                        blockUI($("#contador"), false);
                     },   
                     success: function(data) {
 								      var contador = 0;
@@ -62,9 +62,12 @@ var mostrarDatos = {
 		
 									$("#tBody").append(nuevaFila);                            
                         });
+
+
+                  mostrarDatos.crearMapa(data.pasajes);
       	            		initDataTable($('#tabla'));
 
-      	            		unblockUI($("#div-tabla"));
+      	            		unblockUI($("#contador"));
        
                     },
                     error: function(a,b,c){
@@ -77,5 +80,65 @@ var mostrarDatos = {
 				});
 			
 			
-}
+},
+
+
+crearMapa: function (pasajes) {
+
+
+            var zoom = 14;
+            
+    //Creacion del mapa
+    map = new OpenLayers.Map ("mapa", {
+              maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34),
+              maxResolution: 156543.0399,
+              numZoomLevels: 18,
+              units: 'm',
+              projection: new OpenLayers.Projection("EPSG:900913"),
+              displayProjection: new OpenLayers.Projection("EPSG:4326")
+            });
+    //Creacion de capas
+    capa = new OpenLayers.Layer.OSM("Capa OSM");
+    markers = new OpenLayers.Layer.Markers("Marcadores");
+    //Adicion de capas al mapa
+    map.addLayer(capa);
+    map.addLayer(markers);
+    //Centro el mapa en la posicion dada
+    var initLonLat = new OpenLayers.LonLat(lonMapa, latMapa).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+    map.setCenter (initLonLat, zoom); 
+  
+    size = new OpenLayers.Size(15,19);
+    offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
+  
+    $(pasajes).each(function(index){
+
+        mostrarDatos.crearMarcador(pasajes[index].ubicacion_lon, pasajes[index].ubicacion_lat, pasajes[index].estado);
+
+    });
+
+    return;
+  },
+
+  crearMarcador: function (longitudMapa, latitudMapa, estado) {
+
+    switch(estado){
+                    case 'por_asignar':
+                          urlIcon = urlIconYellow;
+                          break;
+                    case 'asignado':
+                          urlIcon = urlIconGreen;
+                          break;
+                    case 'rechazado':
+                          urlIcon = urlIconRed;
+                          break;
+                    default:
+                          urlIcon = urlIconBlue;
+                  }
+    console.log(longitudMapa+"-"+latitudMapa);
+    var lonLatTransformada = new OpenLayers.LonLat(longitudMapa, latitudMapa).transform(new OpenLayers.Projection("EPSG:4326"), map.getProjectionObject());
+    marcador = new OpenLayers.Marker(lonLatTransformada, new OpenLayers.Icon(urlIcon,size,offset));
+    markers.addMarker(marcador);
+
+    return;
+  },
 }

@@ -3,8 +3,8 @@
 //que establece como conexion con MySQL
 function establecerConexion(){
 
-	$usuarioDB="silav";
-	$contraseniaDB="12345";
+	$usuarioDB="root";
+	$contraseniaDB="nbanhl06";
 	$servidorDB="localhost";
 	$nombreDB="silav";
 	
