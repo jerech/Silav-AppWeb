@@ -110,7 +110,7 @@
         }
 
         .label-success {
-            background-color: #69FF69;
+            background-color: #7CC50C;
         }
 
         .label-info {
