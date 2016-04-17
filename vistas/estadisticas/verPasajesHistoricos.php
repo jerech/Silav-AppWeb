@@ -26,6 +26,7 @@
         .label-info {
             background-color: #FFBF00;
         }
+
     </style>
             
 <div id="contenedor">
@@ -126,7 +127,7 @@
 <div class="row">
     <div class="col-sm-12 col-md-12">
       <div class="panel panel-default">
-            <a href="#widget1container2" class="panel-heading" data-toggle="collapse">Mapa </a>
+            <a href="#widget1container2" class="panel-heading" data-toggle="collapse">Mapa    <span id="can-porasignar" class='label label-info pull-center' style='width:60px;'>3</span>&nbsp;<span id="can-asignados" style='width:60px;' class='label label-success pull-center'>2</span>&nbsp;<span id="can-rechazados" style='width:60px;' class='label label-warning pull-center'>6</span></a>
             <div id="widget1container2" class="panel-body collapse in">
                 <div id="mapa" style="height: 450px;">
 
@@ -156,31 +157,12 @@
 
       
 
-      if (navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(funcExitoLocalizacion, funcErrorLocalizacion, {
-      maximumAge: 75000,
-      timeout: 4000
-    });
-  }
-
            urlIconBlue = "../Geolocalizacion/img/marker.png";
            urlIconRed = "../Geolocalizacion/img/marker-red.png";
            urlIconGreen = "../Geolocalizacion/img/marker2.png";
            urlIconYellow = "../Geolocalizacion/img/marker3.png";
 
-           function funcExitoLocalizacion(objPosition){
-  console.log(objPosition);
-  zoom = 15;
-  lonMapa = objPosition.coords.longitude;
-  latMapa = objPosition.coords.latitude;
-  return;
-}
-
-function funcErrorLocalizacion(objPositionError){
-
-  console.log(objPositionError);
-  return;
-}
+           
             mostrarDatos.init();
 
 

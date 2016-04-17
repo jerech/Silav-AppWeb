@@ -15,6 +15,9 @@ var mostrarDatos = {
                     },   
                     success: function(data) {
 								      var contador = 0;
+                      var can_rechazados=0;
+                      var can_asignados=0;
+                      var can_porasignar=0;
                         
                         $(data.pasajes).each(function(index){
                         	
@@ -46,11 +49,14 @@ var mostrarDatos = {
                   switch(data.pasajes[index].estado){
                     case 'por_asignar':
                           nuevaFila += "<td><span class='label label-info pull-center'>"+data.pasajes[index].estado+"</span></td>";
+                          can_porasignar++;
                           break;
                     case 'asignado':
                           nuevaFila += "<td><span class='label label-success pull-center'>"+data.pasajes[index].estado+"</span></td>";
+                          can_asignados++;
                           break;
                     case 'rechazado':
+                          can_rechazados++;
                           nuevaFila += "<td><span class='label label-warning pull-center'>"+data.pasajes[index].estado+"</span></td>";
                           break;
                     default:
@@ -63,7 +69,16 @@ var mostrarDatos = {
 									$("#tBody").append(nuevaFila);                            
                         });
 
+                  if (navigator.geolocation){
+                        navigator.geolocation.getCurrentPosition(mostrarDatos.funcExitoLocalizacion, mostrarDatos.funcErrorLocalizacion, {
+                          maximumAge: 75000,
+                          timeout: 4000
+                        });
+                      }
 
+                  $("#can-rechazados").html(can_rechazados);
+                  $("#can-porasignar").html(can_porasignar);
+                  $("#can-asignados").html(can_asignados);
                   mostrarDatos.crearMapa(data.pasajes);
       	            		initDataTable($('#tabla'));
 
@@ -141,4 +156,19 @@ crearMapa: function (pasajes) {
 
     return;
   },
+
+
+  funcExitoLocalizacion: function(objPosition){
+  console.log(objPosition);
+  zoom = 15;
+  lonMapa = objPosition.coords.longitude;
+  latMapa = objPosition.coords.latitude;
+  return;
+},
+
+funcErrorLocalizacion: function(objPositionError){
+
+  console.log(objPositionError);
+  return;
+},
 }
