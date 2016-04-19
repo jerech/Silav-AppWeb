@@ -20,7 +20,7 @@
         }
 
         .label-success {
-            background-color: #69FF69;
+            background-color: #7CC50C;
         }
 
         .label-info {
@@ -111,13 +111,10 @@
     </div>
     <div class="col-sm-8 col-md-8">
         <div class="panel panel-default">
-            <a href="#widget1container" class="panel-heading" data-toggle="collapse">Collapsible </a>
+            <a href="#widget1container" class="panel-heading" data-toggle="collapse">Gráfico </a>
             <div id="widget1container" class="panel-body collapse in">
-                <h2>Here's a Tip</h2>
-                <p>This template was developed with <a href="http://middlemanapp.com/" target="_blank">Middleman</a> and includes .erb layouts and views.</p>
-                <p>All of the views you see here (sign in, sign up, users, etc) are already split up so you don't have to waste your time doing it yourself!</p>
-                <p>The layout.erb file includes the header, footer, and side navigation and all of the views are broken out into their own files.</p>
-                <p>If you aren't using Ruby, there is also a set of plain HTML files for each page, just like you would expect.</p>
+                <div id="myChart" style="height: 300px; width: 100%;"></div>
+
             </div>
         </div>
     </div>

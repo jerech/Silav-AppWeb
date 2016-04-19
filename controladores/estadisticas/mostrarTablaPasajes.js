@@ -1,8 +1,81 @@
 var mostrarDatos = {
 
+  
+
 	init: function(){
 
 		var urlObtenerDatos = "estadisticas/obtenerPasajes.php";
+
+    var chart = new CanvasJS.Chart("myChart",
+    {
+      zoomEnabled: false,
+                        animationEnabled: true,
+      title:{
+        text: ""
+      },
+      axisY2:{
+        valueFormatString:"0.0 bn",
+        
+        maximum: 1.2,
+        interval: .2,
+        interlacedColor: "#F5F5F5",
+        gridColor: "#D7D7D7",      
+        tickColor: "#D7D7D7"                
+      },
+                        theme: "theme2",
+                        toolTip:{
+                                shared: true
+                        },
+      legend:{
+        verticalAlign: "bottom",
+        horizontalAlign: "center",
+        fontSize: 15,
+        fontFamily: "Lucida Sans Unicode"
+
+      },
+      data: [
+      {        
+        type: "line",
+        lineThickness:3,
+        axisYType:"secondary",
+        showInLegend: true,           
+        name: "India", 
+        dataPoints: [
+        { x: new Date(2008, 0), y: 0.05 },
+        { x: new Date(2009, 0), y: 0.1 },
+        { x: new Date(2010, 0), y: 0.15 },
+        { x: new Date(2011, 0), y: 0.22 },
+        { x: new Date(2012, 0), y: 0.38  },
+        { x: new Date(2013, 0), y: 0.56 },
+        { x: new Date(2014, 0), y: 0.77 },
+        { x: new Date(2015, 0), y: 0.91 },
+        { x: new Date(2016, 0), y: 0.94 }
+
+
+        ]
+      }
+
+
+
+      ],
+          legend: {
+            cursor:"pointer",
+            itemclick : function(e) {
+              if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+              e.dataSeries.visible = false;
+              }
+              else {
+                e.dataSeries.visible = true;
+              }
+              chart.render();
+            }
+          }
+        });
+
+chart.render();
+
+
+    
 
 
 		$.ajax({
@@ -11,7 +84,7 @@ var mostrarDatos = {
                     data: {},           
                     dataType: 'json',
                     beforeSend: function(){
-                        blockUI($("#contador"), false);
+                        blockUI($("#contenedor"), false);
                     },   
                     success: function(data) {
 								      var contador = 0;
@@ -82,11 +155,11 @@ var mostrarDatos = {
                   mostrarDatos.crearMapa(data.pasajes);
       	            		initDataTable($('#tabla'));
 
-      	            		unblockUI($("#contador"));
+      	            		unblockUI($("#contenedor"));
        
                     },
                     error: function(a,b,c){
-                    	unblockUI($("#div-tabla"));
+                    	unblockUI($("#contenedor"));
                         console.log(a);
                         console.log(b);
                         console.log(c);  		

@@ -245,11 +245,13 @@ function modificarBD(formulario) {
                             }else{
                                 notificacion("success", "Chofer guardado correctamente");
                                 $(".form-control").val('');
-                                unblockUI($(".main-content"));     
+                               
                    
-                            }                         
+                            }   
+                            unblockUI($(".main-content"));                      
                         },
                         error: function(a,b,c){
+                            unblockUI($(".main-content"));
                             console.log(a);
                             console.log(b);
                             console.log(c);         

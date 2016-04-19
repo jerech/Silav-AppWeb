@@ -212,7 +212,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Chofer</label>                    
-                                        <input type="text" id="listaChoferes" name="listaChoferes" class="form-control">                  
+                                        <input type="text" id="listaChoferes" name="listaChoferes" class="form-control" readOnly>                  
                                     </div>
                                 </div>
                                 <div class="col-md-2">

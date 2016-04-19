@@ -22,6 +22,9 @@
     <script src="../recursos/plugins/lib/bootstrap/js/bootstrap.js"></script>
     <script src="../recursos/plugins/lib/bootstrapValidator.min.js" type="text/javascript"></script>
     <script src="../recursos/plugins/lib/jquery.blockui.js" type="text/javascript"></script>
+    <!--<script type="text/javascript" src="../recursos/plugins/lib/chart/Chart.js"></script>
+    <script type="text/javascript" src="../recursos/plugins/lib/chart/Chart.bundle.js"></script>-->
+    <script type="text/javascript" src="../recursos/plugins/lib/canvasjs.min.js"></script>
     <script type="text/javascript" src="../recursos/plugins/lib/jquery.dataTables.js"></script>
     <link rel="stylesheet" href="../recursos/plugins/lib/jquery.dataTables.css">
 
