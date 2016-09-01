@@ -6,73 +6,7 @@ var mostrarDatos = {
 
 		var urlObtenerDatos = "estadisticas/obtenerPasajes.php";
 
-    var chart = new CanvasJS.Chart("myChart",
-    {
-      zoomEnabled: false,
-                        animationEnabled: true,
-      title:{
-        text: ""
-      },
-      axisY2:{
-        valueFormatString:"0.0 bn",
-        
-        maximum: 1.2,
-        interval: .2,
-        interlacedColor: "#F5F5F5",
-        gridColor: "#D7D7D7",      
-        tickColor: "#D7D7D7"                
-      },
-                        theme: "theme2",
-                        toolTip:{
-                                shared: true
-                        },
-      legend:{
-        verticalAlign: "bottom",
-        horizontalAlign: "center",
-        fontSize: 15,
-        fontFamily: "Lucida Sans Unicode"
-
-      },
-      data: [
-      {        
-        type: "line",
-        lineThickness:3,
-        axisYType:"secondary",
-        showInLegend: true,           
-        name: "India", 
-        dataPoints: [
-        { x: new Date(2008, 0), y: 0.05 },
-        { x: new Date(2009, 0), y: 0.1 },
-        { x: new Date(2010, 0), y: 0.15 },
-        { x: new Date(2011, 0), y: 0.22 },
-        { x: new Date(2012, 0), y: 0.38  },
-        { x: new Date(2013, 0), y: 0.56 },
-        { x: new Date(2014, 0), y: 0.77 },
-        { x: new Date(2015, 0), y: 0.91 },
-        { x: new Date(2016, 0), y: 0.94 }
-
-
-        ]
-      }
-
-
-
-      ],
-          legend: {
-            cursor:"pointer",
-            itemclick : function(e) {
-              if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-              e.dataSeries.visible = false;
-              }
-              else {
-                e.dataSeries.visible = true;
-              }
-              chart.render();
-            }
-          }
-        });
-
-chart.render();
+    
 
 
     
@@ -154,6 +88,75 @@ chart.render();
                   $("#can-asignados").html(can_asignados);
                   mostrarDatos.crearMapa(data.pasajes);
       	            		initDataTable($('#tabla'));
+
+                        var datos = [];
+                        $(data.datos_grafico).each(function(index){
+                          //x:data.datos_grafico[index].mes
+                          var d = {x:index, y:parseInt(data.datos_grafico[index].cantidad), label:data.datos_grafico[index].mes}; 
+                          
+                          datos.push(d);
+                       
+                          });
+
+                        var chart = new CanvasJS.Chart("myChart",
+                        {
+                          zoomEnabled: false,
+                                            animationEnabled: true,
+                          title:{
+                            text: ""
+                          },
+                          axisX2: {
+    gridColor: "Silver",
+    tickColor: "silver",
+    interval: 1,
+    labelAngle: -70
+
+  },
+                          axisY2:{
+                            valueFormatString:"0",
+                            
+                            maximum: 100,
+                            interval: 10,
+                            interlacedColor: "#F5F5F5",
+                            gridColor: "#D7D7D7",      
+                            tickColor: "#D7D7D7"                
+                          },
+                                            theme: "theme2",
+                                            toolTip:{
+                                                    shared: true
+                                            },
+                          legend:{
+                            verticalAlign: "bottom",
+                            horizontalAlign: "center",
+                            fontSize: 15,
+                            fontFamily: "Lucida Sans Unicode"
+
+                          },
+                          data: [
+                          {        
+                            type: "line",
+                            lineThickness:3,
+                            axisYType:"secondary",
+                            showInLegend: true,           
+                            name: "San Francisco", 
+                            dataPoints: datos
+                          }
+                          ],
+                              legend: {
+                                cursor:"pointer",
+                                itemclick : function(e) {
+                                  if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                                  e.dataSeries.visible = false;
+                                  }
+                                  else {
+                                    e.dataSeries.visible = true;
+                                  }
+                                  chart.render();
+                                }
+                              }
+                            });
+
+                    chart.render();
 
       	            		unblockUI($("#contenedor"));
        

@@ -93,6 +93,6 @@ var MostrarInformacionResumen = {
                         }
                     });
 			
-		},120000);
+		},30000);
 	}
 }
