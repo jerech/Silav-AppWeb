@@ -23,18 +23,31 @@
     	$datos[] = $array;
     }
 
-    $query="select count(*) as cantidad, date_format(fecha,'%Y-%m') as fecha from Pasajes group by date_format(fecha,'%Y-%m') order by fecha asc";
-    $resultado = mysql_query($query, $conexion) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
+   // $query="select count(*) as cantidad, date_format(fecha,'%Y-%m') as fecha from Pasajes group by date_format(fecha,'%Y-%m') order by fecha asc";
+   // $resultado = mysql_query($query, $conexion) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
 
   $datos2 = array();
   $meses = array("Enero","Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre","Noviembre", "Diciembre");
 
+  foreach ($meses as $key => $value) {
+    if(($key+1)<10){
+        $v="0".($key+1);
+    }else{
+      $v=($key+1);
+    }
+      $query="select count(*) as cantidad from Pasajes where date_format(fecha,'%m')='".$v."'";
+      $resultado = mysql_query($query, $conexion) or die('Error: '.mysql_error().'. Nro: '.mysql_errno());
+      
+      $r=mysql_fetch_assoc($resultado);
+      $datos2[] = array('cantidad' => $r['cantidad'], 'mes'=>$value);;
 
-    while ($array = mysql_fetch_array($resultado, MYSQL_ASSOC)) {
+  }
+
+   /* while ($array = mysql_fetch_array($resultado, MYSQL_ASSOC)) {
       $num=(int)split("-", $array['fecha'])[1];
       $datos2[] = array('cantidad' => $array['cantidad'],'mes'=>$meses[$num-1]);
  
-    }
+    }*/
 
 
 
